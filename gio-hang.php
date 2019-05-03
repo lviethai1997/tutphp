@@ -89,7 +89,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
 								</div>
 								<div class="one-eight text-center">
 									<div class="display-tc">
-										<input type="number" id="qty" name="qty" class="form-control input-number text-center qty" value="<?php echo $value['qty'] ?>" min="1" max="100">
+										<input type="number" id="qty" name="qty" class="form-control input-number text-center" value="<?php echo $value['qty'] ?>" min="1" max="100">
 									</div>
 								</div>
 								<div class="one-eight text-center">
@@ -104,7 +104,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
 									</div>
 								</div>
 						</div>
-                        <?php $sum += $value['price'] * $value['qty']; $_SESSION['tongtien'] = $sum ?>
+						<?php $sum += $value['price'] * $value['qty']; $_SESSION['tongtien'] = $sum ?>
                         <?php endforeach?>
 					</div>
 				</div>

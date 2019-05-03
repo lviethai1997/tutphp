@@ -117,13 +117,10 @@
     <p class="text-danger"><br><?php echo $error['content'] ?></p>
     <?php endif ?>
   </div>
-                    <script>
-                        config ={};
-                        config.entities_latin = false;
-                        config.language ='vi';
-                        config.height = 700;
-                        CKEDITOR.replace( 'content',config,
+  <script>
+                        CKEDITOR.replace( 'content',
                         {
+                            height : '800px',
                             filebrowserBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html',
                             filebrowserImageBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
                             filebrowserFlashBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',

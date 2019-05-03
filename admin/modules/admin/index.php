@@ -10,7 +10,7 @@
             $del_id = $checkbox[$i]; 
             $num =$db->deletesql("admin","id= '".$del_id."'");
             }
-            $_SESSION['success'] = "Xóa sản phẩm thành công";
+            $_SESSION['success'] = "Xóa Admin thành công";
             redirectAdmin("admin");
         }
         

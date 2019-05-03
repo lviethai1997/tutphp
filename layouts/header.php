@@ -22,48 +22,37 @@
 	<meta name="twitter:card" content="" />
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/animate.css">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/icomoon.css">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/bootstrap.css">
-
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/magnific-popup.css">
-
 	<!-- Flexslider  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/flexslider.css">
-
 	<!-- Owl Carousel -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/owl.theme.default.min.css">
-	
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/bootstrap-datepicker.css">
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/fonts/flaticon/font/flaticon.css">
-
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/style.css">
-
 	<!-- Modernizr JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url()  ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	</head>
 	<style>
-
-	
-
 	.product-entry .product-img .tagsale {
 	  position:absolute;
       top: 10px;
@@ -105,12 +94,8 @@
 #hisella-minimize { background: #3b5998; font-size: 14px; color: #fff; padding: 3px 10px; position: absolute; top: -34px; left: -1px; border: 1px solid #E9EAED; cursor: pointer; }
 @media screen and (max-width:768px){ #hisella-facebook { opacity:0; } .hisella-messages { bottom: -300px; right: -135px; } }
 </style>
-	 
 	<body>
-	
-	
 	<div class="colorlib-loader"></div>
-
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation" style="position: fixed;background-color: #fff;box-shadow: 0px 5px 5px #777777;width:100%;z-index:1000">
 			<div class="top-menu" style="
@@ -119,7 +104,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.php">BTFY</a></div>
+							<div id="colorlib-logo"><a href="index.php">hai le</a></div>
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
@@ -170,7 +155,6 @@
 								<li>
         					<a href="tim-kiem.php"><img withd ="22" height="22" src="<?php echo base_url()  ?>public/fontend/logo/search.png"/></i><b> Tìm Kiếm</b></a>
     						</li>
-								
 							</ul>
 						</div>
 					</div>

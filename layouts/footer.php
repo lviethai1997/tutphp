@@ -63,16 +63,14 @@
 							</ul>
 						</p>
 					</div>
-
 					<div class="col-md-2">
 						<h4>TIN TỨC</h4>
 						<ul class="colorlib-footer-links">
-							<li><a href="blog.html">Blog</a></li>
+							<li><a href="blog-list.php">Blog</a></li>
 							<li><a href="#">Press</a></li>
 							<li><a href="#">Exhibitions</a></li>
 						</ul>
 					</div>
-
 					<div class="col-md-3">
 						<h4>Thông tin liên lạc</h4>
 						<ul class="colorlib-footer-links">
@@ -103,7 +101,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
-	
 	<!-- jQuery -->
 	<script src="<?php echo base_url()  ?>public/fontend/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -123,10 +120,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo base_url()  ?>public/fontend/js/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
 	<script src="<?php echo base_url()  ?>public/fontend/js/jquery.stellar.min.js"></script>
-
 	<!-- Main -->
 	<script src="<?php echo base_url()  ?>public/fontend/js/main.js"></script>
-
 	<script>
 		$(document).ready(function(){
 
@@ -169,7 +164,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			$updatecart.click(function(e){
 				e.preventDefault();
 				$qty = $(this).parents(".product-cart").find("#qty").val();
-
 				$key = $(this).attr("data-key");
 				$.ajax({
 					url: 'cap-nhat-gio-hang.php',
@@ -190,10 +184,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		
 	</script>
-
-	
-
 	</body>
-	
 </html>
 

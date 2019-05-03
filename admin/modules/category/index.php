@@ -13,7 +13,7 @@
             $del_id = $checkbox[$i]; 
             $num =$db->deletesql("categories","id= '".$del_id."'");
             }
-            $_SESSION['success'] = "Xóa sản danh mục sản phẩm thành công";
+            $_SESSION['success'] = "Xóa danh mục sản phẩm thành công";
             redirectAdmin("category");
         }
        

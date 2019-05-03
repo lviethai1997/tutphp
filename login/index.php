@@ -95,10 +95,9 @@
 					
 
 					<div class="text-center p-t-136">
-						<h4 class="txt2" href="#">
-						NOTHING IS ABSOLUTE, NOTHING IS FOREVER, NOTHING FROM NOTHING
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</h4>
+						<h3 class="txt2" href="#">
+							<h2 class="fa fa-long-arrow-right m-l-5" style="text-transform: uppercase;" aria-hidden="true">Don't wish it were easier wish you were better</h2>
+						</h3>
 					</div>
 				</form>
 			</div>

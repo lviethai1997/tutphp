@@ -10,7 +10,7 @@
             $del_id = $checkbox[$i]; 
             $num =$db->deletesql("news","id= '".$del_id."'");
             }
-            $_SESSION['success'] = "Xóa sản danh mục sản phẩm thành công";
+            $_SESSION['success'] = "Xóa tin tức thành công";
             redirectAdmin("news");
         }
         

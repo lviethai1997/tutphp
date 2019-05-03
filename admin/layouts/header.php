@@ -26,7 +26,7 @@
         <!-- Custom CSS -->
         <link href="<?php echo base_url() ?>public/admin/dist/css/sb-admin-2.css" rel="stylesheet">
         
-        <script src="//cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+        <script src="//cdn.ckeditor.com/4.11.3/full/ckeditor.js"></script>
         
         
         <script src="<?php echo base_url()?>public/ckfinder/ckfinder.js"></script>
@@ -367,7 +367,6 @@
                 <!-- /.navbar-static-side -->
             </nav>
             <!-- Page Content -->
-            <div style="margin: 0px; width: 427px; height: 100px;"></div>
             <div id="page-wrapper" style="min-height: 435px;">
                 <div class="container-fluid">
                 
