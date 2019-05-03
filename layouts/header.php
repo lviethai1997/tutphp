@@ -107,12 +107,9 @@
 </style>
 	 
 	<body>
-	
-	
 	<div class="colorlib-loader"></div>
-
 	<div id="page">
-		<nav class="colorlib-nav" role="navigation" style="position: fixed;background-color: #fff;box-shadow: 0px 5px 5px #777777;width:100%;z-index:1000">
+		<nav class="colorlib-nav" role="navigation" style="position: fixed;background-color: #fff;box-shadow: 0px 5px 5px #777777;width:100%;z-index:1000;top: 0px">
 			<div class="top-menu" style="
     padding-top: 7px;
     padding-bottom: 10px;">
@@ -177,4 +174,4 @@
 				</div>
 			</div>
 		</nav>
-    <div style="margin: 0px; height: 52px; width: 666px;"></div>
+    <div style="margin: 0px; height: 32px; width: 666px;"></div>

@@ -367,7 +367,7 @@
                 <!-- /.navbar-static-side -->
             </nav>
             <!-- Page Content -->
-            <div style="margin: 0px; width: 427px; height: 100px;"></div>
+           
             <div id="page-wrapper" style="min-height: 435px;">
                 <div class="container-fluid">
                 
