@@ -99,7 +99,7 @@
 <div class="form-group" >
   <label for="price">Đoạn tóm gọn</label>
   <!-- <input type="text" class="form-control" id="price" name="contentmini"  placeholder="Đoạn tóm tắt của bài viết" value="<php echo $news['contentmini'] ?>"> -->
-  <textarea name="contentmini" id="price" cols="140" rows="10"><?php echo $news['contentmini'] ?></textarea>
+  <textarea name="contentmini" id="price" cols="170" rows="10"><?php echo $news['contentmini'] ?></textarea>
   <?php 
   if(isset($error['contentmini'])): ?>
   <p class="text-danger"><br><?php echo $error['contentmini'] ?></p>
@@ -127,9 +127,12 @@
   <?php endif ?>
 </div>
                     <script>
-                        CKEDITOR.replace( 'content',
+                        config ={};
+                        config.entities_latin = false;
+                        config.language ='vi';
+                        config.height = 700;
+                        CKEDITOR.replace( 'content',config,
                         {
-                            height: '800px',
                             filebrowserBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html',
                             filebrowserImageBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
                             filebrowserFlashBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',

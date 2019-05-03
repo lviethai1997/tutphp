@@ -22,6 +22,8 @@
 	<meta name="twitter:card" content="" />
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 	
 	<!-- Animate.css -->
@@ -45,11 +47,11 @@
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/bootstrap-datepicker.css">
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/fonts/flaticon/font/flaticon.css">
+
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="<?php echo base_url()  ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<!-- FOR IE9 below -->
@@ -59,17 +61,12 @@
 
 	</head>
 	<style>
-#pages {
-  position: relative;
-  /* overflow-x: hidden; */
-  width: 100%;
-  height: 100%;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s; }
+
+	
+
 	.product-entry .product-img .tagsale {
 	  position:absolute;
-    top: 10px;
+      top: 10px;
 	  right: 10px; }
 	  .product-entry .product-img .tagsale .hotsale {
           font-size: 13px;
@@ -110,10 +107,15 @@
 </style>
 	 
 	<body>
+	
+	
 	<div class="colorlib-loader"></div>
-	<div id="pages">
-		<nav class="colorlib-nav" role="navigation" style="position: fixed;background-color: #fff;box-shadow: 0px 5px 5px #777777;width:100%;z-index:1000;top: 0px">
-			<div class="top-menu" style="padding-top: 7px;padding-bottom: 10px;">
+
+	<div id="page">
+		<nav class="colorlib-nav" role="navigation" style="position: fixed;background-color: #fff;box-shadow: 0px 5px 5px #777777;width:100%;z-index:1000">
+			<div class="top-menu" style="
+    padding-top: 7px;
+    padding-bottom: 10px;">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-xs-2">
@@ -175,4 +177,4 @@
 				</div>
 			</div>
 		</nav>
-    <div style="margin: 0px; height: 31px; width: 666px;"></div>
+    <div style="margin: 0px; height: 52px; width: 666px;"></div>

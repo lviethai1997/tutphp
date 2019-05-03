@@ -54,7 +54,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 83px;">Thời Gian</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 73px;">Trạng Thái</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 60px;">Chi tiết</th>
-                                       
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 30px;">Action</th>
                                 </thead>
                                 <tbody>
                                     <?php $stt=1;foreach($transaction as $item) : ?>
@@ -70,13 +70,20 @@
                                        <li><?php echo formatPrice($item['amount']) ?></li>
                                         <li><?php if($item['pt']==1){echo "COD";}else{echo "Chuyển khoản";} ?></li>
                                        </ul></td>
+                                        
+                                        
+                                        
                                         <td><?php echo $item['created_at'] ?></td>
                                         <td>
                                         <a href="status.php?id=<?php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['status']==0 ?"btn-danger" :"btn-info" ?>"><?php echo $item['status'] == 0 ? ' Chưa xử lý' :' Đã xử lý' ?></a>
                                         <a class="btn btn-xs btn-info" href="printbill.php?id=<?php echo $item['id'] ?>"> In hóa đơn</a>
                                         </td>
+
                                         <td>
+                                        
                                         <a  class=" btn btn-xs btn-info fa fa-info " data-toggle="modal" data-target="#exampleModal" data-whatever=<?php echo '"'.$item['id'].' " '?>> Xem</a>
+
+
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -91,13 +98,20 @@
                                             </div>
                                         </div>
                                         </td>
-                                        <!-- <td>
-                                        <a class="btn btn-xs btn-danger fa fa-trash " href="delete.php?id=<php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp;
+
+                                        
+                                      
+                                        <td>
+                                        <a class="btn btn-xs btn-danger fa fa-trash " href="delete.php?id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp;
                                             
-                                        </td> -->
+                                        </td>
                                     </tr>
                                   
                                     <?php $stt++ ;endforeach  ?>
+
+                                    
+                                    
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -107,6 +121,7 @@
                         <div class="col-sm-6">
                             <div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite"></div>
                         </div>
+
                     </div>
                 </div>
                 <!-- /.table-responsive -->
