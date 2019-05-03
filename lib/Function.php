@@ -1,4 +1,4 @@
-
+﻿
 <?php 
 
     /**
@@ -123,7 +123,7 @@
 
     function uploads()
     {
-        return  "/tutphp/public/uploads/";
+        return  base_url() ."public/uploads/";
     }
     
      if ( ! function_exists('redirectStyle'))
