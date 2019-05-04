@@ -76,7 +76,7 @@
                                                 <li>Giá nhập : <?php echo $item['price_input'] ?></li>
                                                 <li>Giá bán: <?php echo $item['price'] ?></li>
                                                 <li>khuyến mãi : <?php echo $item['sale'] ?></li>
-                                                <li>Số lượng : <?php echo $item['number'] ?></li>
+                                                <li>Số lượng : <?php if($item['number']<=0){ echo "<b>Hết hàng</b>"; }else{echo $item['number'];}?></li>
 
                                             </ul>
                                         </td>

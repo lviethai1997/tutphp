@@ -132,7 +132,7 @@ fjs.parentNode.insertBefore(js, fjs);
 		<div class="colorlib-shop" style="padding-bottom: 30px;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
 						<h2><span>Sản Phẩm bán chạy</span></h2>
 						<p>Những sản phẩm bán chạy nhất của chúng tôi, số lượng bán được đang tăng lên hằng ngày, nhanh chân lên trước khi sản phẩm bị bán hết.</p>
 					</div>
@@ -209,7 +209,7 @@ fjs.parentNode.insertBefore(js, fjs);
 		<div class="colorlib-shop" style="padding-bottom: 30px;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
 						<h2><span>SALE OFF</span></h2>
 						<p>Những sản phẩm được giảm giá cực lớn nhân dịp sự kiện, hãy nhanh chân vào xem và bạn có thể mua cả đống đồ thời trang với cá giá rẻ bèo.</p>
 					</div>
@@ -257,7 +257,7 @@ fjs.parentNode.insertBefore(js, fjs);
 		<div class="colorlib-shop" style="padding-bottom: 30px;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
 						<h2><span>Hàng mới về</span></h2>
 						<p>Những sản phẩm chất lượng, được chọn lọc khắt khe, đảm bảo với bạn rằng xịn, thời trang, ngầu. Hãy nhanh chân vào xem và có thể bạn sẽ tìm được điều bất ngờ.</p>
 					</div>
@@ -327,7 +327,7 @@ fjs.parentNode.insertBefore(js, fjs);
 		<div class="colorlib-blog">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading">
+					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading" style="margin-bottom: 20px;">
 						<h2>tin tức thời trang</h2>
 						<p>Các tin tức về thời trang mới nhất, được chúng tôi cập nhật thường xuyên</p>
 					</div>

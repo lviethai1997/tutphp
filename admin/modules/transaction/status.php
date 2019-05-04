@@ -13,10 +13,8 @@ if($EdtiTransaction['status']==1)
 {
     $_SESSION['error'] ="Đơn hàng đã được xử lý!!!";
     redirectAdmin("transaction");
-
 }
 $status = 1;
-
 $update = $db->update("transaction",array("status" => $status),array("id" => $id));
 if($update >0)
 {
