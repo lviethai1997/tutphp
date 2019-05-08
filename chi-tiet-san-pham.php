@@ -8,7 +8,7 @@ $product = $db->fetchID("products",$id);
 //lay danh muc sp
 $cateid =intval($product['category_id']);
 $catesale = $db->fetchID("categories",$cateid);
-$sql = "SELECT * FROM products WHERE category_id = $cateid ORDER BY id DESC LIMIT 4";
+$sql = "SELECT * FROM products WHERE category_id = $cateid and status =1 ORDER BY id DESC LIMIT 4";
 $productREC=$db->fetchsql($sql);
 
 

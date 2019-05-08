@@ -10,7 +10,7 @@ if(isset($_GET['p']))
 	$p= 1;
 }
 
-$sql = "SELECT news.*,news.id as id,DATE_FORMAT(news.updated_at, '%d') as day,DATE_FORMAT(news.updated_at, '%M') as month,news.image_news as image,admin.name as ten,news.title as title,news.contentmini as contentmini from news inner join admin on news.id_admin = admin.id where 1 order by news.id DESC";
+$sql = "SELECT news.*,news.id as id,DATE_FORMAT(news.updated_at, '%d') as day,DATE_FORMAT(news.updated_at, '%M') as month,news.image_news as image,admin.name as ten,news.title as title,news.contentmini as contentmini from news inner join admin on news.id_admin = admin.id where news.status =1 order by news.id DESC";
 $total = count($db->fetchsql($sql));
 $newss = $db->fetchJones("news",$sql,$total,$p,9,true);
 $sotrang = $newss['page'];

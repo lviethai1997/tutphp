@@ -32,15 +32,17 @@
 
 		if(empty($error))
 		{
-			$is_check = $db->fetchOne("users"," email = '".$data['email']."' AND password = '".MD5($data['password'])."' ");
+			$is_check = $db->fetchOne("users"," status = 1 and email = '".$data['email']."' AND password = '".MD5($data['password'])."' ");
 
 			if($is_check != NULL)
 			{
 				$_SESSION['name_user'] = $is_check['name'];
 				$_SESSION['name_id'] = $is_check['id'];
 				echo "<script>alert(' Đăng nhập thành công !!!');location.href='index.php'</script>"; 
-			}else
+			}elseif($is_check['status']==0)
 			{
+				$_SESSION["error"]="Tài khoản đã bị khóa, liên hệ BQT để mở !!!";
+			}else{
 				$_SESSION["error"]="Tài khoản hoặc mật khẩu không đúng !!!";
 			}
 		}

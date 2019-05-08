@@ -45,7 +45,7 @@ fjs.parentNode.insertBefore(js, fjs);
 					   					<h2 class="head-2">Đẹp</h2>
 					   					<h2 class="head-3">Chất chơi</h2>
 					   					<p class="category"><span>Chỉ có duy nhất tại đây<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong> BTFY Shop</strong></span></p>
-					   					<p><a href="#" class="btn btn-primary">Xem ngay</a></p>
+					   					
 				   					</div>
 				   				</div>
 				   			</div>
@@ -63,7 +63,7 @@ fjs.parentNode.insertBefore(js, fjs);
 					   					<h2 class="head-2">cực lớn</h2>
 					   					<h2 class="head-3">đến 45%</h2>
 					   					<p class="category"><span><strong> Thoải mái mua sắm<br> &ensp;&ensp;&ensp;&ensp; Không lo giá cả.</strong></span></p>
-					   					<p><a href="#" class="btn btn-primary">Xem ngay</a></p>
+					   					
 				   					</div>
 				   				</div>
 				   			</div>
@@ -81,7 +81,7 @@ fjs.parentNode.insertBefore(js, fjs);
 					   					<h2 class="head-1">Mới về</h2>
 					   					<h2 class="head-3">Cực HOT</h2>
 					   					<p class="category"><span>Nhanh tay vào xem ngay!!!</span></p>
-					   					<p><a href="#" class="btn btn-primary">Xem ngay</a></p>
+					   					
 				   					</div>
 				   				</div>
 				   			</div>

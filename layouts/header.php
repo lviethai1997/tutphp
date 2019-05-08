@@ -53,6 +53,12 @@
 	<![endif]-->
 	</head>
 	<style>
+	.gototop.active{
+		left: 10px;
+	}
+	.gototop{
+		left: 10px;
+	}
 	.product-entry .product-img .tagsale {
 	  position:absolute;
       top: 10px;

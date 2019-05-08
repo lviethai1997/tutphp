@@ -11,7 +11,7 @@ if(isset($_GET['p']))
 	$p= 1;
 }
 
-$sql = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where category_id = $id";
+$sql = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where category_id = $id and products.status =1";
 $total = count($db->fetchsql($sql));
 $product = $db->fetchJones("products",$sql,$total,$p,9,true);
 $sotrang = $product['page'];
