@@ -163,7 +163,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			$updatecart = $(".updatecart");
 			$updatecart.click(function(e){
 				e.preventDefault();
-				$qty = $(this).parents(".product-cart").find("#qty").val();
+				$qty = $(this).parents(".product-cart").find(".qty").val();
+
 				$key = $(this).attr("data-key");
 				$.ajax({
 					url: 'cap-nhat-gio-hang.php',

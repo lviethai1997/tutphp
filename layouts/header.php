@@ -43,7 +43,8 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/style.css">
 	<!-- Modernizr JS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url()  ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>

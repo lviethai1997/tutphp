@@ -23,7 +23,6 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Giỏ hàng</h1>
-				   					
 				   				</div>
 				   			</div>
 				   		</div>
@@ -89,7 +88,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
 								</div>
 								<div class="one-eight text-center">
 									<div class="display-tc">
-										<input type="number" id="qty" name="qty" class="form-control input-number text-center" value="<?php echo $value['qty'] ?>" min="1" max="100">
+										<input type="number" id="qty" name="qty" class="form-control input-number text-center qty" value="<?php echo $value['qty'] ?>" min="1" max="100">
 									</div>
 								</div>
 								<div class="one-eight text-center">
@@ -99,7 +98,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
 								</div>
 								<div class="one-eight text-center">
 									<div class="display-tc">
-									<a href="#" class="updatecart" data-key=<?php echo $key ?>><i>Cập nhật</i></a><br><br>
+									<a href="#" class="updatecart" data-key="<?php echo $key ?>"><i>Cập nhật</i></a><br><br>
 									<a href="remove.php?key=<?php echo $key ?>" class="closed"></a>
 									</div>
 								</div>

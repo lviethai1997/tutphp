@@ -17,7 +17,7 @@ if(isset($_GET['p']))
 	$p= 1;
 }
 if(empty($error)){
-$sql = "SELECT * from products where name like '%$keyword%'";
+$sql = "SELECT * from products where name like '%$keyword%' and status =1";
 $total = count($db->fetchsql($sql));
 $product = $db->fetchJones("products",$sql,$total,$p,9,true);
 $sotrang = $product['page'];
