@@ -6,7 +6,7 @@ $open = "transaction";
 
   
     
-    $sqlDetails = "SELECT products.name as name,products.thunbar as image,orders.price as price,orders.qty as sl from transaction inner join orders on transaction.id = orders.transaction_id inner join products on orders.product_id = products.id where transaction.id = $id";
+    $sqlDetails = "SELECT products.name as name,products.id as id,products.thunbar as image,orders.price as price,orders.qty as sl from transaction inner join orders on transaction.id = orders.transaction_id inner join products on orders.product_id = products.id where transaction.id = $id";
     $DetailsTran = $db->fetchsql($sqlDetails);
     // $path = $_SERVER['SCRIPT_NAME'];
 ?>
@@ -68,13 +68,15 @@ $open = "transaction";
 	<div class="modal-body">
         <table id="customers">
         <tr>
+            <th>Mã sản phẩm</th>
             <th>Tên Sản phẩm</th>
             <th>Image</th>
             <th>Giá</th>
-            <th>SL</th>
+            <th>SL Mua</th>
         </tr>
         <?php foreach($DetailsTran as $item): ?>
         <tr>
+        <td><?php echo $item['id'] ?></td>
         <td><?php echo $item['name'] ?></td>
         <td>
         <img src="<?php echo uploads() ?>product/<?php echo $item['image'] ?>" width="80px" height="80px">

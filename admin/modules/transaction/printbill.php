@@ -4,7 +4,7 @@ $open = "transaction";
     require_once __DIR__. "/../../autoload/autoload.php";
     $id = intval(getInput('id'));
 
-    $sqlbill = "SELECT products.name as name,DATE_FORMAT(transaction.updated_at, '%d') as
+    $sqlbill = "SELECT products.name as name,products.id as id,DATE_FORMAT(transaction.updated_at, '%d') as
      ngay,DATE_FORMAT(transaction.updated_at, '%m') as thang,DATE_FORMAT(transaction.updated_at, '%Y') as
         nam,orders.price as price,orders.qty as sl,users.name as usersname,users.address as
        usersaddress,users.phone as usersphone,transaction.id as madonhang,transaction.pt as pt from 
@@ -201,6 +201,7 @@ $open = "transaction";
   <table class="TableData">
     <tr>
       <th>STT</th>
+      <th>Mã sản phẩm</th>
       <th>Tên</th>
       <th>Đơn giá</th>
       <th>Số</th>
@@ -214,6 +215,7 @@ $open = "transaction";
    <?php $stt=1;foreach($detailsbill as $row):?>
         <tr>
             <td class="cotSTT"><?php echo $stt ?></td>
+            <td class="cotSTT"><?php echo $row['id'] ?></td>
             <td class="cotTenSanPham"><?php echo $row['name'] ?></td>
             <td class="cotGia"><?php echo formatPrice($row['price']) ?></td>
             <td class="cotSoLuong" align="center"><?php echo $row['sl'] ?></td>
@@ -222,13 +224,13 @@ $open = "transaction";
         <?php $tongsotien += $row['sl']*$row['price']; ?>
    <?php $stt++; endforeach ?>
    <tr>
-   <td colspan="4" class="tong">Thuế VAT:</td>
+   <td colspan="5" class="tong">Thuế VAT:</td>
    <td class="cotSo">10%</td>
    </tr>
-   <td colspan="4" class="tong">Giảm Giá:</td>
+   <td colspan="5" class="tong">Giảm Giá:</td>
    <td class="cotSo"><?php echo sale($tongsotien)?>%</td>
     <tr>
-      <td colspan="4" class="tong">Tổng cộng</td>
+      <td colspan="5" class="tong">Tổng cộng</td>
       <td class="cotSo"><?php $tongtien = ($tongsotien *110/100)-($tongsotien/100*sale($tongsotien)); echo formatPrice1($tongtien)?></td>
     </tr>
   </table>

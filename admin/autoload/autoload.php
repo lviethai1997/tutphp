@@ -25,6 +25,12 @@
     $thisyear = "SELECT SUM(amount) as tongtiennam from transaction where date_format(updated_at, '%Y') = date_format(now(), '%Y') and status =1";
     $yearmoney = $db->fetchData($thisyear);
 
+    $sqlcountpd= "SELECT COUNT(id) as soluongsp from products";
+    $countproducts = $db->fetchData($sqlcountpd);
+
+    $sqlcountusers= "SELECT COUNT(id) as suluongusers from users where password is not null";
+    $countusers = $db->fetchData($sqlcountusers);
+
 
     
 ?>
