@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo modules('product') ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">Tổng số sản phẩm</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo modules('user') ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">Tổng số thành viên</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

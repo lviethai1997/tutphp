@@ -267,32 +267,32 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="<?php echo base_url() ?>admin/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="<?php echo base_url() ?>admin/index.php"><i class="fa fa-dashboard fa-fw"></i> Tổng quan</a>
                             </li>
                         
                             <li class="<?php echo isset($open) && $open == 'category' ? 'active' : '' ?>">
-                                <a href="<?php echo modules('category') ?>"><i class="fa fa-th-large fa-fw"></i> Danh mục sản phẩm</a>
+                                <a href="<?php echo modules('category') ?>"><i class="fa fa-th-large fa-fw"></i>Quản lý danh mục sản phẩm</a>
                             </li>
                             <li class="<?php echo isset($open) && $open == 'product' ? 'active' : '' ?>">
-                                <a href="<?php echo modules('product') ?>"><i class="fa fa-truck fa-fw"></i> Sản phẩm</a>
+                                <a href="<?php echo modules('product') ?>"><i class="fa fa-truck fa-fw"></i>Quản lý sản phẩm</a>
                             </li>
                             <li class="<?php echo isset($open) && $open == 'admin' ? 'active' : '' ?>">
                                 <a href="<?php echo modules('admin') ?>"><i class="glyphicon glyphicon-eye-open"></i> Admin</a>
                             </li>
                             <li class="<?php echo isset($open) && $open == 'user' ? 'active' : '' ?>">
-                                <a href="<?php echo modules('user') ?>"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
+                                <a href="<?php echo modules('user') ?>"><i class="fa fa-user fa-fw"></i>Quản lý Khách hàng</a>
                             </li>
                             <li class="<?php echo isset($open) && $open == 'contacts' ? 'active' : '' ?>">
-                                <a href="<?php echo modules('contacts') ?>"><i class="fa fa-wechat fa-fw"></i>Liên hệ</a>
+                                <a href="<?php echo modules('contacts') ?>"><i class="fa fa-wechat fa-fw"></i>Quản lý liên hệ</a>
                             </li>
                             <li class="<?php echo isset($open) && $open == 'transaction' ? 'active' : '' ?>">
-                                <a href="<?php echo modules('transaction') ?>"><i class="fa fa-dollar fa-fw"></i>Giao Dịch</a>
+                                <a href="<?php echo modules('transaction') ?>"><i class="fa fa-dollar fa-fw"></i>Quản lý đơn hàng</a>
                             </li>
                             <li class="<?php echo isset($open) && $open == 'comments' ? 'active' : '' ?>">
-                                <a href="<?php echo modules('comments') ?>"><i class="fa fa-comment fa-fw"></i>Bình luận</a>
+                                <a href="<?php echo modules('comments') ?>"><i class="fa fa-comment fa-fw"></i>Quản lý bình luận</a>
                             </li>
                             <li>
-                            <a href="<?php echo modules('news') ?>"><i class="fa fa-newspaper-o"></i> Quản lý tin tức</a>
+                            <a href="<?php echo modules('news') ?>"><i class="fa fa-newspaper-o"></i>Quản lý tin tức</a>
                             </li>
                             <!-- <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
