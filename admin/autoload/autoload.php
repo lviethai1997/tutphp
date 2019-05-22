@@ -31,6 +31,9 @@
     $sqlcountusers= "SELECT COUNT(id) as suluongusers from users where password is not null";
     $countusers = $db->fetchData($sqlcountusers);
 
+    $sqlcountorders =" SELECT COUNT(id) as donhangchuaxuly from transaction where status =0";
+    $countoders = $db->fetchData($sqlcountorders);
+
 
     
 ?>

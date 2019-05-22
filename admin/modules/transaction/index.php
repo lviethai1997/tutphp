@@ -2,7 +2,7 @@
         $open = "transaction";
         require_once __DIR__. "/../../autoload/autoload.php";
 
-        $sql = "SELECT transaction.*,transaction.id as id,transaction.pt as pt,users.name as nameuser,users.address as address, users.phone as phoneuser,transaction.note as note FROM transaction LEFT JOIN users ON users.id = transaction.users_id ORDER BY id DESC";
+        $sql = "SELECT transaction.*,transaction.id as id,transaction.pt as pt,users.name as nameuser,users.address as address, users.phone as phoneuser,transaction.note as note FROM transaction LEFT JOIN users ON users.id = transaction.users_id ORDER BY transaction.id DESC";
 
         $transaction= $db->fetchsql($sql);
 

@@ -109,7 +109,7 @@
         <select class="form-control" name="category_id">
             <option value="">- Xin Chọn danh mục sản phẩm -</option>
             <?php foreach($category as $item) :?>
-            <option value="<?php echo $item['id'] ?>" <?php echo $Editproduct['category_id'] == $item['id'] ? "selected ='selected'":'' ?>><?php echo $item['name'] ?></option>
+            <option value="<?php echo $item['id'] ?>" <?php echo $Editproduct['category_id'] == $item['id'] ? "selected ='selected'":'' ?>><?php echo $item['name']?> -- <?php if($item['parent']>0){echo " Danh mục con";}else{echo "<b> Danh mục cha</b>";} ?></option>
             <?php endforeach ?>
         </select>
     <?php 
