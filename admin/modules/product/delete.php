@@ -4,14 +4,14 @@
         require_once __DIR__. "/../../autoload/autoload.php";
 
 
-        $id = intval(getInput('id'));
+        $id = $_POST['id'];
         $EditProduct = $db->fetchID("products",$id);
         if(empty($EditProduct)){
             $_SESSION['error'] = " Du Lieu ko ton tai";
             redirectAdmin("product");
         }
-
         $num =$db->delete("products",$id);
+
         if($num >0)
         {
             $_SESSION['success'] = "Xóa sản phẩm thành công";

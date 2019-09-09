@@ -4,7 +4,7 @@
         require_once __DIR__. "/../../autoload/autoload.php";
 
 
-        $id = intval(getInput('id'));
+        $id = $_POST['id'];
         $EditProduct = $db->fetchID("contact",$id);
         if(empty($EditProduct)){
             $_SESSION['error'] = " Du Lieu ko ton tai";

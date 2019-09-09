@@ -71,7 +71,8 @@
                                         
                                         <td>
                                             <a class="btn btn-xs btn-warning fa fa-edit" href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a> &emsp;
-                                            <a class="btn btn-xs btn-danger fa fa-edit" href="delete.php?id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp;
+                                            <!-- <a class="btn btn-xs btn-danger fa fa-edit" href="delete.php?id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp; -->
+                                            <a href="#" id="<?php echo $item['id'] ?>" class="btn btn-xs btn-danger fa fa-trash trash" > Xóa</a>
                                         </td>
                                     </tr>
                                     <?php $stt++ ;endforeach  ?>
@@ -100,5 +101,23 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-    <?php require_once __DIR__. "/../../layouts/footer.php"; ?>                
+    <?php require_once __DIR__. "/../../layouts/footer.php"; ?>     
+    <script>
+   $(".trash").click(function(){
+    var id= $(this).attr('id');
+    var $ele = $(this).parent().parent();
+    if(confirm("Are you sure about this ?"))
+    {
+    $.ajax({
+    type: "POST",
+    url: "delete.php",
+    data: {'id':id},
+    success: function(){
+        $ele.fadeOut().remove();
+    }
+    });
+    }
+    return false;
+    });
+   </script>                   
          

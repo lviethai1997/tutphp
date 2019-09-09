@@ -4,7 +4,7 @@
         require_once __DIR__. "/../../autoload/autoload.php";
 
 
-        $id = intval(getInput('id'));
+        $id = $_POST['id'];
         $EditProduct = $db->fetchID("comment",$id);
         if(empty($EditProduct)){
             $_SESSION['error'] = "Dữ liệu không tồn tại!";

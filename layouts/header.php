@@ -44,7 +44,8 @@
 	<link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/style.css">
 	<!-- Modernizr JS -->
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url()  ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
@@ -127,7 +128,8 @@
 									<a href="danh-muc-san-pham.php?id=<?php echo $item['id'] ?>"><b><?php echo $item['name'] ?></b></a>
 									<ul class="dropdown" style="top:20px;">
 									<?php foreach($getchild as $child): ?>
-									<li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ?>"><?php echo $child['name']; ?></a></li>
+									<li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ?>"><?php echo $child['name']; ?></a>
+									</li>
 									<?php endforeach ?>
 									</ul>
 									</li>
