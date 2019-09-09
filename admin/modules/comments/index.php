@@ -75,7 +75,7 @@
                                        
                                         <td>
                                             <!-- <a class="btn btn-xs btn-danger fa fa-trash" href="delete.php?id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')"> Xóa</a> &emsp; -->
-                                            <a href="#" id="<?php echo $item['id'] ?>" class="btn btn-xs btn-danger fa fa-trash trash" > Delete</a>
+                                            <a href="#" id="<?php echo $item['id'] ?>" class="btn btn-xs btn-danger fa fa-trash trash" > Xóa</a>
                                         </td>
                                     </tr>
                                     <?php $stt++ ;endforeach  ?>

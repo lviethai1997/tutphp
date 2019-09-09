@@ -137,5 +137,4 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-    <?php require_once __DIR__. "/../../layouts/footer.php"; ?>                
-         
+<?php require_once __DIR__. "/../../layouts/footer.php"; ?>                

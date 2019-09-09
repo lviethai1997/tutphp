@@ -103,7 +103,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Chi tiết sản phẩm</h1>
-				   					
 				   				</div>
 				   			</div>
 				   		</div>
