@@ -117,6 +117,15 @@ class Database
         return mysqli_affected_rows($this->link);
     }
 
+
+    public function DeleteAll ($table)
+    {
+        $sql = "DELETE FROM {$table} ";
+
+        mysqli_query($this->link,$sql) or die (" Lỗi Truy Vấn delete   --- " .mysqli_error($this->link));
+        return mysqli_affected_rows($this->link);
+    }
+
     /**
      * delete array 
      */

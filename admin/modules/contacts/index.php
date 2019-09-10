@@ -1,16 +1,28 @@
 <?php 
-        $open = "comments";
+        $open = "contacts";
         require_once __DIR__. "/../../autoload/autoload.php";
 
         $contact= $db->fetchAll('contact');
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST["CheckBoxDelete"]))
+        {
             $checkbox = $_POST['check'];
             for($i=0;$i<count($checkbox);$i++){
             $del_id = $checkbox[$i]; 
             $num =$db->deletesql("contact","id= '".$del_id."'");
             }
-            $_SESSION['success'] = "Xóa liên hệ thành công";
+            if($num>0){
+                $_SESSION['success'] = "Xóa đơn hàng thành công";
+                redirectAdmin("contacts");
+            }else{
+                $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
+                redirectAdmin("contacts");
+            }
+            
+        }else if(isset($_POST["DeleteAll"]))
+        {
+            $deleteAllRow = $db->DeleteAll("contact");
+            $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
             redirectAdmin("contacts");
         }
         
@@ -23,16 +35,9 @@
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
-
                     <div class="clearfix">
                     </div>
-
-                    
                     <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
-
-                   
-
-
                     <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -90,7 +95,8 @@
                 </div>
                 <!-- /.table-responsive -->
                 <div class="well">
-                <input type="submit" class="btn btn-danger" name="submit" value="Xóa các ô đã chọn" onclick="return confirm('Bạn có chắc muốn xóa không?')">
+                <input type="submit" class="btn btn-danger" name="CheckBoxDelete" value="Xóa các ô đã chọn" onclick="return confirm('Bạn có chắc muốn xóa không?')">
+                <input type="submit" class="btn btn-warning" style="float:right;" name="DeleteAll"  onclick="return confirm('Bạn có chắc muốn xóa không?')" value="Xóa tất cả dữ liệu">
                 </div>
             </div>
             </form>

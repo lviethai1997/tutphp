@@ -181,7 +181,7 @@ $open = "transaction";
 <div id="page" class="page">
     <div class="header">
         <div class="logo"><img withd ="150" height="150" src="<?php echo base_url()  ?>public/fontend/logo/logobill.png"/></div>
-        <div class="company">C.Ty TNHH Salomon</div>
+        <div class="company">C.Ty TNHH haile</div>
     </div>
   <br/>
   <div class="title">

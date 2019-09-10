@@ -45,7 +45,6 @@ fjs.parentNode.insertBefore(js, fjs);
 					   					<h2 class="head-2">Đẹp</h2>
 					   					<h2 class="head-3">Chất chơi</h2>
 					   					<p class="category"><span>Chỉ có duy nhất tại đây<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong> BTFY Shop</strong></span></p>
-					   					
 				   					</div>
 				   				</div>
 				   			</div>
@@ -159,17 +158,17 @@ fjs.parentNode.insertBefore(js, fjs);
 							</div>
 							<div class="desc">
 							<h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><?php echo $item['name'] ?></a></h3>
-										<?php if($item['sale'] > 0 && $item['salecat']==0) :?>
-										<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></strike></b></span>
-										<span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
+								<?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+								<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></strike></b></span>
+								<span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
 
-										<?php elseif($item['salecat']>0) :?>
-										<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
-										<span>&emsp;<b><?php  echo formatpricesale($item['price'],($item['salecat']))?></b></span>  </p>
-										
-										<?php else: ?>
-										<p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
-										<?php endif ?>
+								<?php elseif($item['salecat']>0) :?>
+								<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
+								<span>&emsp;<b><?php  echo formatpricesale($item['price'],($item['salecat']))?></b></span>  </p>
+								
+								<?php else: ?>
+								<p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
+								<?php endif ?>
 							</div>
 						</div>
 					</div>
@@ -235,17 +234,17 @@ fjs.parentNode.insertBefore(js, fjs);
 							</div>
 							<div class="desc">
 							<h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><?php echo $item['name'] ?></a></h3>
-										<?php if($item['sale'] > 0 && $item['salecat']==0) :?>
-										<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></strike></b></span>
-										<span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
+								<?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+								<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></strike></b></span>
+								<span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
 
-										<?php elseif($item['salecat']>0) :?>
-										<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
-										<span>&emsp;<b><?php  echo formatpricesale($item['price'],($item['salecat']))?></b></span>  </p>
-										
-										<?php else: ?>
-										<p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
-										<?php endif ?>
+								<?php elseif($item['salecat']>0) :?>
+								<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
+								<span>&emsp;<b><?php  echo formatpricesale($item['price'],($item['salecat']))?></b></span>  </p>
+								
+								<?php else: ?>
+								<p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
+								<?php endif ?>
 							</div>
 						</div>
 					</div>
@@ -282,12 +281,12 @@ fjs.parentNode.insertBefore(js, fjs);
 							</div>
 							<div class="desc">
 							<h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><?php echo $item['name'] ?></a></h3>
-										<?php if($item['salecat']>0) :?>
-										<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
-										<span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['salecat'])?></b></span>  </p>
-										<?php else: ?>
-										<p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
-										<?php endif ?>
+								<?php if($item['salecat']>0) :?>
+								<p class="price"><span class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
+								<span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['salecat'])?></b></span>  </p>
+								<?php else: ?>
+								<p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>  </p>
+								<?php endif ?>
 							</div>
 						</div>
 					</div>
