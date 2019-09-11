@@ -100,7 +100,6 @@
                     <h3>Get In Touch</h3>
                     <form action="" method="post">
 
-
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="email">Email</label>
@@ -126,8 +125,6 @@
                         <?php if(isset($error['g-recaptcha-response'])): ?>
                         <p class="text-danger"><?php echo $error['g-recaptcha-response'] ?></p>
                         <?php endif ?>
-
-
                         <div class="form-group text-center">
                             <input type="submit" value="Đăng Nhập" class="btn btn-primary">
                         </div>
@@ -137,5 +134,4 @@
         </div>
     </div>
 </div>
-
 <?php require_once __DIR__. "/layouts/footer.php"; ?>

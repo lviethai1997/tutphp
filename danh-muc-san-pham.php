@@ -19,8 +19,6 @@ unset($product['page']);
 $path = $_SERVER['SCRIPT_NAME'];
 
 ?>
-
-
 <?php require_once __DIR__. "/layouts/header.php"; ?>
 
 <aside id="colorlib-hero" class="breadcrumbs">

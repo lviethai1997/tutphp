@@ -58,7 +58,6 @@ require_once __DIR__. "/autoload/autoload.php";
                         <span>Tổng</span>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="row">
@@ -143,7 +142,6 @@ require_once __DIR__. "/autoload/autoload.php";
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
                             <span>&emsp;<?php  echo formatpricesale($item['price'],($item['salecat'])) ?></span> </p>
-
                         <?php else: ?>
                         <p class="price"><span><?php echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
                         <?php endif ?>

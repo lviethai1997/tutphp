@@ -47,7 +47,7 @@ $news = $db->fetchData($sqlnews);
                     <h2><?php echo $news['title'] ?></h2>
                     <p class="admin"><span>Đăng bởi:</span>
                         <span><?php echo $news['ten'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;Đăng lúc: <?php echo $news['ngay'] ?></span></p>
+                        &nbsp;&nbsp;Đăng lúc: <?php echo $news['ngay'] ?></span></p>
                     <hr>
                     <h4><b><?php echo $news['contentmini'] ?></b></h4>
                     <div class="row">

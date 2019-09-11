@@ -399,7 +399,6 @@
                 <p>Các tin tức về thời trang mới nhất, được chúng tôi cập nhật thường xuyên</p>
             </div>
         </div>
-
         <div class="row">
             <?php foreach($newsblog as $item): ?>
             <div class="col-md-4">
