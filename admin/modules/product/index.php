@@ -7,13 +7,25 @@
         $sqlproduct="SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id";
         $product = $db->fetchsql($sqlproduct);
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST["CheckBoxDelete"]))
+        {
             $checkbox = $_POST['check'];
             for($i=0;$i<count($checkbox);$i++){
             $del_id = $checkbox[$i]; 
             $num =$db->deletesql("products","id= '".$del_id."'");
             }
-            $_SESSION['success'] = "Xóa sản phẩm thành công";
+            if($num>0){
+                $_SESSION['success'] = "Xóa đơn hàng thành công";
+                redirectAdmin("product");
+            }else{
+                $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
+                redirectAdmin("product");
+            }
+            
+        }else if(isset($_POST["DeleteAll"]))
+        {
+            $deleteAllRow = $db->DeleteAll("products");
+            $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
             redirectAdmin("product");
         }
 ?>
@@ -109,7 +121,8 @@
                 </div>
                 <!-- /.table-responsive -->
                 <div class="well">
-                <input type="submit" class="btn btn-danger" name="submit" value="Xóa các ô đã chọn" onclick="return confirm('Bạn có chắc muốn xóa không?')">
+                <input type="submit" class="btn btn-danger" name="CheckBoxDelete" value="Xóa các ô đã chọn" onclick="return confirm('Bạn có chắc muốn xóa không?')">
+                <input type="submit" class="btn btn-warning" style="float:right;" name="DeleteAll"  onclick="return confirm('Bạn có chắc muốn xóa không?')" value="Xóa tất cả dữ liệu">
                 </div>
             </div>
             </form>

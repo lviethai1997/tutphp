@@ -6,13 +6,25 @@
         FROM users INNER JOIN comment on users.id = comment.user_id INNER JOIN products ON products.id = comment.product_id where 1 ORDER BY id";
         $comments = $db->fetchsql($sqlcomments);
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST["CheckBoxDelete"]))
+        {
             $checkbox = $_POST['check'];
             for($i=0;$i<count($checkbox);$i++){
             $del_id = $checkbox[$i]; 
             $num =$db->deletesql("comment","id= '".$del_id."'");
             }
-            $_SESSION['success'] = "Xóa bình luận thành công";
+            if($num>0){
+                $_SESSION['success'] = "Xóa đơn hàng thành công";
+                redirectAdmin("comments");
+            }else{
+                $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
+                redirectAdmin("comments");
+            }
+            
+        }else if(isset($_POST["DeleteAll"]))
+        {
+            $deleteAllRow = $db->DeleteAll("comment");
+            $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
             redirectAdmin("comments");
         }
         
@@ -94,7 +106,8 @@
                 </div>
                 <!-- /.table-responsive -->
                 <div class="well">
-                <input type="submit" class="btn btn-danger" name="submit" value="Xóa các ô đã chọn" onclick="return confirm('Bạn có chắc muốn xóa không?')">
+                <input type="submit" class="btn btn-danger" name="CheckBoxDelete" value="Xóa các ô đã chọn" onclick="return confirm('Bạn có chắc muốn xóa không?')">
+                <input type="submit" class="btn btn-warning" style="float:right;" name="DeleteAll"  onclick="return confirm('Bạn có chắc muốn xóa không?')" value="Xóa tất cả dữ liệu">
                 </div>
             </div>
             </form>
