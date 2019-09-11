@@ -1,8 +1,6 @@
-
 <?php 
          $open = "transaction";
         require_once __DIR__. "/../../autoload/autoload.php";
-
 
         $id = $_POST['id'];
         $deleteAdmin = $db->fetchID("transaction",$id);
@@ -21,6 +19,3 @@
                     redirectAdmin("transaction");
         }
         ?>
-
- 
-         

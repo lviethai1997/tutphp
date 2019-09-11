@@ -1,8 +1,6 @@
-
 <?php 
          $open = "news";
         require_once __DIR__. "/../../autoload/autoload.php";
-
 
         $id = intval(getInput('id'));
 
@@ -11,7 +9,6 @@
             $_SESSION['error'] = " Du Lieu ko ton tai";
             redirectAdmin("news");
         }
-
 
         $category =$db->fetchAll("categories");
 
@@ -74,76 +71,71 @@
         }
         
 ?>
-    <?php require_once __DIR__. "/../../layouts/header.php"; ?>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">Cập nhật bài viết</h1>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                        <div class="clearfix"></div>
-
-                        <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
-
-                    </div>
+<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Cập nhật bài viết</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+    <div class="clearfix"></div>
+    <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+</div>
 <form action="" method="POST" enctype="multipart/form-data">
-
-<div class="form-group" >
-  <label for="ten">Tên tiêu đề</label>
-  <input type="text" class="form-control" id="ten" name="title"  placeholder="Nhập tiêu đề cho bài viết" value="<?php echo $news['title'] ?>">
-  <?php 
+    <div class="form-group">
+        <label for="ten">Tên tiêu đề</label>
+        <input type="text" class="form-control" id="ten" name="title" placeholder="Nhập tiêu đề cho bài viết"
+            value="<?php echo $news['title'] ?>">
+        <?php 
   if(isset($error['title'])): ?>
-  <p class="text-danger"><br><?php echo $error['title'] ?></p>
-  <?php endif ?>
-</div>
+        <p class="text-danger"><br><?php echo $error['title'] ?></p>
+        <?php endif ?>
+    </div>
 
-<div class="form-group" >
-  <label for="price">Đoạn tóm gọn</label>
-  <!-- <input type="text" class="form-control" id="price" name="contentmini"  placeholder="Đoạn tóm tắt của bài viết" value="<php echo $news['contentmini'] ?>"> -->
-  <textarea name="contentmini" id="price" cols="170" rows="10"><?php echo $news['contentmini'] ?></textarea>
-  <?php 
+    <div class="form-group">
+        <label for="price">Đoạn tóm gọn</label>
+        <!-- <input type="text" class="form-control" id="price" name="contentmini"  placeholder="Đoạn tóm tắt của bài viết" value="<php echo $news['contentmini'] ?>"> -->
+        <textarea name="contentmini" id="price" cols="170" rows="10"><?php echo $news['contentmini'] ?></textarea>
+        <?php 
   if(isset($error['contentmini'])): ?>
-  <p class="text-danger"><br><?php echo $error['contentmini'] ?></p>
-  <?php endif ?>
-</div>
+        <p class="text-danger"><br><?php echo $error['contentmini'] ?></p>
+        <?php endif ?>
+    </div>
 
-
-
-<div class="form-group" >
-  <label for="thunbar">Hình ảnh bài viết</label>
-  <input type="file" class="form-control" id="thunbar" name="image_news" >
-  <?php
+    <div class="form-group">
+        <label for="thunbar">Hình ảnh bài viết</label>
+        <input type="file" class="form-control" id="thunbar" name="image_news">
+        <?php
   if(isset($error['image_news'])): ?>
-  <p class="text-danger"><br><?php echo $error['image_news'] ?></p>
-  <?php endif ?>
-  <img src="<?php echo uploads() ?>news/<?php echo $news['image_news'] ?>" width="400px" height="400px">
-</div>
+        <p class="text-danger"><br><?php echo $error['image_news'] ?></p>
+        <?php endif ?>
+        <img src="<?php echo uploads() ?>news/<?php echo $news['image_news'] ?>" width="400px" height="400px">
+    </div>
 
-<div class="form-group" >
-  <label for="content">Nội dung bài viết</label>
-  <textarea class="form-cnotrol" name="content" id="content" cols="200" rows="30"><?php echo $news['content'] ?>"</textarea>
-  <?php 
+    <div class="form-group">
+        <label for="content">Nội dung bài viết</label>
+        <textarea class="form-cnotrol" name="content" id="content" cols="200"
+            rows="30"><?php echo $news['content'] ?>"</textarea>
+        <?php 
   if(isset($error['content'])): ?>
-  <p class="text-danger"><br><?php echo $error['content'] ?></p>
-  <?php endif ?>
-</div>
-                    <script>
-                        CKEDITOR.replace( 'content',
-                        {
-                            height : '800px',
-                            filebrowserBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html',
-                            filebrowserImageBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
-                            filebrowserFlashBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',
-                            filebrowserUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                            filebrowserImageUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                            filebrowserFlashUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-                        });
-                    </script>
+        <p class="text-danger"><br><?php echo $error['content'] ?></p>
+        <?php endif ?>
+    </div>
+    <script>
+    CKEDITOR.replace('content', {
+        height: '800px',
+        filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
+        filebrowserFlashBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',
+        filebrowserUploadUrl: '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+    });
+    </script>
 
-      <button type="submit" class="btn btn-primary">Xác Nhận</button>
-  
+    <button type="submit" class="btn btn-primary">Xác Nhận</button>
+
 
 </form>
 
 
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>       
-         
+<?php require_once __DIR__. "/../../layouts/footer.php"; ?>

@@ -1,4 +1,3 @@
-
 <?php 
          $open = "category";
         require_once __DIR__. "/../../autoload/autoload.php";
@@ -28,6 +27,3 @@
 
        
         ?>
-
- 
-         

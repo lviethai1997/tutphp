@@ -1,7 +1,5 @@
 <?php 
-        
         require_once __DIR__. "/../../autoload/autoload.php";
-
 
         $id = $_POST['id'];
         $EditProduct = $db->fetchID("background",$id);
@@ -10,9 +8,5 @@
             redirectAdmin("product");
         }
         $num =$db->delete("background",$id);
-
        
         ?>
-
- 
-         

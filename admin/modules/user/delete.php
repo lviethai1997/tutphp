@@ -1,16 +1,12 @@
-
 <?php 
          $open = "user";
         require_once __DIR__. "/../../autoload/autoload.php";
-
-
         $id = $_POST['id'];
         $deleteAdmin = $db->fetchID("users",$id);
         if(empty($deleteAdmin)){
             $_SESSION['error'] = " Dữ liệu không tồn tại";
             redirectAdmin("user");
         }
-
         $num =$db->delete("users",$id);
         if($num >0)
         {
@@ -21,6 +17,3 @@
                     redirectAdmin("user");
         }
         ?>
-
- 
-         

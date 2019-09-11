@@ -1,11 +1,8 @@
-
 <?php 
          $open = "category";
         require_once __DIR__. "/../../autoload/autoload.php";
 
-
         $category =$db->fetchAll("categories");
-
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $data =
@@ -84,108 +81,101 @@
         }
         
 ?>
-    <?php require_once __DIR__. "/../../layouts/header.php"; ?>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">Thêm mới sản phẩm</h1>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                        <div class="clearfix"></div>
-
-                        <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
-
-                    </div>
+<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Thêm mới sản phẩm</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+    <div class="clearfix"></div>
+    <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+</div>
 <form action="" method="POST" enctype="multipart/form-data">
-
-<div class="form-group" >
-    <label for="ten">Danh mục sản phẩm</label>
+    <div class="form-group">
+        <label for="ten">Danh mục sản phẩm</label>
         <select class="form-control" name="category_id">
             <option value="">- Xin chọn danh mục sản phẩm -</option>
             <?php foreach($category as $item) :?>
-            <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?> -- <?php  if($item['parent'] ==0) {echo "<b> Danh mục cha</b>";}else{echo " Danh mục con";}  ?></option>
+            <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?> --
+                <?php  if($item['parent'] ==0) {echo "<b> Danh mục cha</b>";}else{echo " Danh mục con";}  ?></option>
             <?php endforeach ?>
         </select>
-    <?php 
+        <?php 
     if(isset($error['category_id'])): ?>
-    <p class="text-danger"><br><?php echo $error['category_id'] ?></p>
-    <?php endif ?>
-</div>
+        <p class="text-danger"><br><?php echo $error['category_id'] ?></p>
+        <?php endif ?>
+    </div>
 
-  <div class="form-group" >
-    <label for="ten">Tên sản phẩm</label>
-    <input type="text" class="form-control" id="ten" name="name"  placeholder="Nhập tên sản phẩm">
-    <?php 
+    <div class="form-group">
+        <label for="ten">Tên sản phẩm</label>
+        <input type="text" class="form-control" id="ten" name="name" placeholder="Nhập tên sản phẩm">
+        <?php 
     if(isset($error['name'])): ?>
-    <p class="text-danger"><br><?php echo $error['name'] ?></p>
-    <?php endif ?>
-  </div>
+        <p class="text-danger"><br><?php echo $error['name'] ?></p>
+        <?php endif ?>
+    </div>
 
-  <div class="form-group" >
-    <label for="price">Giá nhập sản phẩm</label>
-    <input type="number" class="form-control" id="price" name="price_input"  placeholder="Nhập giá nhập sản phẩm">
-    <?php 
+    <div class="form-group">
+        <label for="price">Giá nhập sản phẩm</label>
+        <input type="number" class="form-control" id="price" name="price_input" placeholder="Nhập giá nhập sản phẩm">
+        <?php 
     if(isset($error['price_input'])): ?>
-    <p class="text-danger"><br><?php echo $error['price_input'] ?></p>
-    <?php endif ?>
-  </div>
+        <p class="text-danger"><br><?php echo $error['price_input'] ?></p>
+        <?php endif ?>
+    </div>
 
-  <div class="form-group" >
-    <label for="price">Giá bán sản phẩm</label>
-    <input type="number" class="form-control" id="price" name="price"  placeholder="Nhập giá bán sản phẩm">
-    <?php 
+    <div class="form-group">
+        <label for="price">Giá bán sản phẩm</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá bán sản phẩm">
+        <?php 
     if(isset($error['price'])): ?>
-    <p class="text-danger"><br><?php echo $error['price'] ?></p>
-    <?php endif ?>
-  </div>
+        <p class="text-danger"><br><?php echo $error['price'] ?></p>
+        <?php endif ?>
+    </div>
 
-  <div class="form-group" >
-    <label for="number">Số lượng sản phẩm</label>
-    <input type="number" class="form-control" id="price" name="number"  placeholder="Nhập số lượng sản phẩm">
-    <?php 
+    <div class="form-group">
+        <label for="number">Số lượng sản phẩm</label>
+        <input type="number" class="form-control" id="price" name="number" placeholder="Nhập số lượng sản phẩm">
+        <?php 
     if(isset($error['number'])): ?>
-    <p class="text-danger"><br><?php echo $error['number'] ?></p>
-    <?php endif ?>
-  </div>
+        <p class="text-danger"><br><?php echo $error['number'] ?></p>
+        <?php endif ?>
+    </div>
 
-  <div class="form-group" >
-    <label for="sale">Giảm giá</label>
-    <input type="number" class="form-control" id="sale" name="sale"  placeholder=" 10 %" value="0">
-  </div>
+    <div class="form-group">
+        <label for="sale">Giảm giá</label>
+        <input type="number" class="form-control" id="sale" name="sale" placeholder=" 10 %" value="0">
+    </div>
 
-  <div class="form-group" >
-    <label for="thunbar">Hình ảnh</label>
-    <input type="file" class="form-control" id="thunbar" name="thunbar">
-    <?php
+    <div class="form-group">
+        <label for="thunbar">Hình ảnh</label>
+        <input type="file" class="form-control" id="thunbar" name="thunbar">
+        <?php
     if(isset($error['thunbar'])): ?>
-    <p class="text-danger"><br><?php echo $error['thunbar'] ?></p>
-    <?php endif ?>
-  </div>
+        <p class="text-danger"><br><?php echo $error['thunbar'] ?></p>
+        <?php endif ?>
+    </div>
 
-  <div class="form-group" >
-    <label for="content">Nội dung sản phẩm</label>
-    <textarea class="form-cnotrol" name="content" id="content" cols="170" rows="10"></textarea>
-    <?php 
+    <div class="form-group">
+        <label for="content">Nội dung sản phẩm</label>
+        <textarea class="form-cnotrol" name="content" id="content" cols="170" rows="10"></textarea>
+        <?php 
     if(isset($error['content'])): ?>
-    <p class="text-danger"><br><?php echo $error['content'] ?></p>
-    <?php endif ?>
-  </div>
-        <script>
-			 CKEDITOR.replace( 'content',
-		{
-			filebrowserBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html',
-			filebrowserImageBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
-			filebrowserFlashBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',
-			filebrowserUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-			filebrowserImageUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-			filebrowserFlashUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-		});
-		</script>
-  
-        <button type="submit" class="btn btn-primary">Xác Nhận</button>
-    
-  
+        <p class="text-danger"><br><?php echo $error['content'] ?></p>
+        <?php endif ?>
+    </div>
+    <script>
+    CKEDITOR.replace('content', {
+        filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
+        filebrowserFlashBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',
+        filebrowserUploadUrl: '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+    });
+    </script>
+    <button type="submit" class="btn btn-primary">Xác Nhận</button>
 </form>
 
 
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>       
-         
+<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
