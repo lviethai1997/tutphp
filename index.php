@@ -4,6 +4,8 @@
 		$sqlHomecate = "SELECT name,id FROM categories WHERE home = 1 ORDER BY updated_at";
 		$CategoryHome = $db->fetchsql($sqlHomecate);
 
+		$sqlbackground = "SELECT * from background where status =1";
+		$fetchBackground = $db->fetchsql($sqlbackground);
 
 		$data=[];
 
@@ -34,24 +36,26 @@ fjs.parentNode.insertBefore(js, fjs);
 		<aside id="colorlib-hero" style="margin-bottom: 40px;"> 
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/img_bg_1.jpg);">
+			 <?php	foreach($fetchBackground as $item): ?>
+			   	<li style="background-size: cover; background-position: center;background-image: url(<?php echo uploads() ?>background/<?php echo $item['image'] ?>">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-md-pull-2 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner">
 				   					<div class="desc">
-					   					<h1 class="head-1">ngầu</h1>
-					   					<h2 class="head-2">Đẹp</h2>
-					   					<h2 class="head-3">Chất chơi</h2>
-					   					<p class="category"><span>Chỉ có duy nhất tại đây<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong> BTFY Shop</strong></span></p>
+					   					<h1 class="head-1"><?php echo $item['text1'] ?></h1>
+					   					<h2 class="head-2"><?php echo $item['text2'] ?></h2>
+					   					<h2 class="head-3"><?php echo $item['text3'] ?></h2>
+					   					<p class="category"><span><?php echo $item['text4'] ?><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong> <?php echo $item['text5'] ?></strong></span></p>
 				   					</div>
 				   				</div>
 				   			</div>
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/img_bg_2.jpg);">
+				   <?php endforeach ?>
+			   	<!-- <li style="background-image: url(<php echo base_url()  ?>public/fontend/images/img_bg_2.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -69,7 +73,7 @@ fjs.parentNode.insertBefore(js, fjs);
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/img_bg_3.jpg);">
+			   	<li style="background-image: url(<php echo base_url()  ?>public/fontend/images/img_bg_3.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -86,7 +90,7 @@ fjs.parentNode.insertBefore(js, fjs);
 				   			</div>
 				   		</div>
 			   		</div>
-			   	</li>
+			   	</li> -->
 			  	</ul>
 		  	</div>
 		</aside>
@@ -295,7 +299,7 @@ fjs.parentNode.insertBefore(js, fjs);
 			</div>
 		</div>
 		
-		<div id="colorlib-testimony" class="colorlib-light-grey" style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cm3.jpg);margin-bottom: 30px; background-repeat: no-repeat; background-size: cover; background-position: center center;">
+		<div id="colorlib-testimony" class="colorlib-light-grey" style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cm3.jpg);margin-bottom: 30px; background-repeat: no-repeat; background-size: cover; background-position: center;">
 			<div class="container" >
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">

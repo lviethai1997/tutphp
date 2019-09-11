@@ -273,6 +273,9 @@
                             <li class="<?php echo isset($open) && $open == 'category' ? 'active' : '' ?>">
                                 <a href="<?php echo modules('category') ?>"><i class="fa fa-th-large fa-fw"></i>Quản lý danh mục sản phẩm</a>
                             </li>
+                            <li class="<?php echo isset($open) && $open == 'backgrounds' ? 'active' : '' ?>">
+                                <a href="<?php echo modules('backgrounds') ?>"><i class="fa fa-picture-o"></i>Quản lý Background</a>
+                            </li>
                             <li class="<?php echo isset($open) && $open == 'product' ? 'active' : '' ?>">
                                 <a href="<?php echo modules('product') ?>"><i class="fa fa-truck fa-fw"></i>Quản lý sản phẩm</a>
                             </li>
