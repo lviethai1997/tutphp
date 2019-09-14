@@ -64,7 +64,7 @@
         <ul class="slides">
             <?php	foreach($fetchBackground as $item): ?>
             <li
-                style="background-size: cover; background-position: center;background-image: url(<?php echo uploads() ?>background/<?php echo $item['image'] ?>">
+                style="background-size: cover;background-image: url(<?php echo uploads() ?>background/<?php echo $item['image'] ?>">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">

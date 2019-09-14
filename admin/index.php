@@ -53,7 +53,7 @@
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">Doang thu tháng này </span>
+                    <span class="pull-left">Doanh thu tháng này </span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>

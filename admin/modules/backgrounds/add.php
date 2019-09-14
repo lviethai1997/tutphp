@@ -39,7 +39,7 @@
                $id_insert =$db->insert("background",$data);
                if($id_insert)
                {
-                    resize_image($file_tmp, 1300, 780);
+                    resize_image($file_tmp, 1920, 1400);
                     move_uploaded_file($file_tmp,$part.$file_name);
                     
                    $_SESSION['success'] =" Thêm sản phẩm thành công!!";
@@ -108,18 +108,6 @@
         <p class="text-danger"><br><?php echo $error['image'] ?></p>
         <?php endif ?>
     </div>
-
-    <!-- <script>
-			 CKEDITOR.replace( 'content',
-		{
-			filebrowserBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html',
-			filebrowserImageBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
-			filebrowserFlashBrowseUrl : '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',
-			filebrowserUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-			filebrowserImageUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-			filebrowserFlashUploadUrl : '<?php echo base_url()?>public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-		});
-		</script> -->
 
     <button type="submit" class="btn btn-primary">Xác Nhận</button>
 </form>
