@@ -34,6 +34,33 @@
     $sqlcountorders =" SELECT COUNT(id) as donhangchuaxuly from transaction where status =0";
     $countoders = $db->fetchData($sqlcountorders);
 
+    $sqlRevenue1 = "SELECT IFNULL(SUM(amount),0) as thang1 from transaction where date_format(updated_at, '%m') = '01' and status =1 ";
+    $sqlRevenue2 = "SELECT IFNULL(SUM(amount),0) as thang2 from transaction where date_format(updated_at, '%m') = '02' and status =1 ";
+    $sqlRevenue3 = "SELECT IFNULL(SUM(amount),0) as thang3 from transaction where date_format(updated_at, '%m') = '03' and status =1 ";
+    $sqlRevenue4 = "SELECT IFNULL(SUM(amount),0) as thang4 from transaction where date_format(updated_at, '%m') = '04' and status =1 ";
+    $sqlRevenue5 = "SELECT IFNULL(SUM(amount),0) as thang5 from transaction where date_format(updated_at, '%m') = '05' and status =1 ";
+    $sqlRevenue6 = "SELECT IFNULL(SUM(amount),0) as thang6 from transaction where date_format(updated_at, '%m') = '06' and status =1 ";
+    $sqlRevenue7 = "SELECT IFNULL(SUM(amount),0) as thang7 from transaction where date_format(updated_at, '%m') = '07' and status =1 ";
+    $sqlRevenue8 = "SELECT IFNULL(SUM(amount),0) as thang8 from transaction where date_format(updated_at, '%m') = '08' and status =1 ";
+    $sqlRevenue9 = "SELECT IFNULL(SUM(amount),0) as thang9 from transaction where date_format(updated_at, '%m') = '09' and status =1 ";
+    $sqlRevenue10 = "SELECT IFNULL(SUM(amount),0) as thang10 from transaction where date_format(updated_at, '%m') = '10' and status =1 ";
+    $sqlRevenue11 = "SELECT IFNULL(SUM(amount),0) as thang11 from transaction where date_format(updated_at, '%m') = '11' and status =1 ";
+    $sqlRevenue12 = "SELECT IFNULL(SUM(amount),0) as thang12 from transaction where date_format(updated_at, '%m') = '12' and status =1 ";
+    $Revenue1 = $db->fetchData($sqlRevenue1);
+    $Revenue2 = $db->fetchData($sqlRevenue2);
+    $Revenue3 = $db->fetchData($sqlRevenue3);
+    $Revenue4 = $db->fetchData($sqlRevenue4);
+    $Revenue5 = $db->fetchData($sqlRevenue5);
+    $Revenue6 = $db->fetchData($sqlRevenue6);
+    $Revenue7 = $db->fetchData($sqlRevenue7);
+    $Revenue8 = $db->fetchData($sqlRevenue8);
+    $Revenue9 = $db->fetchData($sqlRevenue9);
+    $Revenue10 = $db->fetchData($sqlRevenue10);
+    $Revenue11= $db->fetchData($sqlRevenue11);
+    $Revenue12 = $db->fetchData($sqlRevenue12);
+
+   
+    
 
     
 ?>

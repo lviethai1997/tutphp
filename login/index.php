@@ -22,8 +22,9 @@
 			if($is_check != NULL)
 			{
 				$_SESSION['admin_name'] = $is_check['name'];
-				$_SESSION['admin_id'] = $is_check['id'];
-				echo "<script>alert(' Đăng nhập thành công !!!');location.href='".base_url()."admin/'</script>"; 
+                $_SESSION['admin_id'] = $is_check['id'];
+                //alert(' Đăng nhập thành công !!!');
+				echo "<script>location.href='".base_url()."admin/'</script>"; 
 			}else
 			{
 				$_SESSION["error"]="Tài khoản hoặc mật khẩu không đúng !!!";
