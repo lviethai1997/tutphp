@@ -11,7 +11,7 @@
 <div style="width:95%;">
     <canvas id="canvas"></canvas>
 </div>
-<br><hr>
+<hr>
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-3 col-md-6">
@@ -189,7 +189,7 @@ var config = {
     data: {
         labels: ['Tháng 1', 'Tháng 2', 'Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
         datasets: [{
-            label: 'Doanh Thu Theo Từng Tháng',
+            label: 'Doanh Thu Năm Nay',
             backgroundColor: window.chartColors.red,
             borderColor: window.chartColors.red,
             data: [
@@ -207,6 +207,15 @@ var config = {
                 <?php echo ($Revenue12['thang12']) ?>
             ],
             fill: false,
+        },
+        {
+            label: 'Some thing else',
+            fill: false,
+            backgroundColor: window.chartColors.blue,
+            borderColor: window.chartColors.blue,
+            data: [
+                50,1,580000,8,6545554,1231256,412315,1212456,4889,4444444,566555,545
+            ],
         }]
     },
     options: {
@@ -228,14 +237,14 @@ var config = {
                 display: true,
                 scaleLabel: {
                     display: true,
-                    labelString: 'Month'
+                    labelString: ''
                 }
             }],
             yAxes: [{
                 display: true,
                 scaleLabel: {
                     display: true,
-                    labelString: 'Value'
+                    labelString: 'VND'
                 }
             }]
         }
