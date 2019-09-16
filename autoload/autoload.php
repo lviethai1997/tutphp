@@ -32,9 +32,20 @@
     $sqlReCart ="SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where products.status =1 order by number DESC LIMIT 4";
     $productRecart = $db->fetchsql($sqlReCart);
 
-
+    //lay danh sach tin tuc
     $sqlnews ="SELECT news.*,news.id as id,DATE_FORMAT(news.updated_at, '%d') as day,DATE_FORMAT(news.updated_at, '%M') as month,news.image_news as image,admin.name as name,news.title as title,news.contentmini as contentmini from news inner join admin on news.id_admin = admin.id where news.status = 1 order by news.id DESC LIMIT 3";
     $newsblog = $db->fetchsql($sqlnews);
 
+    $sqlStatus1 = "SELECT title,content from slogan where status = 1";
+    $fetchstatus1 = $db->fetchsql($sqlStatus1);
+
+    $sqlStatus2 = "SELECT title,content from slogan where status = 2";
+    $fetchstatus2 = $db->fetchsql($sqlStatus1);
+
+    $sqlStatus3 = "SELECT title,content from slogan where status = 3";
+    $fetchstatus3 = $db->fetchsql($sqlStatus1);
+
+    $sqlStatus4 = "SELECT title,content from slogan where status = 4";
+    $fetchstatus4 = $db->fetchsql($sqlStatus1);
     
 ?>

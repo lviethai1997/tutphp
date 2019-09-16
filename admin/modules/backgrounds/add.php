@@ -39,7 +39,7 @@
                $id_insert =$db->insert("background",$data);
                if($id_insert)
                {
-                    resize_image($file_tmp, 1920, 1400);
+                    resize_image($file_tmp, 1400, 768);
                     move_uploaded_file($file_tmp,$part.$file_name);
                     
                    $_SESSION['success'] =" Thêm sản phẩm thành công!!";

@@ -299,6 +299,10 @@
                             <a href="<?php echo modules('category') ?>"><i class="fa fa-th-large fa-fw"></i> Quản lý
                                 danh mục sản phẩm</a>
                         </li>
+                        <li class="<?php echo isset($open) && $open == 'slogans' ? 'active' : '' ?>">
+                            <a href="<?php echo modules('slogans') ?>"><i class="fa fa-quote-left"></i> Quản lý
+                                SLOGAN</a>
+                        </li>
                         <li class="<?php echo isset($open) && $open == 'backgrounds' ? 'active' : '' ?>">
                             <a href="<?php echo modules('backgrounds') ?>"><i class="fa fa-picture-o"></i> Quản lý
                                 Background</a>

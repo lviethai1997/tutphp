@@ -48,7 +48,7 @@
                $update = $db->update("background",$data,array("id"=>$id));
                if($update>0)
                {
-                resize_image($file_tmp, 1920, 1400);
+                resize_image($file_tmp, 1400, 900);
                 move_uploaded_file($file_tmp,$part.$file_name);
                 $_SESSION['success'] =" Cập nhật Background thành công!!";
                 redirectAdmin("backgrounds");
