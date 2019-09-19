@@ -119,7 +119,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                                         <a href="index.php" class="btn btn-primary">Tiếp tục mua hàng</a>
                                     </div>
                                     <div class="col-md-3">
-                                        <?php if(!($_SESSION['name_user'])): ?>
+                                        <?php if(!($_COOKIE['name_user'])): ?>
                                         <a href="thanh-toan1.php" class="btn btn-primary">Thanh Toán Đơn Hàng</a>
                                         <?php else : ?>
                                         <a href="thanh-toan.php" class="btn btn-primary">Thanh Toán Đơn Hàng</a>

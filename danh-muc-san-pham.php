@@ -240,31 +240,6 @@ $path = $_SERVER['SCRIPT_NAME'];
                             </div>
                         </form>
                     </div>
-                    <div class="side">
-                        <h2>Color</h2>
-                        <div class="color-wrap">
-                            <p class="color-desc">
-                                <a href="#" class="color color-1"></a>
-                                <a href="#" class="color color-2"></a>
-                                <a href="#" class="color color-3"></a>
-                                <a href="#" class="color color-4"></a>
-                                <a href="#" class="color color-5"></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="side">
-                        <h2>Size</h2>
-                        <div class="size-wrap">
-                            <p class="size-desc">
-                                <a href="#" class="size size-1">xs</a>
-                                <a href="#" class="size size-2">s</a>
-                                <a href="#" class="size size-3">m</a>
-                                <a href="#" class="size size-4">l</a>
-                                <a href="#" class="size size-5">xl</a>
-                                <a href="#" class="size size-5">xxl</a>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -273,3 +248,11 @@ $path = $_SERVER['SCRIPT_NAME'];
 
 
 <?php require_once __DIR__. "/layouts/footer.php"; ?>
+<style>
+#loading
+{
+	text-align:center; 
+	background: url('loader.gif') no-repeat center; 
+	height: 150px;
+}
+</style>

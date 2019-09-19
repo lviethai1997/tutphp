@@ -1,7 +1,7 @@
 <?php 
 	require_once __DIR__. "/autoload/autoload.php"; 
 
-	$id = intval($_SESSION['name_id']);
+	$id = intval($_COOKIE['name_id']);
 	$user  = $db->fetchID("users",$id);
 
     if($_SERVER['REQUEST_METHOD']=="POST")

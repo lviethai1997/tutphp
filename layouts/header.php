@@ -42,6 +42,10 @@
     <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/fonts/flaticon/font/flaticon.css">
     <!-- Theme style  -->
     <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/style.css">
+    <link href="<?php echo base_url()  ?>public/fontend/js/jquery-ui.css" rel = "stylesheet">
+
+    
+
     <!-- Modernizr JS -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -187,12 +191,12 @@
 								{
 									echo "0";
 								} ?>]</b></a></li>
-                                <?php if(isset($_SESSION['name_user'])): ?>
+                                <?php if(isset($_COOKIE['name_user'])): ?>
                                 <li class="has-dropdown">
-                                    <a href="thong-tin.php?id=<?php echo $_SESSION['name_id'] ?>"><b>Xin chào:
-                                            <?php echo getLastName($_SESSION['name_user']) ?></b></a>
+                                    <a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>"><b>Xin chào:
+                                            <?php echo getLastName($_COOKIE['name_user']) ?></b></a>
                                     <ul class="dropdown" style="top:20px;">
-                                        <li><a href="thong-tin.php?id=<?php echo $_SESSION['name_id'] ?>">Thông Tin</a>
+                                        <li><a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>">Thông Tin</a>
                                         </li>
                                         <li><a href="thoat.php"><b>Thoát</b></a></li>
                                     </ul>

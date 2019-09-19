@@ -33,8 +33,10 @@
 
 			if($is_check != NULL)
 			{
-				$_SESSION['name_user'] = $is_check['name'];
-				$_SESSION['name_id'] = $is_check['id'];
+                // $_SESSION['name_user'] = $is_check['name'];
+                setcookie("name_user", $is_check['name'], time()+3600);
+                setcookie("name_id", $is_check['id'], time()+3600);
+				// $_SESSION['name_id'] = $is_check['id'];
 				echo "<script>alert(' Đăng nhập thành công !!!');location.href='index.php'</script>"; 
 			}else{
 				$_SESSION["error"]="Tài khoản hoặc mật khẩu không đúng !!!";

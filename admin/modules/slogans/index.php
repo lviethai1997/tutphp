@@ -48,11 +48,11 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
-                                                style="width: 80px;">Status</th>
+                                                style="width: 80px;">Created_Time</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
-                                                style="width: 39px;">Thời Gian</th>
+                                                style="width: 39px;">Updated_Time</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
@@ -65,7 +65,7 @@
                                             <td class="text-center"><?php echo $stt ?></td>
                                             <td><?php echo $item['title'] ?></td>
                                             <td><?php echo $item['content'] ?></td>
-                                            <td><?php echo $item['status'] ?></td>
+                                            <td><?php echo $item['created_at'] ?></td>
                                             <td><?php echo $item['updated_at'] ?></td>
                                             <td>
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
@@ -86,7 +86,7 @@
                     </div>
                     <!-- /.table-responsive -->
                     <div class="well">
-                        
+
                     </div>
                 </div>
             </form>

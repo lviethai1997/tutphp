@@ -169,7 +169,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
-            <?php foreach($fetchstatus1 as $item): ?>
+                <?php foreach($fetchstatus1 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
                 <?php endforeach ?>
@@ -260,7 +260,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
-            <?php foreach($fetchstatus2 as $item): ?>
+                <?php foreach($fetchstatus2 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
                 <?php endforeach ?>
@@ -318,7 +318,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
-            <?php foreach($fetchstatus3 as $item): ?>
+                <?php foreach($fetchstatus3 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
                 <?php endforeach ?>
@@ -398,7 +398,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center colorlib-heading" style="margin-bottom: 20px;">
-            <?php foreach($fetchstatus4 as $item): ?>
+                <?php foreach($fetchstatus4 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
                 <?php endforeach ?>

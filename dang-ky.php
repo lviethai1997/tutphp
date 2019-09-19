@@ -1,7 +1,7 @@
 <?php 
 	require_once __DIR__. "/autoload/autoload.php"; 
 	
-	if(isset($_SESSION['name_id']))
+	if(isset($_COOKIE['name_id']))
 	{
 		echo "<script>alert(' Thoát tài khoản trước khi vào trang đăng ký !!!');location.href='index.php'</script>"; 
 	}

@@ -31,7 +31,7 @@ $path = $_SERVER['SCRIPT_NAME'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-	$user_id = $_SESSION['name_id'];
+	$user_id = $_COOKIE['name_id'];
 	$error= [];
 	$data =
 [
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	"content" =>postInput("contentcm"),
 	
 ];
-	if(!isset($_SESSION['name_id']))
+	if(!isset($_COOKIE['name_id']))
 	{
 		echo "<script>alert(' Xin đăng nhập để bình luận!!');location.href='dang-nhap.php'</script>"; 
 	}

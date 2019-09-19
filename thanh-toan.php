@@ -1,14 +1,14 @@
 <?php 
 	require_once __DIR__. "/autoload/autoload.php"; 
 	
-    $user  = $db->fetchID("users",intval($_SESSION['name_id']));
+    $user  = $db->fetchID("users",intval($_COOKIE['name_id']));
 
     if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $data = 
         [
             'amount' => $_SESSION['total'],
-			'users_id' => $_SESSION['name_id'],
+			'users_id' =>  $_COOKIE['name_id']; //$_SESSION['name_id'],
 			'pt' => postInput("pt"),
             'note' => postInput("note")
         ];

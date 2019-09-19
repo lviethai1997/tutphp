@@ -267,7 +267,7 @@
                             class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="<?php echo base_url() ?>dang-xuat.php"><i class="fa fa-sign-out fa-fw"></i>
+                        <li><a href="<?php echo base_url() ?>login/index.php"><i class="fa fa-sign-out fa-fw"></i>
                                 Logout</a>
                         </li>
                     </ul>
