@@ -263,12 +263,13 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i>Hi! <?php echo $_SESSION['admin_name'] ?> </i><i
+                        <i class="fa fa-user fa-fw"></i> <i>Hi! <?php echo $_SESSION['admin_name']; ?> </i><i
                             class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="<?php echo base_url() ?>login/index.php"><i class="fa fa-sign-out fa-fw"></i>
-                                Logout</a>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

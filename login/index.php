@@ -13,8 +13,6 @@
 
 	if($_SERVER['REQUEST_METHOD']== "POST")
 	{
-		
-
 		if(empty($error))
 		{
 			$is_check = $db->fetchOne("admin"," email = '".$data['email']."' AND password = '".MD5($data['password'])."' ");
@@ -23,6 +21,8 @@
 			{
 				$_SESSION['admin_name'] = $is_check['name'];
                 $_SESSION['admin_id'] = $is_check['id'];
+                // setcookie("admin_name", $is_check['email'], time()+3600);
+                // setcookie("admin_id", $is_check['id'], time()+3600);
                 //alert(' Đăng nhập thành công !!!');
 				echo "<script>location.href='".base_url()."admin/'</script>"; 
 			}else
@@ -94,9 +94,7 @@
                             Login
                         </button>
                     </div>
-
-
-
+                    
                     <div class="text-center p-t-136">
                         <h3 class="txt2" href="#">
                             <h2 class="fa fa-long-arrow-right m-l-5" style="text-transform: uppercase;"

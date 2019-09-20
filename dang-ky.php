@@ -194,9 +194,7 @@
                         <?php endif ?>
 
                         <div class="form-group text-center">
-
                             <input type="submit" value="Đăng Ký" class="btn btn-primary">
-
                         </div>
 
                     </form>

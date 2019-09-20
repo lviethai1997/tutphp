@@ -248,11 +248,3 @@ $path = $_SERVER['SCRIPT_NAME'];
 
 
 <?php require_once __DIR__. "/layouts/footer.php"; ?>
-<style>
-#loading
-{
-	text-align:center; 
-	background: url('loader.gif') no-repeat center; 
-	height: 150px;
-}
-</style>
