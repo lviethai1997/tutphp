@@ -96,13 +96,13 @@
                                                 <img src="<?php echo uploads() ?>background/<?php echo $item['image'] ?>"
                                                     width="200px" height="200px">
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a href="status.php?id=<?php echo $item['id'] ?>"
                                                     class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
                                                     <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <!-- <br><a href="status.php?id=<php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">

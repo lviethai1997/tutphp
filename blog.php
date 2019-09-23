@@ -1,5 +1,18 @@
-<?php require_once __DIR__. "/autoload/autoload.php";  
+<?php require_once __DIR__. "/autoload/autoload.php";
+error_reporting(0);
+
 $id = intval(getInput('id'));
+$session_countview = "CountviewNews". $id;
+
+// Lấy giá trị session.
+$check_view = $_SESSION[$session_countview];
+if( !isset( $check_view ) )
+{
+	// Gán giá trị session
+	$_SESSION[$session_countview] = 1;
+	// Thực hiện cập nhật lượt xem, cộng dồn thêm 1
+    $db->updateview("UPDATE news SET views = views + 1 WHERE id = $id");
+}
 $sqlnews ="SELECT news.*,news.title as title,news.content as content,news.contentmini as contentmini,admin.name as ten,date_format(news.updated_at, '%d-%m-%Y') as ngay from news inner join admin on news.id_admin = admin.id where news.id = $id";
 $news = $db->fetchData($sqlnews);
 ?>

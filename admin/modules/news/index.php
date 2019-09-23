@@ -63,7 +63,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
-                                                style="width: 83px;">Đường đẫn</th>
+                                                style="width: 83px;">Lượt xem</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
@@ -93,12 +93,12 @@
                                                 <img src="<?php echo uploads() ?>news/<?php echo $item['image_news'] ?>"
                                                     width="80px" height="80px">
                                             </td>
-                                            <td><?php echo $item['slug'] ?></td>
+                                            <td style="text-align:center"><?php echo $item['views'] ?></td>
                                             <td><?php echo $item['contentmini'] ?></td>
                                             <td><?php echo $item['created_at'] ?></td>
                                             <td><?php echo $item['updated_at'] ?></td>
 
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <br><a href="status.php?id=<?php echo $item['id'] ?>"

@@ -116,13 +116,14 @@
                                                     <li>Số lượng :
                                                         <?php if($item['number']<=0){ echo "<b>Hết hàng</b>"; }else{echo $item['number'];}?>
                                                     </li>
+                                                    <li>Lượt xem : <?php echo $item['view'] ?></li>
 
                                                 </ul>
                                             </td>
                                             <td class="text-center"><?php echo $item['cate'] ?></td>
 
                                             <td><?php echo $item['updated_at'] ?></td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <br><a href="status.php?id=<?php echo $item['id'] ?>"

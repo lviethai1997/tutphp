@@ -91,7 +91,7 @@
                                             <td><?php echo $item['email'] ?></td>
                                             <td><?php echo $item['created_at'] ?></td>
                                             <td><?php echo $item['updated_at'] ?></td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <br><a href="status.php?id=<?php echo $item['id'] ?>"

@@ -20,6 +20,7 @@
                 "slug" => to_slug(postInput("title")),
                 "content" =>postInput("content"),
                 "contentmini" =>postInput("contentmini"),
+                "views" => postInput("views")
             ];
             $error= [];
 
@@ -38,6 +39,11 @@
             if(!isset($_FILES['image_news']))
             {
                 $error['image_news'] =" xin vui lòng chọn hình ảnh đại diện cho bài viết!!";
+            }
+
+            if(!isset($_FILES['views']))
+            {
+                $error['views'] =" Không thể bỏ trống lượt xem!!";
             }
 
             //ko co loi
@@ -94,10 +100,20 @@
     <div class="form-group">
         <label for="price">Đoạn tóm gọn</label>
         <!-- <input type="text" class="form-control" id="price" name="contentmini"  placeholder="Đoạn tóm tắt của bài viết" value="<php echo $news['contentmini'] ?>"> -->
-        <textarea name="contentmini" id="price" cols="170" rows="10"><?php echo $news['contentmini'] ?></textarea>
+        <textarea name="contentmini" class="form-control" id="price" cols="220" rows="10"><?php echo $news['contentmini'] ?></textarea>
         <?php 
   if(isset($error['contentmini'])): ?>
         <p class="text-danger"><br><?php echo $error['contentmini'] ?></p>
+        <?php endif ?>
+    </div>
+
+    <div class="form-group">
+        <label for="ten">Lượt xem</label>
+        <input type="number" class="form-control" id="ten" name="views" placeholder="Nhập số lượt xem"
+            value="<?php echo $news['views'] ?>">
+        <?php 
+  if(isset($error['views'])): ?>
+        <p class="text-danger"><br><?php echo $error['views'] ?></p>
         <?php endif ?>
     </div>
 
@@ -123,6 +139,7 @@
     <script>
     CKEDITOR.replace('content', {
         height: '800px',
+       
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',

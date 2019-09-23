@@ -21,7 +21,8 @@
                 "price_input"=> postInput("price_input"),
                 "content"=> postInput("content"),
                 "number"=> postInput("number"),
-                "sale" => postInput("sale")
+                "sale" => postInput("sale"),
+                "view" => postInput("view")
             ];
             $error= [];
 
@@ -51,6 +52,9 @@
 
             if(postInput('number') == ''){
                 $error['number']= "Không thể bỏ trống số lượng sản phẩm!!";
+            }
+            if(postInput('view') == ''){
+                $error['view']= "Không thể bỏ trống số lượt xem!!";
             }
             //ko co loi
             if(empty($error))
@@ -117,6 +121,16 @@
         <?php 
     if(isset($error['name'])): ?>
         <p class="text-danger"><br><?php echo $error['name'] ?></p>
+        <?php endif ?>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Số lượt xem</label>
+        <input type="number" class="form-control" id="price" name="view" placeholder="Nhập số lượt xem"
+            value="<?php echo $Editproduct['view'] ?>">
+        <?php 
+    if(isset($error['view'])): ?>
+        <p class="text-danger"><br><?php echo $error['view'] ?></p>
         <?php endif ?>
     </div>
 

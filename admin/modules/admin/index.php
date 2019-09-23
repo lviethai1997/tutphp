@@ -96,7 +96,7 @@
                                             <td><?php echo $item['phone'] ?></td>
                                             <td><?php echo $item['email'] ?></td>
                                             <td><?php echo $item['created_at'] ?></td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a> &emsp;
                                                 <!-- <a class="btn btn-xs btn-danger fa fa-edit" href="delete.php?id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp; -->

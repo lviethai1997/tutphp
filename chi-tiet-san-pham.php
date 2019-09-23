@@ -1,6 +1,28 @@
 <?php require_once __DIR__. "/autoload/autoload.php"; 
+error_reporting(0);
 
 $id = intval(getInput('id'));
+
+//dem luot xem san pham
+
+// Tên chức năng
+
+
+// Khởi tạo tên session là chuỗi gồm tên chức năng và id bài viết, mục đích tránh trùng ID với những chức năng khác, bạn có thể thêm một giá trị nào đó, để chắc chắn chuỗi này không bao giờ trùng với mỗi chuỗi nào khác.
+$session_countview = "CountviewProduct". $id;
+
+// Lấy giá trị session.
+$check_view = $_SESSION[$session_countview];
+if( !isset( $check_view ) )
+{
+	// Gán giá trị session
+	$_SESSION[$session_countview] = 1;
+	// Thực hiện cập nhật lượt xem, cộng dồn thêm 1
+    $db->updateview("UPDATE products SET view = view + 1 WHERE id = $id");
+}
+       
+    
+
 //chi tiet san pham
 $product = $db->fetchID("products",$id);
 //lay danh muc sp
