@@ -6,9 +6,9 @@
 
     $db = new Database;
     
-    if(!isset($_SESSION['admin_id']))
+    if(!isset($_COOKIE['admin_id']))
     {
-        echo "<script>location.href='".base_url()."login/'</script>";
+        echo "<script>location.href='".base_url()."admin.php'</script>";
     }
     define("ROOT", $_SERVER['DOCUMENT_ROOT'] .uploads());
     

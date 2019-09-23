@@ -11,6 +11,7 @@
             redirectAdmin("product");
         }
         $num =$db->delete("products",$id);
+        $num1 =$db->deletesql("comment"," product_id = $id ");
 
         if($num >0)
         {

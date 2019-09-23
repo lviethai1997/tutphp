@@ -10,13 +10,14 @@
             $checkbox = $_POST['check'];
             for($i=0;$i<count($checkbox);$i++){
             $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("products","id= '".$del_id."'");
+            $num =$db->deletesql("products"," id = $del_id ");
+            $num1 =$db->deletesql("comment"," product_id = $del_id ");
             }
             if($num>0){
-                $_SESSION['success'] = "Xóa đơn hàng thành công";
+                $_SESSION['success'] = "Xóa sản phẩm thành công!";
                 redirectAdmin("product");
             }else{
-                $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
+                $_SESSION['error'] = "Xóa sản phẩm thất bại!";
                 redirectAdmin("product");
             }
             

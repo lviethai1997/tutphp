@@ -1,9 +1,10 @@
 <?php
 	session_start();
-    require_once __DIR__. "/../lib/Database.php";
-	require_once __DIR__. "/../lib/Function.php";
-	
-	$db= new Database;
+    require_once __DIR__. "/lib/Database.php";
+	require_once __DIR__. "/lib/Function.php";
+    $db= new Database;
+    
+
 	$error= [];
 	$data= 
 	[
@@ -19,10 +20,10 @@
 
 			if($is_check != NULL)
 			{
-				$_SESSION['admin_name'] = $is_check['name'];
-                $_SESSION['admin_id'] = $is_check['id'];
-                // setcookie("admin_name", $is_check['email'], time()+3600);
-                // setcookie("admin_id", $is_check['id'], time()+3600);
+				// $_SESSION['admin_name'] = $is_check['name'];
+                // $_SESSION['admin_id'] = $is_check['id'];
+                setcookie("admin_name", $is_check['name'], time()+3600);
+                setcookie("admin_id", $is_check['id'], time()+3600);
                 //alert(' Đăng nhập thành công !!!');
 				echo "<script>location.href='".base_url()."admin/'</script>"; 
 			}else
@@ -42,20 +43,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="<?php echo base_url()  ?>public/assets/images/icons/favicon.ico" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()  ?>public/assets/css/main.css">
     <!--===============================================================================================-->
 </head>
 
@@ -65,14 +66,14 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img src="images/haile.png" alt="IMG">
+                    <img src="<?php echo base_url()  ?>public/assets/images/haile.png" alt="IMG">
                 </div>
 
                 <form class="login100-form validate-form" action="" method="POST">
                     <span class="login100-form-title">
                         ADMIN LOGIN
                     </span>
-                    <?php require_once __DIR__. "/../partials/notification.php"; ?>
+                    <?php require_once __DIR__. "/partials/notification.php"; ?>
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text" name="email" placeholder="Email">
                         <span class="focus-input100"></span>
@@ -110,21 +111,21 @@
 
 
     <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="<?php echo base_url()  ?>public/assets/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()  ?>public/assets/vendor/bootstrap/js/popper.js"></script>
+    <script src="<?php echo base_url()  ?>public/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="<?php echo base_url()  ?>public/assets/vendor/select2/select2.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script src="<?php echo base_url()  ?>public/assets/vendor/tilt/tilt.jquery.min.js"></script>
     <script>
     $('.js-tilt').tilt({
         scale: 1.1
     })
     </script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script src="<?php echo base_url()  ?>public/assets/js/main.js"></script>
 
 </body>
 

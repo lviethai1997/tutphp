@@ -24,6 +24,7 @@
         }else if(isset($_POST["DeleteAll"]))
         {
             $deleteAllRow = $db->DeleteAll("transaction");
+            $deleteAllRowOrder = $db->DeleteAll("orders");
             $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
             redirectAdmin("transaction");
         }

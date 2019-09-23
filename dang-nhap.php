@@ -29,18 +29,20 @@
 
 		if(empty($error))
 		{
-			$is_check = $db->fetchOne("users"," status = 1 and email = '".$data['email']."' AND password = '".MD5($data['password'])."' ");
-
-			if($is_check != NULL)
+			$is_check = $db->fetchOne("users","email = '".$data['email']."' AND password = '".MD5($data['password'])."' ");
+            if($is_check != NULL && $is_check['status']=='0')
+            {
+                $_SESSION["error"]="Tài khoản của bạn đã bị khóa, Xin liên hệ Admin để mở !!!";
+            }else if($is_check != NULL && $is_check['status']=='1')
 			{
                 // $_SESSION['name_user'] = $is_check['name'];
                 setcookie("name_user", $is_check['name'], time()+3600);
                 setcookie("name_id", $is_check['id'], time()+3600);
 				// $_SESSION['name_id'] = $is_check['id'];
 				echo "<script>alert(' Đăng nhập thành công !!!');location.href='index.php'</script>"; 
-			}else{
+			}else if($is_check == NULL){
 				$_SESSION["error"]="Tài khoản hoặc mật khẩu không đúng !!!";
-			}
+            }
 		}
 	}
 ?>

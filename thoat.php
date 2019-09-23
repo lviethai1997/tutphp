@@ -5,8 +5,8 @@
     unset($_SESSION['cart']);
     unset($_SESSION['total']);
 
-    // setcookie("name_user", "", time()-3600); 
-    // setcookie("name_id", "", time()-3600); 
+    setcookie("name_user", "", time()-3600); 
+    setcookie("name_id", "", time()-3600); 
 
     header("location: index.php");
 ?>
