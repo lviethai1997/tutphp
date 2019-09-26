@@ -3,11 +3,6 @@ error_reporting(0);
 
 $id = intval(getInput('id'));
 
-//dem luot xem san pham
-
-// Tên chức năng
-
-
 // Khởi tạo tên session là chuỗi gồm tên chức năng và id bài viết, mục đích tránh trùng ID với những chức năng khác, bạn có thể thêm một giá trị nào đó, để chắc chắn chuỗi này không bao giờ trùng với mỗi chuỗi nào khác.
 $session_countview = "CountviewProduct". $id;
 
@@ -20,8 +15,6 @@ if( !isset( $check_view ) )
 	// Thực hiện cập nhật lượt xem, cộng dồn thêm 1
     $db->updateview("UPDATE products SET view = view + 1 WHERE id = $id");
 }
-       
-    
 
 //chi tiet san pham
 $product = $db->fetchID("products",$id);
@@ -142,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                         <div class="col-md-7">
                             <div class="desc">
-                                <h3><?php echo $product['name'] ?></h3>
+                                <h3><?php echo $product['name']; ?><?php echo str_repeat('&nbsp;', 30); ?> <i class="fa fa-eye" aria-hidden="true"> <?php echo $product['view']  ?></i></h3>
                                 <?php if($product['sale'] > 0 && $catesale['salecat']==0) :?>
                                 <p class="price"><span
                                         class="sale"><strike><?php echo formatPrice($product['price']) ?></strike></span>

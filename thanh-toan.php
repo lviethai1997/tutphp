@@ -8,7 +8,7 @@
         $data = 
         [
             'amount' => $_SESSION['total'],
-			'users_id' =>  $_COOKIE['name_id']; //$_SESSION['name_id'],
+			'users_id' =>  $_COOKIE['name_id'],
 			'pt' => postInput("pt"),
             'note' => postInput("note")
         ];
@@ -33,8 +33,6 @@
             header("location: thong-bao.php");
         }
     }
-
-    
 	
 ?>
 

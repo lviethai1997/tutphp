@@ -122,13 +122,13 @@
                                                 </ul>
                                             </td>
                                             <td><?php echo $item['created_at'] ?></td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a href="status.php?id=<?php echo $item['id'] ?>"
                                                     class="btn btn-xs <?php echo $item['status']==0 ?"btn-danger" :"btn-info" ?>"><?php echo $item['status'] == 0 ? ' Chưa xử lý' :' Đã xử lý' ?></a>
                                                 <a class="btn btn-xs btn-info"
                                                     href="printbill.php?id=<?php echo $item['id'] ?>"> In hóa đơn</a>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center">
                                                 <a class=" btn btn-xs btn-info fa fa-info " data-toggle="modal"
                                                     data-target="#exampleModal"
                                                     data-whatever=<?php echo '"'.$item['id'].' " '?>> Xem</a>
