@@ -214,7 +214,7 @@ var config = {
             backgroundColor: window.chartColors.blue,
             borderColor: window.chartColors.blue,
             data: [
-                50,1,580000,8,6545554,1231256,412315,1212456,4889,4444444,566555,545
+                50000,888888,5800,8,6545554,1231256,1412315,1212456,5554889,4444444,566555,545
             ],
         }]
     },

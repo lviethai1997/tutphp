@@ -25,14 +25,11 @@ require_once __DIR__. "/autoload/autoload.php";
         $_SESSION['cart'][$id]['qty'] = 1;
         if($product['sale']>0 && $catesale['salecat'] == 0){
         $_SESSION['cart'][$id]['price'] = ((100 - $product['sale'])*$product['price']) / 100;
-        }elseif($catesale['salecat']>0)
-        {
+        }elseif($catesale['salecat']>0){
             $_SESSION['cart'][$id]['price'] = ((100 - ($catesale['salecat']))*$product['price']) / 100;
         }elseif($product['sale']==0 && $catesale['salecat'] == 0){
             $_SESSION['cart'][$id]['price'] = ((100 - (0))*$product['price']) / 100;
         }
-       
-        
     }else
     {
        

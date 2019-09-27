@@ -372,7 +372,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

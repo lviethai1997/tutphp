@@ -60,6 +60,10 @@
 	<![endif]-->
 </head>
 <style>
+.responsive {
+  width: 100%;
+  height: auto;
+}
 .gototop.active {
     left: 10px;
 }
@@ -158,7 +162,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-2">
-                            <div id="colorlib-logo"><a href="index.php">hai le</a></div>
+                            <div id="colorlib-logo"><a href="index.php">haile</a></div>
                         </div>
                         <div class="col-xs-10 text-right menu-1">
                             <ul>
@@ -171,13 +175,10 @@
 									$getchild = $db->fetchsql($sql2);
 									?>
                                 <li class="has-dropdown">
-                                    <a
-                                        href="danh-muc-san-pham.php?id=<?php echo $item['id'] ?>"><b><?php echo $item['name'] ?></b></a>
+                                    <a href="#"><b><?php echo $item['name'] ?></b></a>
                                     <ul class="dropdown" style="top:20px;">
                                         <?php foreach($getchild as $child): ?>
-                                        <li><a
-                                                href="danh-muc-san-pham.php?id=<?php echo $child['id'] ?>"><?php echo $child['name']; ?></a>
-                                        </li>
+                                        <li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ?>"><?php echo $child['name']; ?></a></li>
                                         <?php endforeach ?>
                                     </ul>
                                 </li>
