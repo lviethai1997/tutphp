@@ -1,7 +1,9 @@
 <?php require_once __DIR__. "/autoload/autoload.php";
 error_reporting(0);
 
-$id = intval(getInput('id'));
+$arr = explode("/", getInput("id"), 2);
+$id = intval($arr[0]);
+
 $session_countview = "CountviewNews". $id;
 
 // Lấy giá trị session.

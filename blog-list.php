@@ -53,7 +53,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                         <p class="meta"><span class="day"><?php echo $item['day'] ?></span><span
                                 class="month"><?php echo formatmonth($item['month']) ?></span></p>
                         <p class="admin"><span>Đăng bởi:</span> <span><?php echo $item['ten'] ?></span></p>
-                        <h2><a href="blog.php?id=<?php echo $item['id'] ?>"><?php echo $item['title'] ?></a></h2>
+                        <h2><a href="blog.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['title'] ?></a></h2>
                         <p><?php echo $item['contentmini'] ?></p>
                         <p><?php echo $item['month'] ?></p>
                     </div>

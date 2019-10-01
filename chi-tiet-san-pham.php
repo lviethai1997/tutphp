@@ -1,7 +1,8 @@
 <?php require_once __DIR__. "/autoload/autoload.php"; 
 error_reporting(0);
 
-$id = intval(getInput('id'));
+$arr = explode("/", getInput("id"), 2);
+$id = intval($arr[0]);
 
 // Khởi tạo tên session là chuỗi gồm tên chức năng và id bài viết, mục đích tránh trùng ID với những chức năng khác, bạn có thể thêm một giá trị nào đó, để chắc chắn chuỗi này không bao giờ trùng với mỗi chuỗi nào khác.
 $session_countview = "CountviewProduct". $id;
@@ -222,9 +223,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             <li><a data-toggle="tab" href="#manufacturer">Manufacturer</a></li>
                             <li><a data-toggle="tab" href="#review">Bình luận</a></li>
                         </ul>
-                        <div class="tab-content">
-                            <div id="description" class="tab-pane fade in active">
-                                <?php echo $product['content'] ?>
+                        <div class="row tab-content">
+                            <div id="description" class="col-md-12 tab-pane fade in active">
+                               <p> <?php echo $product['content'] ?></p>
                             </div>
                             <div id="manufacturer" class="tab-pane fade">
                                 <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
