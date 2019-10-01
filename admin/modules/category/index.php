@@ -100,12 +100,11 @@
                                             <td><?php echo $item['updated_at'] ?></td>
                                             <td>
                                                 <a class="btn btn-xs btn-warning fa fa-edit "
-                                                    href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a> &emsp;
+                                                    href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a>
                                                 <a class="btn btn-xs btn-danger fa fa-trash "
                                                     href="delete.php?id=<?php echo $item['id'] ?>"
                                                     onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
-                                                &emsp;
-
+                                                
                                             </td>
                                         </tr>
                                         <?php foreach($cresult as $child): ?>
@@ -127,11 +126,10 @@
                                             <td><?php echo $item['updated_at'] ?></td>
                                             <td>
                                                 <a class="btn btn-xs btn-warning fa fa-edit "
-                                                    href="edit.php?id=<?php echo $child['id'] ?>">Sửa</a> &emsp;
+                                                    href="edit.php?id=<?php echo $child['id'] ?>">Sửa</a>
                                                 <a class="btn btn-xs btn-danger fa fa-trash "
                                                     href="delete.php?id=<?php echo $child['id'] ?>"
                                                     onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
-                                                &emsp;
                                             </td>
                                         </tr>
                                         <?php endforeach ?>

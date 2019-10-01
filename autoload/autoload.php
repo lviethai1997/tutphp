@@ -40,12 +40,12 @@
     $fetchstatus1 = $db->fetchsql($sqlStatus1);
 
     $sqlStatus2 = "SELECT title,content from slogan where status = 2";
-    $fetchstatus2 = $db->fetchsql($sqlStatus1);
+    $fetchstatus2 = $db->fetchsql($sqlStatus2);
 
     $sqlStatus3 = "SELECT title,content from slogan where status = 3";
-    $fetchstatus3 = $db->fetchsql($sqlStatus1);
+    $fetchstatus3 = $db->fetchsql($sqlStatus3);
 
     $sqlStatus4 = "SELECT title,content from slogan where status = 4";
-    $fetchstatus4 = $db->fetchsql($sqlStatus1);
+    $fetchstatus4 = $db->fetchsql($sqlStatus4);
     
 ?>

@@ -60,9 +60,8 @@
 	<![endif]-->
 </head>
 <style>
-.responsive {
-  width: 100%;
-  height: auto;
+.colorlib-nav-toggle{
+   top: 5px !important;
 }
 .gototop.active {
     left: 10px;
@@ -174,9 +173,9 @@
 									$sql2="SELECT * from categories where parent= '$parent_id' and status = 1";
 									$getchild = $db->fetchsql($sql2);
 									?>
-                                <li class="has-dropdown">
+                                <li class="has-dropdown" >
                                     <a href="#"><b><?php echo $item['name'] ?></b></a>
-                                    <ul class="dropdown" style="top:20px;">
+                                    <ul class="dropdown" style="top:20px;margin-bottom: 30px;">
                                         <?php foreach($getchild as $child): ?>
                                         <li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ?>"><?php echo $child['name']; ?></a></li>
                                         <?php endforeach ?>

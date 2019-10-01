@@ -1,3 +1,2 @@
-Options +FollowSymLinks
-RewriteEngine on
-RewriteBase /tutphp
+Header set Access-Control-Allow-Origin *
+

@@ -102,7 +102,7 @@
     function base_url()
     {
         // return $url  = "http://codedoan.com/"; 
-        return $url  = "http://198.1.1.224:8080/tutphp/"; 
+        return $url  = "http://198.1.1.97:8080/tutphp/"; 
     }
 
 

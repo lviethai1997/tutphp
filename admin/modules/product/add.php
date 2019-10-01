@@ -165,11 +165,7 @@
         <?php endif ?>
     </div>
     <script>
-    CKEDITOR.editorConfig = function( config )
- {
-   config.enterMode = CKEDITOR.ENTER_BR;
-   config.contentsCss = ['witdh:100%;height:auto;'];
- };
+   
     CKEDITOR.replace('content', {
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
