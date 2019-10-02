@@ -29,8 +29,8 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>public/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <script src="//cdn.ckeditor.com/4.11.3/full/ckeditor.js"></script>
-
+    <script src="<?php echo base_url()?>public/ckeditor/ckeditor.js"></script>
+   
 
     <script src="<?php echo base_url()?>public/admin/vendor/chart/Chart.min.js"></script>
     <script src="<?php echo base_url()?>public/admin/vendor/chart/utils.js"></script>

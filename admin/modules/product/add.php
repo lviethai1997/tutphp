@@ -3,6 +3,10 @@
         require_once __DIR__. "/../../autoload/autoload.php";
 
         $category =$db->fetchAll("categories");
+
+
+        $sqlfetechparent= "SELECT * from categories where parent= 0";
+        $fetchparents = $db->fetchsql($sqlfetechparent);
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $data =
@@ -95,9 +99,17 @@
         <label for="ten">Danh mục sản phẩm</label>
         <select class="form-control" name="category_id">
             <option value="">- Xin chọn danh mục sản phẩm -</option>
-            <?php foreach($category as $item) :?>
-            <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?> --
-                <?php  if($item['parent'] ==0) {echo "<b> Danh mục cha</b>";}else{echo " Danh mục con";}  ?></option>
+            <?php foreach($fetchparents as $item) :?>
+            <option value="<?php  echo $item['id'] ?>">
+                <?php echo "----". $item["name"] ."----"?>
+                <?php     $parentID = $item["id"];
+            $sqlchild= "SELECT * from categories where parent= $parentID";
+            $fetchchild = $db->fetchsql($sqlchild);
+            foreach($fetchchild as $child): ?>
+            <option value="<?php echo $child["id"] ?>"><?php echo $child["name"] ?></option>
+            <?php endforeach ?>
+            </option>
+
             <?php endforeach ?>
         </select>
         <?php 
@@ -164,8 +176,8 @@
         <p class="text-danger"><br><?php echo $error['content'] ?></p>
         <?php endif ?>
     </div>
+
     <script>
-   
     CKEDITOR.replace('content', {
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',

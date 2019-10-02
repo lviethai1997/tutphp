@@ -4,6 +4,8 @@
 
         $id = intval(getInput('id'));
 
+        $sqlfetechparent= "SELECT * from categories where parent= 0";
+        $fetchparents = $db->fetchsql($sqlfetechparent);
         $Editproduct = $db->fetchID("products",$id);
         if(empty($Editproduct)){
             $_SESSION['error'] = " Du Lieu ko ton tai";
@@ -100,12 +102,20 @@
     <div class="form-group">
         <label for="ten">Danh mục sản phẩm</label>
         <select class="form-control" name="category_id">
-            <option value="">- Xin Chọn danh mục sản phẩm -</option>
-            <?php foreach($category as $item) :?>
-            <option value="<?php echo $item['id'] ?>"
-                <?php echo $Editproduct['category_id'] == $item['id'] ? "selected ='selected'":'' ?>>
-                <?php echo $item['name']?> --
-                <?php if($item['parent']>0){echo " Danh mục con";}else{echo "<b> Danh mục cha</b>";} ?></option>
+            <option value="">- Xin chọn danh mục sản phẩm -</option>
+            <?php foreach($fetchparents as $item) :?>
+            <option value="<?php  echo $item['id'] ?>">
+                <?php echo "----". $item["name"] ."----"?>
+                <?php     $parentID = $item["id"];
+            $sqlchild= "SELECT * from categories where parent= $parentID";
+            $fetchchild = $db->fetchsql($sqlchild);
+            foreach($fetchchild as $child): ?>
+            <option value="<?php echo $child["id"] ?>"
+                <?php echo $Editproduct['category_id'] == $child['id'] ? "selected ='selected'":'' ?>>
+                <?php echo $child["name"] ?></option>
+            <?php endforeach ?>
+            </option>
+
             <?php endforeach ?>
         </select>
         <?php 
@@ -113,6 +123,9 @@
         <p class="text-danger"><br><?php echo $error['category_id'] ?></p>
         <?php endif ?>
     </div>
+
+
+
 
     <div class="form-group">
         <label for="ten">Tên sản phẩm</label>
@@ -191,11 +204,10 @@
         <?php endif ?>
     </div>
     <script>
-         CKEDITOR.editorConfig = function( config )
- {
-   config.enterMode = CKEDITOR.ENTER_BR;
-   config.contentsCss = ['witdh:100%;height:auto;'];
- };
+    CKEDITOR.editorConfig = function(config) {
+        config.enterMode = CKEDITOR.ENTER_BR;
+        config.contentsCss = ['witdh:100%;height:auto;'];
+    };
     CKEDITOR.replace('content', {
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
