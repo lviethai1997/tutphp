@@ -40,8 +40,8 @@
                 $error['price_input']= "Giá nhập hàng không được lớn hơn giá bán";
             }
 
-            if(postInput('category_id') == ''){
-                $error['category_id']= "Không thể bỏ trống danh mục sản phẩm!!";
+            if(postInput('category_id') == '0'){
+                $error['category_id']= "Không thể chọn danh mục cha!";
             }
 
             if(postInput('price') == ''){
@@ -102,9 +102,9 @@
     <div class="form-group">
         <label for="ten">Danh mục sản phẩm</label>
         <select class="form-control" name="category_id">
-            <option value="">- Xin chọn danh mục sản phẩm -</option>
+            <option value="0">- Xin chọn danh mục sản phẩm -</option>
             <?php foreach($fetchparents as $item) :?>
-            <option value="<?php  echo $item['id'] ?>">
+            <option value="0">
                 <?php echo "----". $item["name"] ."----"?>
                 <?php     $parentID = $item["id"];
             $sqlchild= "SELECT * from categories where parent= $parentID";
@@ -123,9 +123,6 @@
         <p class="text-danger"><br><?php echo $error['category_id'] ?></p>
         <?php endif ?>
     </div>
-
-
-
 
     <div class="form-group">
         <label for="ten">Tên sản phẩm</label>

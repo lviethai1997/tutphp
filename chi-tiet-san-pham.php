@@ -136,7 +136,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                         <div class="col-md-7">
                             <div class="desc">
-                                <h3><?php echo $product['name']; ?><?php echo str_repeat('&nbsp;', 30); ?> <i class="fa fa-eye" aria-hidden="true"> <?php echo $product['view']  ?></i></h3>
+                                <h3><?php echo $product['name']; ?><?php echo str_repeat('&nbsp;', 30); ?> <i
+                                        class="fa fa-eye" aria-hidden="true"> <?php echo $product['view']  ?></i></h3>
                                 <?php if($product['sale'] > 0 && $catesale['salecat']==0) :?>
                                 <p class="price"><span
                                         class="sale"><strike><?php echo formatPrice($product['price']) ?></strike></span>
@@ -225,7 +226,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </ul>
                         <div class="row tab-content">
                             <div id="description" class="col-md-12 tab-pane fade in active">
-                               <p> <?php echo $product['content'] ?></p>
+                                <p> <?php echo $product['content'] ?></p>
                             </div>
                             <div id="manufacturer" class="tab-pane fade">
                                 <p>Even the all-powerful Pointing has no control about the blind texts it is an almost

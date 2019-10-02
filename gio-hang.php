@@ -189,7 +189,8 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                         </div>
                     </div>
                     <div class="desc">
-                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                        <h3><a
+                                href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
                         <?php if($item['sale'] > 0 && $item['salecat']==0) :?>
                         <p class="price"><span
