@@ -1,6 +1,9 @@
 <?php require_once __DIR__. "/autoload/autoload.php"; 
 
-$id = intval(getInput('id'));
+// $id = intval(getInput('id'));
+$arr = explode("/", getInput("id"), 2);
+$id = intval($arr[0]);
+
 $CatName = $db->fetchID("categories",$id);
 
 if(isset($_GET['p']))

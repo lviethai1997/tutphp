@@ -177,7 +177,7 @@
                                     <a href="#"><b><?php echo $item['name'] ?></b></a>
                                     <ul class="dropdown" style="top:20px;margin-bottom: 30px;">
                                         <?php foreach($getchild as $child): ?>
-                                        <li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ?>"><?php echo $child['name']; ?></a></li>
+                                        <li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ."/". $child['slug']  ?>"><?php echo $child['name']; ?></a></li>
                                         <?php endforeach ?>
                                     </ul>
                                 </li>

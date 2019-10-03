@@ -411,7 +411,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                 <span><a href="#"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -419,7 +419,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                     </div>
                     <div class="desc">
-                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ?>"><?php echo $item['name'] ?></a>
+                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
                         <?php if($item['sale'] > 0 && $catesale['salecat']==0) :?>
                         <p class="price"><span
