@@ -1,9 +1,10 @@
 
 <?php 
-
     /**
     * debug
     **/
+   
+
     function _debug($data) {
 
         echo '<pre style="background: #000; color: #fff; width: 100%; overflow: auto">';
@@ -102,7 +103,7 @@
     function base_url()
     {
         // return $url  = "http://codedoan.com/"; 
-        return $url  = "http://198.1.1.97:8080/tutphp/"; 
+        return $url  = "http://localhost:8000/tutphp/"; 
     }
 
 
@@ -243,30 +244,7 @@
         }
     }
 
-    function resize_image($file, $width, $height) {
-        list($w, $h) = getimagesize($file);
-        /* calculate new image size with ratio */
-        $ratio = max($width/$w, $height/$h);
-        $h = ceil($height / $ratio);
-        $x = ($w - $width / $ratio) / 2;
-        $w = ceil($width / $ratio);
-        /* read binary data from image file */
-        $imgString = file_get_contents($file);
-        /* create image from string */
-        $image = imagecreatefromstring($imgString);
-        $tmp = imagecreatetruecolor($width, $height);
-        imagecopyresampled($tmp, $image,
-        0, 0,
-        $x, 0,
-        $width, $height,
-        $w, $h);
-        imagejpeg($tmp, $file, 100);
-        return $file;
-        /* cleanup memory */
-        imagedestroy($image);
-        imagedestroy($tmp);
-    }
-
+    
 
  ?>
 

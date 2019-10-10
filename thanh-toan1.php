@@ -1,6 +1,12 @@
 <?php 
 	require_once __DIR__. "/autoload/autoload.php"; 
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    // Load Composer's autoloader
+    require 'vendor/autoload.php';
+
     $data= 
 	[
 			"name" => postInput("name"),
@@ -63,6 +69,31 @@
         
                         $id_insert2 = $db->insert("orders",$data2);
                     }
+
+                    $mail = new PHPMailer(true);
+                    // try {
+                    //Server settings
+                    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+                    $mail->isSMTP();                                            // Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                    $mail->Username   = 'nhjnzjmanhjn@gmail.com';                     // SMTP username
+                    $mail->Password   = 'haivipprokute113';                               // SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+                    $mail->Port       = 587;                                    // TCP port to connect to
+                    //Recipients
+                    $mail->CharSet = 'UTF-8';
+                    $mail->setFrom('nhjnzjmanhjn@gmail.com', 'haile Webshop');
+                    // Add a recipient
+                    $mail->addAddress(postInput('email'));               // Name is optional
+                    $mail->addReplyTo('nhjnzjmanhjn@gmail.com', 'haile Webshop');
+                    // Content
+                    $mail->isHTML(true);                                  // Set email format to HTML
+                    $mail->Subject = 'Chúc mừng bạn đã đặt đơn hàng trên haile Webshop thành công!';
+                    $mail->Body    = 'Chúc mừng bạn đã đặt hàng trên haile webshop thành công, chúng tôi sẽ giao hàng cho bạn trong thời gian sớm nhất có thể, Chúc bạn có những phút giây vui vẻ!.';
+                    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    $mail->send();
+
                     $_SESSION['success']= "Lưu thông tin đơn hàng thành công!!!";
                     header("location: thong-bao.php");
                 }

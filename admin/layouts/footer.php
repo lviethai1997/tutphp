@@ -5,7 +5,7 @@
                 </div>
                 <!-- jQuery -->
                 <script src="<?php echo base_url() ?>public/admin/vendor/jquery/jquery.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+                <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
                 <!-- Bootstrap Core JavaScript -->
                 <script src="<?php echo base_url() ?>public/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 

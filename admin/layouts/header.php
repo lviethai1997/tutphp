@@ -10,7 +10,7 @@
 
     <title>Trang Quản trị</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>public/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,6 @@
     <!-- DataTables Responsive CSS -->
     <link href="<?php echo base_url() ?>public/admin/vendor/datatables-responsive/dataTables.responsive.css"
         rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>public/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 

@@ -1,5 +1,13 @@
 <?php 
-	require_once __DIR__. "/autoload/autoload.php"; 
+    require_once __DIR__. "/autoload/autoload.php"; 
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    // Load Composer's autoloader
+    require 'vendor/autoload.php';
+    
 	
 	if(isset($_COOKIE['name_id']))
 	{
@@ -63,8 +71,34 @@
 			$id_insert =$db->insert("users",$data);
 			if($id_insert>0)
 			{
-				header('Location: dang-nhap.php');
-				$_SESSION['success'] =" Đăng ký thành viên thành công!!, Mời bạn đăng nhập!!";
+                $mail = new PHPMailer(true);
+                // try {
+                //Server settings
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+                $mail->isSMTP();                                            // Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = 'nhjnzjmanhjn@gmail.com';                     // SMTP username
+                $mail->Password   = 'haivipprokute113';                               // SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+                $mail->Port       = 587;                                    // TCP port to connect to
+                //Recipients
+                $mail->CharSet = 'UTF-8';
+                $mail->setFrom('nhjnzjmanhjn@gmail.com', 'haile Webshop');
+                    // Add a recipient
+                $mail->addAddress(postInput('email'));               // Name is optional
+                $mail->addReplyTo('nhjnzjmanhjn@gmail.com', 'haile Webshop');
+                // Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Chúc mừng bạn đã đăng ký tài khoản thành công!';
+                $mail->Body    = 'Chúc mừng bạn đã trở thành một trong những thành viên của haile webshop, bây giờ hãy ghé thăm website của tôi và mua sắm thỏa thích, Chúc bạn có những phút giây vui vẻ!.';
+                //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                $mail->send();
+                $_SESSION['success'] =" Đăng ký thành viên thành công!!, Mời bạn đăng nhập!!";
+                header('Location: dang-nhap.php');
+            // } catch (Exception $e) {
+            //     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // }
 			}else
 			{
 				 $_SESSION['error'] =" Đăng ký thành viên thất bại!!";
