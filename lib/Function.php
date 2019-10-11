@@ -103,7 +103,7 @@
     function base_url()
     {
         // return $url  = "http://codedoan.com/"; 
-        return $url  = "http://localhost:8000/tutphp/"; 
+        return $url  = "http://localhost:8080/tutphp/"; 
     }
 
 

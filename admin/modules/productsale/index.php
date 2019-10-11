@@ -2,7 +2,7 @@
         $open = "product";
         require_once __DIR__. "/../../autoload/autoload.php";
         // $product= $db->fetchAll('products');
-        $sqlproduct="SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id order by updated_at DESC,id desc";
+        $sqlproduct="SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id and salestatus =1 order by updated_at DESC,id desc";
         $product = $db->fetchsql($sqlproduct);
 
         if(isset($_POST["CheckBoxDelete"]))
@@ -31,7 +31,7 @@
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Quản Lý Sản Phẩm</h1>
+        <h1 class="page-header">Quản Lý Giảm Giá Sản Phẩm</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -42,7 +42,6 @@
 
 <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
 
-<a class="btn btn btn-success" href="add.php">Thêm mới sản phẩm</a><br><br>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">

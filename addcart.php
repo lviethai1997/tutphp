@@ -13,7 +13,6 @@ require_once __DIR__. "/autoload/autoload.php";
     $product = $db->fetchID("products",$id);
     $cateid =intval($product['category_id']);
     $catesale = $db->fetchID("categories",$cateid);
-
     // kiem tra neu ton tai trong gio hang thi cap nhat
     //nguoc lai thi tao moi
     if(! isset($_SESSION['cart'][$id]))
@@ -29,6 +28,8 @@ require_once __DIR__. "/autoload/autoload.php";
             $_SESSION['cart'][$id]['price'] = ((100 - ($catesale['salecat']))*$product['price']) / 100;
         }elseif($product['sale']==0 && $catesale['salecat'] == 0){
             $_SESSION['cart'][$id]['price'] = ((100 - (0))*$product['price']) / 100;
+        }elseif($product['sale']>0 && $product['salestatus']==1){
+            $_SESSION['cart'][$id]['price'] = ((100 - $product['sale'])*$product['price']) / 100;
         }
     }else
     {

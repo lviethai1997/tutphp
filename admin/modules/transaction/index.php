@@ -66,7 +66,7 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width:30px;">STT</th>
+                                                style="width:30px;">Mã</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
@@ -109,7 +109,7 @@
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
-                                            <td><?php echo $stt ?></td>
+                                            <td><?php echo $item['id'] ?></td>
                                             <td><?php echo $item['nameuser'] ?></td>
                                             <td><?php echo $item['address'] ?></td>
                                             <td><?php echo $item['note'] ?></td>

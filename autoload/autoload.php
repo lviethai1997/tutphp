@@ -20,11 +20,11 @@
     $productNew = $db->fetchsql($sqlNew);
 
     //san pham ban chay
-    $sqlhot = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where products.status = 1 ORDER BY products.pay DESC LIMIT 8";
+    $sqlhot = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where products.status = 1 ORDER BY products.view DESC LIMIT 8";
     $productHot = $db->fetchsql($sqlhot);
 
     //san pham giam gia
-    $sqlsale = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where products.status =1 and products.sale >0  ORDER BY products.sale DESC LIMIT 8";
+    $sqlsale = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where products.status =1 and products.salestatus =1 and products.sale >0  ORDER BY products.sale DESC LIMIT 8";
     $productsale = $db->fetchsql($sqlsale);
     
 
