@@ -15,7 +15,8 @@ if($EdtiTransaction['status']==1)
     redirectAdmin("transaction");
 }
 $status = 1;
-$update = $db->update("transaction",array("status" => $status),array("id" => $id));
+$update = $db->update("transaction",array("status" => $status,"ship" => $status),array("id" => $id));
+
 if($update >0)
 {
     $_SESSION['success'] =" Cập nhật thành công !!!";

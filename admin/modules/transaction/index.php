@@ -129,6 +129,10 @@
                                                     href="printbill.php?id=<?php echo $item['id'] ?>"> In hóa đơn</a>
                                             </td>
                                             <td style="text-align:center">
+                                                <a href="shipping.php?id=<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php  if($item['ship']==0){ echo "btn-default";} elseif($item['ship']==1){echo "btn-warning";}else{echo "btn-success";} ?>"><?php if($item['ship']==0){ echo "Đang chờ xử lý";} elseif($item['ship']==1){echo "Đang Ship";}else{echo "Hoàn Thành";} ?></a>
+                                            </td>
+                                            <td style="text-align:center">
                                                 <a class=" btn btn-xs btn-info fa fa-info " data-toggle="modal"
                                                     data-target="#exampleModal"
                                                     data-whatever=<?php echo '"'.$item['id'].' " '?>> Xem</a>

@@ -3,9 +3,8 @@
     require_once __DIR__. "/../../lib/Database.php";
     require_once __DIR__. "/../../lib/Function.php";
 
-
     $db = new Database;
-    
+
     if(!isset($_COOKIE['admin_id']))
     {
         echo "<script>location.href='".base_url()."admin.php'</script>";
