@@ -91,6 +91,7 @@
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
                                                 style="width: 83px;">Thời Gian</th>
+                                                
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
@@ -119,6 +120,8 @@
                                                     <li><?php echo formatPrice($item['amount']) ?></li>
                                                     <li><?php if($item['pt']==1){echo "COD";}else{echo "Chuyển khoản";} ?>
                                                     </li>
+                                                    <li> <a href="shipping.php?id=<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php  if($item['ship']==0){ echo "btn-default";} elseif($item['ship']==1){echo "btn-warning";}else{echo "btn-success";} ?>"><?php if($item['ship']==0){ echo "Đang chờ";} elseif($item['ship']==1){echo "Đang Ship";}else{echo "Hoàn Thành";} ?></a></li>
                                                 </ul>
                                             </td>
                                             <td><?php echo $item['created_at'] ?></td>
@@ -127,11 +130,9 @@
                                                     class="btn btn-xs <?php echo $item['status']==0 ?"btn-danger" :"btn-info" ?>"><?php echo $item['status'] == 0 ? ' Chưa xử lý' :' Đã xử lý' ?></a>
                                                 <a class="btn btn-xs btn-info"
                                                     href="printbill.php?id=<?php echo $item['id'] ?>"> In hóa đơn</a>
+                                                   
                                             </td>
-                                            <td style="text-align:center">
-                                                <a href="shipping.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php  if($item['ship']==0){ echo "btn-default";} elseif($item['ship']==1){echo "btn-warning";}else{echo "btn-success";} ?>"><?php if($item['ship']==0){ echo "Đang chờ xử lý";} elseif($item['ship']==1){echo "Đang Ship";}else{echo "Hoàn Thành";} ?></a>
-                                            </td>
+                                           
                                             <td style="text-align:center">
                                                 <a class=" btn btn-xs btn-info fa fa-info " data-toggle="modal"
                                                     data-target="#exampleModal"
