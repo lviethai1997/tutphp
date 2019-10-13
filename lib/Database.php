@@ -1,7 +1,4 @@
-
-
 <?php 
-
 /**
 * 
 */
@@ -12,15 +9,12 @@ class Database
      * @var [type]
      */
     public $link;
-
     public function __construct()
     {
         $this->link = mysqli_connect("localhost","root","","db_webshop") or die ();
         mysqli_set_charset($this->link,"utf8");
     }
-
     
-
     /**
      * [insert description] hàm insert 
      * @param  $table
@@ -47,15 +41,11 @@ class Database
         mysqli_query($this->link, $sql) or die("Lỗi  query  insert ----" .mysqli_error($this->link));
         return mysqli_insert_id($this->link);
     }
-
     public function update($table, array $data, array $conditions)
     {
         $sql = "UPDATE {$table}";
-
         $set = " SET ";
-
         $where = " WHERE ";
-
         foreach($data as $field => $value) {
             if(is_string($value)) {
                 $set .= $field .'='.'\''. mysqli_real_escape_string($this->link, xss_clean($value)) .'\',';
@@ -63,10 +53,7 @@ class Database
                 $set .= $field .'='. mysqli_real_escape_string($this->link, xss_clean($value)) . ',';
             }
         }
-
         $set = substr($set, 0, -1);
-
-
         foreach($conditions as $field => $value) {
             if(is_string($value)) {
                 $where .= $field .'='.'\''. mysqli_real_escape_string($this->link, xss_clean($value)) .'\' AND ';
@@ -74,26 +61,19 @@ class Database
                 $where .= $field .'='. mysqli_real_escape_string($this->link, xss_clean($value)) . ' AND ';
             }
         }
-
         $where = substr($where, 0, -5);
-
         $sql .= $set . $where;
         // _debug($sql);die;
-
-        mysqli_query($this->link, $sql) or die( "Lỗi truy vấn Update -- " .mysqli_error());
-
+        mysqli_query($this->link, $sql) or die( "Lỗi truy vấn Update -- " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
     }
     public function updateview($sql)
     {
         $result = mysqli_query($this->link,$sql)  or die ("Lỗi update view " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
-
     }
-
     
   
-
     public function countTable($table)
     {
         $sql = "SELECT id FROM  {$table}";
@@ -101,8 +81,6 @@ class Database
         $num = mysqli_num_rows($result);
         return $num;
     }
-
-
     /**
      * [delete description] hàm delete
      * @param  $table      [description]
@@ -112,20 +90,15 @@ class Database
     public function delete ($table ,  $id )
     {
         $sql = "DELETE FROM {$table} WHERE id = $id ";
-
         mysqli_query($this->link,$sql) or die (" Lỗi Truy Vấn delete   --- " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
     }
-
-
     public function DeleteAll ($table)
     {
         $sql = "DELETE FROM {$table} ";
-
         mysqli_query($this->link,$sql) or die (" Lỗi Truy Vấn delete   --- " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
     }
-
     /**
      * delete array 
      */
@@ -140,7 +113,6 @@ class Database
         }
         return true;
     }
-
     public function fetchsql( $sql )
     {
         $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn sql " .mysqli_error($this->link));
@@ -154,27 +126,23 @@ class Database
         }
         return $data;
     } 
-
     public function fetchID($table , $id )
     {
         $sql = "SELECT * FROM {$table} WHERE id = $id ";
         $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
-
     public function fetchTable1($table)
     {
         $sql = "SELECT * FROM {$table}  ";
         $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn fetchID " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
-
     public function fetchData($sql)
     {
         $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn fetchData " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
-
     public function fetchOne($table , $query)
     {
         $sql  = "SELECT * FROM {$table} WHERE ";
@@ -183,7 +151,6 @@ class Database
         $result = mysqli_query($this->link,$sql) or die("Lỗi  truy vấn fetchOne " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
-
     public function deletesql ($table ,  $sql )
     {
         $sql = "DELETE FROM {$table} WHERE " .$sql;
@@ -191,9 +158,7 @@ class Database
         mysqli_query($this->link,$sql) or die (" Lỗi Truy Vấn delete   --- " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
     }
-
     
-
      public function fetchAll($table)
     {
         $sql = "SELECT * FROM {$table} WHERE 1" ;
@@ -208,13 +173,10 @@ class Database
         }
         return $data;
     }
-
-
     public  function fetchJones($table,$sql,$total = 1,$page,$row ,$pagi = true )
     {
         
         $data = [];
-
         if ($pagi == true )
         {
             $sotrang = ceil($total / $row);
@@ -270,16 +232,12 @@ class Database
         // _debug($data);
         return $data;
     }
-
-
     public  function fetchJoneDetail($table , $sql ,$page = 0,$total ,$pagi )
     {
         $result = mysqli_query($this->link,$sql) or die("Lỗi truy vấn fetchJone ---- " .mysqli_error($this->link));
-
         $sotrang = ceil($total / $pagi);
         $start = ($page - 1 ) * $pagi ;
         $sql .= " LIMIT $start,$pagi";
-
         $result = mysqli_query($this->link , $sql);
         $data = [];
         $data = [ "page" => $sotrang];
@@ -292,7 +250,6 @@ class Database
         }
         return $data;
     }
-
     public function total($sql)
     {
         $result = mysqli_query($this->link  , $sql);
@@ -300,5 +257,4 @@ class Database
         return $tien;
     }
 }
-
 ?>
