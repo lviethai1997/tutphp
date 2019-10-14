@@ -80,13 +80,13 @@
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="price">Họ và tên</label>
-        <input type="text" readonly class="form-control" id="price" name="name" 
+        <input type="text" readonly class="form-control" id="price" name="name"
             value="<?php echo $editAdmin['name'] ?>">
     </div>
 
     <div class="form-group">
         <label for="price">Địa chỉ Email</label>
-        <input type="email" readonly class="form-control" id="price" name="email" 
+        <input type="email" readonly class="form-control" id="price" name="email"
             value="<?php echo $editAdmin['email'] ?>">
     </div>
 

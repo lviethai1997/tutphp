@@ -85,7 +85,7 @@
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
                                                 style="width: 70px;">Danh Mục</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
                                                 style="width: 70px;">Giảm giá</th>
@@ -125,7 +125,7 @@
                                             </td>
                                             <td class="text-center"><?php echo $item['cate'] ?></td>
                                             <td class="text-center">
-                                            <a href="salestatus.php?id=<?php echo $item['id'] ?>"
+                                                <a href="salestatus.php?id=<?php echo $item['id'] ?>"
                                                     class="btn btn-xs <?php echo $item['salestatus'] ==1 ? 'btn-info' : 'btn-default' ?>">
                                                     <?php echo $item['salestatus'] == 1 ? 'Khuyến mãi' : ' Không ' ?>
                                                 </a>

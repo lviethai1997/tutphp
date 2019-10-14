@@ -66,7 +66,7 @@
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
                                                 style="width: 83px;">Địa chỉ Email</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
                                                 style="width: 83px;">Gửi Email</th>
