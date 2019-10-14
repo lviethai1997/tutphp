@@ -196,19 +196,19 @@ var config = {
                 label: 'Doanh Thu Năm Nay',
                 backgroundColor: window.chartColors.red,
                 borderColor: window.chartColors.red,
-                data: [ <
-                    ? php echo($Revenue1['thang1']) ? > , <
-                    ? php echo($Revenue2['thang2']) ? > , <
-                    ? php echo($Revenue3['thang3']) ? > , <
-                    ? php echo($Revenue4['thang4']) ? > , <
-                    ? php echo($Revenue5['thang5']) ? > , <
-                    ? php echo($Revenue6['thang6']) ? > , <
-                    ? php echo($Revenue7['thang7']) ? > , <
-                    ? php echo($Revenue8['thang8']) ? > , <
-                    ? php echo($Revenue9['thang9']) ? > , <
-                    ? php echo($Revenue10['thang10']) ? > , <
-                    ? php echo($Revenue11['thang11']) ? > , <
-                    ? php echo($Revenue12['thang12']) ? >
+                data: [ 
+                    <?php echo($Revenue1['thang1']) ?> ,
+                    <?php echo($Revenue2['thang2']) ?>,
+                    <?php echo($Revenue3['thang3']) ?>,
+                    <?php echo($Revenue4['thang4']) ?>,
+                    <?php echo($Revenue5['thang5']) ?>,
+                    <?php echo($Revenue6['thang6']) ?>,
+                    <?php echo($Revenue7['thang7']) ?>,
+                    <?php echo($Revenue8['thang8'])  ?>,
+                    <?php echo($Revenue9['thang9']) ?>,
+                    <?php echo($Revenue10['thang10']) ?>,
+                    <?php echo($Revenue11['thang11']) ?>,
+                    <?php echo($Revenue12['thang12']) ?>
                 ],
                 fill: false,
             },
