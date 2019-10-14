@@ -12,8 +12,8 @@
     }
 
     $home = $EditCategory['salestatus'] == 0 ? 1: 0;
-
-    $update = $db->update("products",array("salestatus" => $home),array("id" => $id));
+    $statusproduct = 0;
+    $update = $db->update("products",array("salestatus" => $home,"status" => $statusproduct),array("id" => $id));
     if($update >0)
     {
         $_SESSION['success'] =" Cập nhật thành công !!!";

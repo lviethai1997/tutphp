@@ -66,6 +66,10 @@
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
                                                 style="width: 83px;">Địa chỉ Email</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Browser: activate to sort column ascending"
+                                                style="width: 83px;">Gửi Email</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="CSS grade: activate to sort column ascending"
@@ -89,6 +93,8 @@
                                             <td><?php echo $item['name'] ?></td>
                                             <td><?php echo $item['phone'] ?></td>
                                             <td><?php echo $item['email'] ?></td>
+                                            <td><a class="btn btn-xs btn-primary"
+                                                    href="sendmail.php?id=<?php echo $item['id'] ?>"> Gửi Mail</a></td>
                                             <td><?php echo $item['created_at'] ?></td>
                                             <td><?php echo $item['updated_at'] ?></td>
                                             <td style="text-align:center">
