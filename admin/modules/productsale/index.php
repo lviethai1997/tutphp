@@ -2,7 +2,7 @@
         $open = "product";
         require_once __DIR__. "/../../autoload/autoload.php";
         // $product= $db->fetchAll('products');
-        $sqlproduct="SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id and salestatus =1 order by updated_at DESC,id desc";
+        $sqlproduct="SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id and salestatus =1 order by updated_at";
         $product = $db->fetchsql($sqlproduct);
 
         if(isset($_POST["CheckBoxDelete"]))
