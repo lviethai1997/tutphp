@@ -114,9 +114,9 @@
 
                                             <td>
                                                 <ul>
-                                                    <li>Giá nhập : <?php echo $item['price_input'] ?></li>
-                                                    <li>Giá bán: <?php echo $item['price'] ?></li>
-                                                    <li>khuyến mãi : <?php echo $item['sale'] ?></li>
+                                                    <li>Giá nhập : <?php echo formatPrice($item['price_input']) ?></li>
+                                                    <li>Giá bán: <?php echo formatPrice($item['price']) ?></li>
+                                                    <li>khuyến mãi : <?php echo $item['sale'] ?>%</li>
                                                     <li>Số lượng :
                                                         <?php if($item['number']<=0){ echo "<b>Hết hàng</b>"; }else{echo $item['number'];}?>
                                                     </li>

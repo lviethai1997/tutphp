@@ -73,6 +73,12 @@
                        $data['thunbar'] = $file_name;
                    }
                }
+               if(postInput("sale")>0)
+               {
+                $update = $db->update("products",array("salestatus" => 1),array("id" => $id));
+               }else{
+                $update = $db->update("products",array("salestatus" => 0),array("id" => $id));
+               }
                $update = $db->update("products",$data,array("id"=>$id));
                if($update>0)
                {

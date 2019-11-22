@@ -40,6 +40,9 @@
             if(postInput('number') == ''){
                 $error['number']= "Không thể bỏ trống số lượng sản phẩm!!";
             }
+            if(postInput("sale") == ''){
+                $error['number']= "Không thể bỏ ô giảm giá sản phẩm!!";
+            }
             //ko co loi
             if(empty($error))
             {
@@ -54,6 +57,10 @@
                        $part = ROOT . "product/";
                        $data['thunbar'] = $file_name;
                    }
+               }
+               if(postInput("sale")==0)
+               {
+                $update = $db->update("products",array("salestatus" => 0),array("id" => $id));
                }
                $update = $db->update("products",$data,array("id"=>$id));
                if($update>0)
