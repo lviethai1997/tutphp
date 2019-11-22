@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h1>Chi tiết sản phẩm</h1>
+                                <h1>Chi tiết sản phẩm/<?php echo $catesale['name'] ?></h1>
                             </div>
                         </div>
                     </div>
@@ -136,8 +136,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                         <div class="col-md-7">
                             <div class="desc">
-                                <h3><?php echo $product['name']; ?><?php echo str_repeat('&nbsp;', 30); ?> <i
-                                        class="fa fa-eye" aria-hidden="true"> <?php echo $product['view']  ?></i></h3>
+                            
+                                <h3><?php echo $product['name']; ?></h3>
+                                <h5>Số lượt xem: <i class="fa fa-eye" aria-hidden="true"> <?php echo $product['view']  ?></i></h5>
                                 <?php if($product['sale'] > 0 && $catesale['salecat']==0) :?>
                                 <p class="price"><span
                                         class="sale"><strike><?php echo formatPrice($product['price']) ?></strike></span>

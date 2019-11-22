@@ -65,11 +65,11 @@
                                             <th tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"
                                                 aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width:20px;">Chọn</th>
+                                                style="width:5px;"></th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width:50px;">STT</th>
+                                                style="width:30px;">Mã</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Browser: activate to sort column ascending"
@@ -105,7 +105,7 @@
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
-                                            <td class="text-center"><?php echo $stt ?></td>
+                                            <td class="text-center"><?php echo $item['id'] ?></td>
                                             <td><?php echo $item['name'] ?></td>
                                             <td>
                                                 <img src="<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>"

@@ -62,7 +62,7 @@
                                             <th tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1"
                                                 aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width:20px;">Chọn</th>
+                                                style="width:10px;"></th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example"
                                                 rowspan="1" colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
