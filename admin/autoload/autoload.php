@@ -12,16 +12,16 @@
     define("ROOT", $_SERVER['DOCUMENT_ROOT'] .uploads());
     
 
-    $today = "SELECT sum(amount) as tongtienngay from transaction where date_format(updated_at, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d') and status =1";
+    $today = "SELECT sum(amount) as tongtienngay from transaction where date_format(updated_at, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d') and ship =2";
     $todaymoney = $db->fetchData($today);
 
-    $thismonth = "SELECT SUM(amount) as tongtienthang from transaction where date_format(updated_at, '%Y-%m') = date_format(now(), '%Y-%m') and status =1";
+    $thismonth = "SELECT SUM(amount) as tongtienthang from transaction where date_format(updated_at, '%Y-%m') = date_format(now(), '%Y-%m') and ship =2";
     $monthmoney = $db->fetchData($thismonth);
 
-    $quy = "SELECT SUM(amount) as tongtienquy from transaction where QUARTER(updated_at) = QUARTER(now()) and status =1";
+    $quy = "SELECT SUM(amount) as tongtienquy from transaction where QUARTER(updated_at) = QUARTER(now()) and ship =2";
     $quymoney = $db->fetchData($quy);
 
-    $thisyear = "SELECT SUM(amount) as tongtiennam from transaction where date_format(updated_at, '%Y') = date_format(now(), '%Y') and status =1";
+    $thisyear = "SELECT SUM(amount) as tongtiennam from transaction where date_format(updated_at, '%Y') = date_format(now(), '%Y') and ship =2";
     $yearmoney = $db->fetchData($thisyear);
 
     $sqlcountpd= "SELECT COUNT(id) as soluongsp from products";
@@ -32,6 +32,9 @@
 
     $sqlcountorders =" SELECT COUNT(id) as donhangchuaxuly from transaction where status =0";
     $countoders = $db->fetchData($sqlcountorders);
+
+    $sqlCountShip= " SELECT COUNT(id) as donhangdangship from transaction where ship =1 ";
+    $countShip = $db->fetchData($sqlCountShip);
 
     $sqlRevenue1 = "SELECT IFNULL(SUM(amount),0) as thang1 from transaction where date_format(updated_at, '%m') = '01' and status =1 ";
     $sqlRevenue2 = "SELECT IFNULL(SUM(amount),0) as thang2 from transaction where date_format(updated_at, '%m') = '02' and status =1 ";
