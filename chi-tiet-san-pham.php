@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h1>Chi tiết sản phẩm/<?php echo $catesale['name'] ?></h1>
+                                <h1>Chi tiết sản phẩm/<i><u><a style="color:black" href="danh-muc-san-pham.php?id=<?php echo $catesale['id'] ."/". $catesale['slug']  ?>"><?php echo $catesale['name']; ?></a></u></i></h1>
                             </div>
                         </div>
                     </div>
@@ -397,7 +397,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span class=" <?php if($item['sale'] > 0 || $catesale['salecat']>0)
+                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $catesale['salecat']>0)
 								{
 									echo 'sale';
 								}else

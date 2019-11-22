@@ -45,15 +45,15 @@ $path = $_SERVER['SCRIPT_NAME'];
 
 <div class="colorlib-shop">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-push-2">
+        <div class="row row-pb-lg">
+            <div class="col-md-15 col-md-push-2">
                 <div class="row row-pb-lg">
                     <?php foreach($product as $item ): ?>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-3 text-center">
                         <div class="product-entry">
                             <div class="product-img"
                                 style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                                <p class="tag"><span class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
+                                <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
 								{
 									echo 'sale';
 								}else
@@ -115,7 +115,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 col-md-pull-10">
+            <!-- <div class="col-md-2 col-md-pull-10">
                 <div class="sidebar">
                     <div class="side">
                         <h2>Categories</h2>
@@ -245,7 +245,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

@@ -166,7 +166,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
+                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
 								{
 									echo 'sale';
 								}else

@@ -181,11 +181,11 @@
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span class="hot"><b>Hot</b></span></p>
+                        <p class="tag"><span class="hot"><b>HOT</b></span></p>
                         <?php if($item['sale']>0 && $item['salecat']==0) : ?>
-                        <p class="tagsale"><span class="hotsale"><b>Sale <?php echo $item['sale'] ?>%</b></span></p>
+                        <p class="tagsale"><span class="hotsale"><b>SALE <?php echo $item['sale'] ?>%</b></span></p>
                         <?php elseif($item['salecat']>0): ?>
-                        <p class="tagsale"><span class="hotsale"><b>Sale <?php echo ($item['salecat']) ?>%</b></span>
+                        <p class="tagsale"><span class="hotsale"><b>SALE <?php echo ($item['salecat']) ?>%</b></span>
                         </p>
                         <?php endif ?>
                         <div class="cart">
@@ -273,9 +273,9 @@
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
                         <?php if($item['sale']>0 && $item['salecat']==0) : ?>
-                        <p class="tagsale"><span class="hotsale"><b>Sale <?php echo $item['sale'] ?>%</b></span></p>
+                        <p class="tagsale"><span class="hotsale"><b>SALE <?php echo $item['sale'] ?>%</b></span></p>
                         <?php elseif($item['salecat']>0): ?>
-                        <p class="tagsale"><span class="hotsale"><b>Sale <?php echo ($item['salecat']) ?>%</b></span>
+                        <p class="tagsale"><span class="hotsale"><b>SALE <?php echo ($item['salecat']) ?>%</b></span>
                         </p>
                         <?php endif ?>
                         <div class="cart">
@@ -330,9 +330,9 @@
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span class="new"> New</span></p>
+                        <p class="tag"><span class="new"> NEW</span></p>
                         <?php if($item['salecat']>0): ?>
-                        <p class="tagsale"><span class="hotsale">Sale <?php echo ($item['salecat']) ?>%</span></p>
+                        <p class="tagsale"><span class="hotsale">SALE <?php echo ($item['salecat']) ?>%</span></p>
                         <?php endif ?>
                         <div class="cart">
                             <p>
