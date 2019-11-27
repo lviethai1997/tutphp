@@ -24,6 +24,8 @@ $cateid =intval($product['category_id']);
 $catesale = $db->fetchID("categories",$cateid);
 $sql = "SELECT * FROM products WHERE category_id = $cateid and status = 1 ORDER BY id DESC LIMIT 4";
 $productREC=$db->fetchsql($sql);
+$Shoe = $db->fetchData("SELECT parent FROM products a,categories b where a.category_id = b.id and a.id = $id");
+
 //phan trang comment
 if(isset($_GET['p']))
 {
@@ -165,7 +167,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                 </p>
                                 <!-- <p><php echo $product['content'] ?></p> -->
                                 <!-- colorrrr -->
-                                <div class="color-wrap">
+                                <?php if($Shoe['parent'] == 76): ?>
+                                    <div class="color-wrap">
+                                    <p class="color-desc">
+                                      
+                                    </p>
+                                </div>
+                                <!-- sizeeeeeeeeeeeee -->
+                                <div class="size-wrap">
+                                    <p class="size-desc">
+                                        Size:
+                                        <a href="#" class="size size-1">28</a>
+                                        <a href="#" class="size size-2">29</a>
+                                        <a href="#" class="size size-3">30</a>
+                                        <a href="#" class="size size-4">31</a>
+                                        <a href="#" class="size size-5">32</a>
+                                        <a href="#" class="size size-5">33</a>
+                                    </p>
+                                </div>
+                                <?php else: ?>
+                                    <div class="color-wrap">
                                     <p class="color-desc">
                                         Color:
                                         <a href="#" class="color color-1"></a>
@@ -187,6 +208,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                         <a href="#" class="size size-5">xxl</a>
                                     </p>
                                 </div>
+                                <?php endif ?>    
+                                
                                 <div class="row row-pb-sm">
                                     <div class="col-md-4">
                                         <div class="input-group">
@@ -196,7 +219,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                                     <i class="icon-minus2"></i>
                                                 </button>
                                             </span>
-                                            <input type="text" id="quantity" name="quantity"
+                                            <input type="number" id="quantity" name="quantity"
                                                 class="form-control input-number" value="1" min="1" max="100">
                                             <span class="input-group-btn">
                                                 <button type="button" class="quantity-right-plus btn" data-type="plus"
@@ -270,7 +293,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                         <?php endforeach ?>
 
                                     </div>
-                                    <div class="col-md-4 col-md-push-1">
+                                    <!-- <div class="col-md-4 col-md-push-1">
                                         <div class="rating-wrap">
                                             <h3>Give a Review</h3>
                                             <p class="star">
@@ -329,7 +352,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                                 <span>0 Reviews</span>
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-md-12">
                                             <ul class="pagination">

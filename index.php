@@ -130,7 +130,7 @@
                 <a href="shop.html" class="f-product-1"
                     style="background-image: url(<?php echo base_url()  ?>public/fontend/images/item-1.jpg);">
                     <div class="desc">
-                        <h2>Fashion <br>FOR <br>MEN</h2>
+                        <h2>Chỉ dành <br>Cho <br>Quý ông</h2>
                     </div>
                 </a>
             </div>
