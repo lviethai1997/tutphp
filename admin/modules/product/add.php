@@ -20,6 +20,18 @@
                 "sale" => postInput("sale"),
                 "number"=> postInput("number")
             ];
+            $data1 =
+            [
+                "name" => postInput('name'),
+                "slug" => to_slug(postInput("name")),
+                "category_id" =>postInput("category_id"),
+                "price" =>postInput("price"),
+                "price_input" =>postInput("price_input"),
+                "content"=> postInput("content"),
+                "sale" => postInput("sale"),
+                "number"=> postInput("number"),
+                "salestatus" => "1"
+            ];
             $error= [];
 
             if(postInput('name') == ''){
@@ -70,7 +82,13 @@
                        $data['thunbar'] = $file_name;
                    }
                }
-               $id_insert =$db->insert("products",$data);
+               if(postInput("sale")>0)
+               {
+                $id_insert = $db->insert("products",$data1);
+               }else{
+                $id_insert =$db->insert("products",$data);
+               }
+               
                if($id_insert)
                {
                     move_uploaded_file($file_tmp,$part.$file_name);

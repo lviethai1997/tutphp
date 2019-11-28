@@ -80,7 +80,7 @@ $open = "transaction";
                 <tr>
                     <th>Mã sản phẩm</th>
                     <th>Tên Sản phẩm</th>
-                    <th>Image</th>
+                    <th>Hình</th>
                     <th>Giá</th>
                     <th>SL Mua</th>
                 </tr>

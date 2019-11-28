@@ -10,7 +10,7 @@ $open = "transaction";
        usersaddress,users.phone as usersphone,transaction.id as madonhang,transaction.pt as pt from 
        transaction inner join orders on transaction.id = orders.transaction_id inner join 
        products on orders.product_id = products.id inner join users on users.id = transaction.users_id 
-       where transaction.id = $id";
+       where transaction.id = $id ";
     $detailsbill = $db->fetchsql($sqlbill);
     $billuser = $db->fetchData($sqlbill);
     $path = $_SERVER['SCRIPT_NAME'];

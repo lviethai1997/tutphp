@@ -71,7 +71,7 @@ $data =
     </div>
 </aside>
 
-<div id="colorlib-contact">
+<div id="colorlib-contact" style="padding-bottom: 0px;">
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -164,6 +164,6 @@ $data =
 <div id="map" class="colorlib-map">
     <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.0823778928357!2d106.7868035141065!3d10.957149858829652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d9618d754cb7%3A0x55cb22a6ed20439a!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBM4bqhYyBI4buTbmcgQ8ahIHPhu58gNQ!5e0!3m2!1svi!2s!4v1553780019403"
-        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 <?php require_once __DIR__. "/layouts/footer.php"; ?>
