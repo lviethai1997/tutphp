@@ -212,6 +212,7 @@
         config.contentsCss = ['witdh:100%;height:auto;'];
     };
     CKEDITOR.replace('content', {
+        language: 'vi',
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',

@@ -108,6 +108,7 @@
     </div>
     <script>
     CKEDITOR.replace('content', {
+        language: 'vi',
         height: '800px',
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',

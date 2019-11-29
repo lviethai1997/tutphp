@@ -131,7 +131,7 @@
         <p class="text-danger"><br><?php echo $error['thunbar'] ?></p>
         <?php endif ?>
         <br>
-        <img src="<?php echo uploads() ?>product/<?php echo $Editproduct['thunbar'] ?>" width="400px" height="400px">
+        <img id="blah" src="<?php echo uploads() ?>product/<?php echo $Editproduct['thunbar'] ?>" width="400px" height="400px"><br>
     </div>
 
     <div class="form-group">
@@ -149,6 +149,7 @@
         config.contentsCss = ['witdh:100%;height:auto;'];
     };
     CKEDITOR.replace('content', {
+        language: 'vi',
         filebrowserBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Images',
         filebrowserFlashBrowseUrl: '<?php echo base_url()?>public/ckfinder/ckfinder.html?type=Flash',
