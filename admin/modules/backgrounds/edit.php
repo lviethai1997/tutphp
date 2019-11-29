@@ -13,11 +13,6 @@
             $data =
             [
                 "name" => postInput('name'),
-                "text1" => postInput('text1'),
-                "text2" => postInput('text2'),
-                "text3" => postInput('text3'),
-                "text4" => postInput('text4'),
-                "text5" => postInput('text5'),
             ];
             $error= [];
 
@@ -84,50 +79,15 @@
     </div>
 
     <div class="form-group">
-        <label for="ten">Đoạn đầu</label>
-        <input type="text" class="form-control" id="text1" name="text1" value="<?php echo $EditBackground['text1'] ?>"
-            placeholder="Nhập đoạn đầu">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn hai</label>
-        <input type="text" class="form-control" id="text2" name="text2" value="<?php echo $EditBackground['text2'] ?>"
-            placeholder="Nhập đoạn 2">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn ba</label>
-        <input type="text" class="form-control" id="text3" name="text3" value="<?php echo $EditBackground['text3'] ?>"
-            placeholder="Nhập đoạn 3">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn tư</label>
-        <input type="text" class="form-control" id="text4" name="text4" value="<?php echo $EditBackground['text4'] ?>"
-            placeholder="Nhập đoạn 4">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn năm</label>
-        <input type="text" class="form-control" id="text5" name="text5" value="<?php echo $EditBackground['text5'] ?>"
-            placeholder="Nhập đoạn 5">
-        <?php 
-    if(isset($error['text5'])): ?>
-        <p class="text-danger"><br><?php echo $error['text5'] ?></p>
-        <?php endif ?>
-    </div>
-
-
-    <div class="form-group">
         <label for="thunbar">Hình ảnh</label>
-        <input type="file" class="form-control" id="image" name="image">
+        <input type="file" class="form-control" id="thunbar" name="image">
+        <br>
+        <img id="blah" src="<?php echo uploads() ?>background/<?php echo $EditBackground['image'] ?>" width="1000px"
+            height="700px">
         <?php
     if(isset($error['image'])): ?>
         <p class="text-danger"><br><?php echo $error['image'] ?></p>
         <?php endif ?>
-        <br>
-        <img src="<?php echo uploads() ?>background/<?php echo $EditBackground['image'] ?>" width="1000px"
-            height="700px">
     </div>
 
 

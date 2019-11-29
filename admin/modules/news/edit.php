@@ -80,7 +80,7 @@
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Cập nhật bài viết</h1>
+        <h1 class="page-header">Cập nhật tin tức</h1>
     </div>
     <!-- /.col-lg-12 -->
     <div class="clearfix"></div>
@@ -124,7 +124,7 @@
   if(isset($error['image_news'])): ?>
         <p class="text-danger"><br><?php echo $error['image_news'] ?></p>
         <?php endif ?>
-        <img src="<?php echo uploads() ?>news/<?php echo $news['image_news'] ?>" width="400px" height="400px">
+        <img id="blah" src="<?php echo uploads() ?>news/<?php echo $news['image_news'] ?>" width="400px" height="400px">
     </div>
 
     <div class="form-group">

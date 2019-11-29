@@ -19,6 +19,7 @@ if( !isset( $check_view ) )
 
 //chi tiet san pham
 $product = $db->fetchID("products",$id);
+
 //lay danh muc sp
 $cateid =intval($product['category_id']);
 $catesale = $db->fetchID("categories",$cateid);

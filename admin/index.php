@@ -240,7 +240,7 @@ var config = {
                 backgroundColor: window.chartColors.blue,
                 borderColor: window.chartColors.blue,
                 data: [
-                    50000, 0, 05555, 0, 0333333, 0, 0, 01111111, 0, 0, 0, 0
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                 ],
             }
         ]

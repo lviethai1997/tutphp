@@ -7,15 +7,10 @@
             $data =
             [
                 "name" => postInput('name'),
-                "text1" => postInput('text1'),
-                "text2" => postInput('text2'),
-                "text3" => postInput('text3'),
-                "text4" => postInput('text4'),
-                "text5" => postInput('text5'),
             ];
             $error= [];
             if(postInput('name') == ''){
-                $error['name']= "Không thể bỏ trống tên sản phẩm!!";
+                $error['name']= "Không thể bỏ trống tên background!!";
             }
             if(!isset($_FILES['image']))
             {
@@ -39,14 +34,14 @@
                $id_insert =$db->insert("background",$data);
                if($id_insert)
                {
-                    resize_image($file_tmp, 1400, 768);
+                    // resize_image($file_tmp, 1400, 768);
                     move_uploaded_file($file_tmp,$part.$file_name);
                     
-                   $_SESSION['success'] =" Thêm sản phẩm thành công!!";
+                   $_SESSION['success'] =" Thêm background thành công!!";
                    redirectAdmin("backgrounds");
                }else
                {
-                    $_SESSION['error'] =" Thêm sản phẩm thất bại!!";
+                    $_SESSION['error'] =" Thêm background thất bại!!";
                     redirectAdmin("backgrounds");
                }
             }
@@ -62,6 +57,7 @@
     <?php require_once __DIR__. "/../../../partials/notification.php"; ?>
 </div>
 <form action="" method="POST" enctype="multipart/form-data">
+
     <div class="form-group">
         <label for="ten">Tên Background</label>
         <input type="text" class="form-control" id="ten" name="name" placeholder="Nhập tên sản phẩm">
@@ -72,37 +68,9 @@
     </div>
 
     <div class="form-group">
-        <label for="ten">Đoạn đầu</label>
-        <input type="text" class="form-control" id="text1" name="text1" placeholder="Nhập đoạn đầu">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn hai</label>
-        <input type="text" class="form-control" id="text2" name="text2" placeholder="Nhập đoạn 2">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn ba</label>
-        <input type="text" class="form-control" id="text3" name="text3" placeholder="Nhập đoạn 3">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn tư</label>
-        <input type="text" class="form-control" id="text4" name="text4" placeholder="Nhập đoạn 4">
-    </div>
-
-    <div class="form-group">
-        <label for="ten">Đoạn năm</label>
-        <input type="text" class="form-control" id="text5" name="text5" placeholder="Nhập đoạn 5">
-        <?php 
-    if(isset($error['text5'])): ?>
-        <p class="text-danger"><br><?php echo $error['text5'] ?></p>
-        <?php endif ?>
-    </div>
-
-    <div class="form-group">
         <label for="thunbar">Hình ảnh</label>
-        <input type="file" class="form-control" id="image" name="image">
+        <input type="file" class="form-control" id="thunbar" name="image"><br>
+        <img id="blah" width="1000px" height="700px"  src="#" alt="" />
         <?php
     if(isset($error['image'])): ?>
         <p class="text-danger"><br><?php echo $error['image'] ?></p>

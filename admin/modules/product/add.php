@@ -179,7 +179,8 @@
 
     <div class="form-group">
         <label for="thunbar">Hình ảnh</label>
-        <input type="file" class="form-control" id="thunbar" name="thunbar">
+        <input type="file" class="form-control" id="thunbar" name="thunbar"><br>
+        <img id="blah" style='width:350px;height:350px'  src="#" alt="" />
         <?php
     if(isset($error['thunbar'])): ?>
         <p class="text-danger"><br><?php echo $error['thunbar'] ?></p>
@@ -206,6 +207,7 @@
     });
     </script>
     <button type="submit" class="btn btn-primary">Xác Nhận</button>
+    
 </form>
 
 

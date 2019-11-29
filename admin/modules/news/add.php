@@ -90,7 +90,8 @@
 
     <div class="form-group">
         <label for="thunbar">Hình ảnh bài viết</label>
-        <input type="file" class="form-control" id="thunbar" name="image_news">
+        <input type="file" class="form-control" id="thunbar" name="image_news"><br>
+        <img id="blah" style='width:350px;height:350px'  src="#" alt="" />
         <?php
     if(isset($error['image_news'])): ?>
         <p class="text-danger"><br><?php echo $error['image_news'] ?></p>

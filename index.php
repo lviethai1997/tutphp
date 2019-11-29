@@ -70,14 +70,14 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-md-pull-2 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner">
-                                <div class="desc">
-                                    <h1 class="head-1"><?php echo $item['text1'] ?></h1>
-                                    <h2 class="head-2"><?php echo $item['text2'] ?></h2>
-                                    <h2 class="head-3"><?php echo $item['text3'] ?></h2>
+                                 <!-- <div class="desc">
+                                    <h1 class="head-1"><php echo $item['text1'] ?></h1>
+                                    <h2 class="head-2"><php echo $item['text2'] ?></h2>
+                                    <h2 class="head-3"><php echo $item['text3'] ?></h2>
                                     <p class="category">
-                                        <span><?php echo $item['text4'] ?><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>
-                                                <?php echo $item['text5'] ?></strong></span></p>
-                                </div>
+                                        <span><php echo $item['text4'] ?><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>
+                                                <php echo $item['text5'] ?></strong></span></p>
+                                </div> -->
                             </div>
                         </div>
                     </div>

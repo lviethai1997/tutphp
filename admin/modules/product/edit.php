@@ -188,13 +188,13 @@
 
     <div class="form-group">
         <label for="thunbar">Hình ảnh</label>
-        <input type="file" class="form-control" id="thunbar" name="thunbar">
+        <input type="file" class="form-control" id="thunbar" name="thunbar"><br>
         <?php
     if(isset($error['thunbar'])): ?>
         <p class="text-danger"><br><?php echo $error['thunbar'] ?></p>
         <?php endif ?>
-        <br>
-        <img src="<?php echo uploads() ?>product/<?php echo $Editproduct['thunbar'] ?>" width="400px" height="400px">
+        <!-- <img id="blah" style='width:350px;height:350px'  src="#" alt="" /> -->
+        <img id="blah" src="<?php echo uploads() ?>product/<?php echo $Editproduct['thunbar'] ?>" width="350px" height="350px">
     </div>
 
     <div class="form-group">

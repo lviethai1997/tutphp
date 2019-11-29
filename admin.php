@@ -8,8 +8,8 @@
 	$error= [];
 	$data= 
 	[
-            "email" => postInput("email"),
-            "password" => postInput("password"),
+        "email" => postInput("email"),
+        "password" => postInput("password"),
 	];
 
 	if($_SERVER['REQUEST_METHOD']== "POST")

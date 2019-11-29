@@ -14,7 +14,6 @@ unset($_SESSION['total']);
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
                                 <h1>Đặt hàng thành công!!</h1>
-
                             </div>
                         </div>
                     </div>

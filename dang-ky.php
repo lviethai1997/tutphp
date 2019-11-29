@@ -15,11 +15,11 @@
 	}
 	$data= 
 	[
-			"name" => postInput("name"),
-            "email" => postInput("email"),
-            "address" =>postInput("address"),
-            "password" =>MD5(postInput("password")),
-            "phone"=> postInput("phone"),
+        "name" => postInput("name"),
+        "email" => postInput("email"),
+        "address" =>postInput("address"),
+        "password" =>MD5(postInput("password")),
+        "phone"=> postInput("phone")
 	];
 
 	$error =[];
@@ -38,10 +38,6 @@
 				$error['email']= " Email này đã tồn tại, vui lòng chọn Email khác !!";
 			}
 		}
-
-		
-
-		   
 		$captcha = postInput('g-recaptcha-response');
 		 if(!$captcha){
 			$error['g-recaptcha-response']= " Xin xác nhận CAPTCHA!";
