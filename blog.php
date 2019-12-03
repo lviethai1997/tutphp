@@ -15,7 +15,7 @@ if( !isset( $check_view ) )
 	// Thực hiện cập nhật lượt xem, cộng dồn thêm 1
     $db->updateview(" UPDATE news SET views = views + 1 WHERE id = $id ");
 }
-$sqlnews ="SELECT news.*,news.title as title,news.content as content,news.contentmini as contentmini,admin.name as ten,date_format(news.updated_at, '%d-%m-%Y') as ngay from news inner join admin on news.id_admin = admin.id where news.id = $id";
+$sqlnews ="SELECT news.*,views,news.title as title,news.content as content,news.contentmini as contentmini,admin.name as ten,date_format(news.updated_at, '%d-%m-%Y') as ngay from news inner join admin on news.id_admin = admin.id where news.id = $id";
 $news = $db->fetchData($sqlnews);
 ?>
 
@@ -62,7 +62,8 @@ $news = $db->fetchData($sqlnews);
                     <h2><?php echo $news['title'] ?></h2>
                     <p class="admin"><span>Đăng bởi:</span>
                         <span><?php echo $news['ten'] ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;Đăng lúc: <?php echo $news['ngay'] ?></span></p>
+                            &nbsp;&nbsp;Đăng lúc: <?php echo $news['ngay'] ?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;<span>Số lượt xem: <?php echo $news['views'] ?></span></p>
                     <hr>
                     <h4><b><?php echo $news['contentmini'] ?></b></h4>
                     <div class="row">

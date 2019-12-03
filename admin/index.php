@@ -192,7 +192,7 @@
             </div>
             <a href="<?php echo modules('transaction') ?>">
                 <div class="panel-footer">
-                    <span style="color: #6f3c76;text-transform" class="pull-left">Các đơn hàng đang SHIP</span>
+                    <span style="color: #6f3c76" class="pull-left">Các đơn hàng đang SHIP</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -233,16 +233,16 @@ var config = {
                     <?php echo($Revenue12['thang12']) ?>
                 ],
                 fill: false,
-            },
-            {
-                label: 'Some thing else',
-                fill: false,
-                backgroundColor: window.chartColors.blue,
-                borderColor: window.chartColors.blue,
-                data: [
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                ],
             }
+            // {
+            //     label: 'Some thing else',
+            //     fill: false,
+            //     backgroundColor: window.chartColors.blue,
+            //     borderColor: window.chartColors.blue,
+            //     data: [
+            //         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+            //     ],
+            // }
         ]
     },
     options: {

@@ -27,9 +27,8 @@
     <div class="container">
         <div class="row row-pb-md">
             <div class="col-md-3 colorlib-widget">
-                <h4>ABOUT STORE</h4>
-                <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci
-                    architecto culpa amet.</p>
+                <h4>Giới Thiệu</h4>
+                <p>Xin chào các bạn, mình tên là Lê Viết Hải học sinh lớp 15SE112.</p>
                 <p>
                     <ul class="colorlib-social-icons">
                         <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -78,7 +77,7 @@
                     <li>ĐẠI HỌC LẠC HỒNG <br> BỬU LONG, ĐỒNG NAI</li>
                     <li><a href="tel://1234567920">0958156548</a></li>
                     <li><a href="mailto:info@yoursite.com">lviethai1997@gmail.com</a></li>
-                    <li><a href="#">ádasd.com</a></li>
+                    <li><a href="#">Lhu.edu.vn</a></li>
                 </ul>
             </div>
         </div>
@@ -87,7 +86,6 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <p>
-
                     <span class="block">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>

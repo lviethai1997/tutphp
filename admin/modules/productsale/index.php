@@ -113,9 +113,15 @@
 
                                             <td>
                                                 <ul>
-                                                    <li>Giá nhập : <?php echo formatPrice($item['price_input']) ?></li>
+                                                <?php 
+                                                    $idcount = $item['id'];
+                                                    $sqlProductSell = " select count(*) as countsell from orders a,transaction b where a.transaction_id = b.id and b.ship = 2 and a.product_id = $idcount ";
+                                                    $getProductSell = $db->fetchData($sqlProductSell);
+                                                ?>
+                                                    <!-- <li>Giá nhập : <php echo formatPrice($item['price_input']) ?></li> -->
                                                     <li>Giá bán: <?php echo formatPrice($item['price']) ?></li>
                                                     <li>khuyến mãi : <?php echo $item['sale'] ?>%</li>
+                                                    <li>Đã bán được: <?php echo $getProductSell['countsell'] ?> </li>
                                                     <li>Số lượng :
                                                         <?php if($item['number']<=0){ echo "<b>Hết hàng</b>"; }else{echo $item['number'];}?>
                                                     </li>

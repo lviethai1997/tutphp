@@ -55,7 +55,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                         <p class="admin"><span>Đăng bởi:</span> <span><?php echo $item['ten'] ?></span></p>
                         <h2><a href="blog.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['title'] ?></a></h2>
                         <p><?php echo $item['contentmini'] ?></p>
-                        <p><?php echo $item['month'] ?></p>
+                        <!-- <p><php echo $item['month'] ?></p> -->
                     </div>
                 </article>
             </div>

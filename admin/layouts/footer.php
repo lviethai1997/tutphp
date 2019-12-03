@@ -27,24 +27,21 @@
 
                 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
                 <script>
-$(document).ready(function() {
-    $('#dataTables-example').DataTable({
-        responsive: true
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
     });
-});
 
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
-    
     reader.onload = function(e) {
       $('#blah').attr('src', e.target.result);
     }
-    
     reader.readAsDataURL(input.files[0]);
   }
 }
-
 $("#thunbar").change(function() {
   readURL(this);
 });
@@ -69,8 +66,8 @@ $('#exampleModal').on('show.bs.modal', function(event) {
         }
     });
 })
-                </script>
+</script>
 
-                </body>
+</body>
 
-                </html>
+</html>
