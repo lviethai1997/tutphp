@@ -64,7 +64,7 @@
         <ul class="slides">
             <?php	foreach($fetchBackground as $item): ?>
             <li
-                style="background-size: 100% 100% !important;background-image: url(<?php echo uploads() ?>background/<?php echo $item['image'] ?>">
+                style="background-size: 100% 100% !important;background-image: url(<?php echo uploads() ?>background/<?php echo $item['image'] ?>)">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -194,7 +194,7 @@
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
-                                <span><a href="#"><i class="icon-heart3"></i></a></span>
+                                <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-bar-chart"></i></a></span>
                             </p>
                         </div>
@@ -284,7 +284,7 @@
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
-                                <span><a href="#"><i class="icon-heart3"></i></a></span>
+                                            <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
                             </p>
                         </div>
@@ -340,7 +340,7 @@
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
-                                <span><a href="#"><i class="icon-heart3"></i></a></span>
+                                            <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
                             </p>
                         </div>
