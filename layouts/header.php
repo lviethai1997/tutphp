@@ -199,6 +199,7 @@
                                     <ul class="dropdown" style="top:20px;">
                                         <li><a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>">Thông Tin</a>
                                         </li>
+                                        <li><a href="san-pham-yeu-thich.php">Yêu Thích</a>
                                         <li><a href="thoat.php"><b>Thoát</b></a></li>
                                     </ul>
                                 </li>

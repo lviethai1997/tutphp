@@ -99,7 +99,7 @@
                                             <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a> &emsp;
-                                                <!-- <a class="btn btn-xs btn-danger fa fa-edit" href="delete.php?id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp; -->
+                                                <!-- <a class="btn btn-xs btn-danger fa fa-edit" href="delete.php?id=<php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a> &emsp; -->
                                                 <a href="#" id="<?php echo $item['id'] ?>"
                                                     class="btn btn-xs btn-danger fa fa-trash trash"> Xóa</a>
                                             </td>
