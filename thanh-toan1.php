@@ -9,10 +9,10 @@
 
     $data= 
 	[
-			"name" => postInput("name"),
-            "email" => postInput("email"),
-            "address" =>postInput("address"),
-            "phone"=> postInput("phone"),
+        "name" => postInput("name"),
+        "email" => postInput("email"),
+        "address" =>postInput("address"),
+        "phone"=> postInput("phone")
            
 	];
     $error =[];
