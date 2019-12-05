@@ -193,13 +193,14 @@
 									echo "0";
 								} ?>]</b></a></li>
                                 <?php if(isset($_COOKIE['name_user'])): ?>
-                                <li class="has-dropdown">
+                                <li class="has-dropdown" >
                                     <a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>"><b>Xin chào:
                                             <?php echo getLastName($_COOKIE['name_user']) ?></b></a>
                                     <ul class="dropdown" style="top:20px;">
                                         <li><a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>">Thông Tin</a>
                                         </li>
-                                        <li><a href="san-pham-yeu-thich.php">Yêu Thích</a>
+                                        <li><a href="san-pham-yeu-thich.php">Yêu Thích</a></li>
+                                        <li><a href="danh-sach-don-hang.php">Đơn hàng</a></li>
                                         <li><a href="thoat.php"><b>Thoát</b></a></li>
                                     </ul>
                                 </li>

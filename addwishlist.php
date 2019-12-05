@@ -4,10 +4,10 @@
     $product_id =intval(getInput('id'));
     if(isset($_COOKIE['name_id']))
     {
-        $is_check = $db->fetchOne("wishlist"," product_id = $product_id ");
+        $user_id = intval($_COOKIE['name_id']);
+        $is_check = $db->fetchOne("wishlist"," product_id = $product_id and user_id = $user_id ");
         if($is_check==null)
         {
-            $user_id = intval($_COOKIE['name_id']);
             $data =
             [
                 "user_id" => $user_id,

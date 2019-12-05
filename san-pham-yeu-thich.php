@@ -256,7 +256,7 @@ $path = $_SERVER['SCRIPT_NAME'];
 $(".deletewishlist").click(function() {
     var id = $(this).attr('id');
     var $ele = $(this).parent().parent().parent().parent().parent().parent();
-    if (confirm("Are you sure about this ?")) {
+    // if (confirm("Are you sure about this ?")) {
         $.ajax({
             type: "POST",
             url: "deletewishlist.php",
@@ -267,7 +267,7 @@ $(".deletewishlist").click(function() {
                 $ele.fadeOut().remove();
             }
         });
-    }
+    // }
     return false;
 });
 </script>

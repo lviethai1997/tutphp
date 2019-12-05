@@ -4,7 +4,7 @@ require_once __DIR__. "/autoload/autoload.php";
 if(isset($_COOKIE['name_id']))
 {
     $user_id = $_COOKIE['name_id'];
-    $sqllist = " SELECT a.id as id,a.amount as amount,a.created_at as tao,a.updated_at as capnhat,a.ship as ship FROM transaction a,users b where a.users_id = b.id and b.id = $user_id ";
+    $sqllist = " SELECT a.id as id,a.amount as amount,a.created_at as tao,a.updated_at as capnhat,a.ship as ship FROM transaction a,users b where a.users_id = b.id and b.id = $user_id order by a.id desc";
     $fechsqllist = $db->fetchsql($sqllist);
     
 }else{
@@ -71,51 +71,38 @@ if(isset($_COOKIE['name_id']))
             <td scope="row"><span class="price"><?php echo $item["tao"] ?></span></td>
             <td scope="row"><span class="price"><?php if($item['ship'] ==1){ echo $item['capnhat']; }else{ echo 'Chưa giao'; } ?></span></td>
             <td scope="row"> <span class="price"><?php echo formatPrice($item['amount']) ?></span></td>
-            <td scope="row"><a href="#" id="<?php $item['id'] ?>" class="push">click</a> </td>
+            <td scope="row">
+                <a class=" btn btn-xs btn-info fa fa-info " data-toggle="modal"
+                    data-target="#exampleModal"
+                    data-whatever=<?php echo '"'.$item['id'].' " '?>> Xem</a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="memberModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                    data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span
+                                        class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="memberModalLabel">Chi Tiết
+                                    Đơn Hàng </h4>
+                            </div>
+                            <div class="dash">
+                                <!-- Content goes in here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
             <td scope="row"><span class="price"><?php if($item['ship'] ==1){echo "Đang ship";}else if($item['ship']==2){echo "Đã hoàn thành";}else{ echo "Chưa xử lý";}  ?>  <span></td>
             </tr>
             <?php endforeach ?>
         </tbody>
         </table>
-        <!-- <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="total-wrap">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <form action="#">
-                                <h1>Giỏ hàng của bạn đang rỗng!</h1>
-                                <h3>Nếu bạn đã cố gắng thêm sản phảm vào giỏ hàng nhưng giỏ hàng vẫn rỗng, có lẽ do
-                                    trình duyệt web
-                                    của bạn đã tắt chức năng lưu Cookies. Vui lòng kiểm tra cấu hình của trình duyệt web
-                                    để đảm bảo rằng
-                                    trình duyệt web của bạn hỗ trợ tốt chức năng lưu Cookies.</h3>
-                            </form>
-                        </div>
-                        <div class="col-md-3 col-md-push-1 text-center">
-                            <div class="total">
-                                <div class="sub">
-                                    <p><span>Tổng Tiền:</span><span>0</span></p>
-                                    <p><span>VAT 10%:</span> <span>0%</span></p>
-                                    <p><span>Giảm Giá:</span> <span>0%</span></p>
-                                </div>
-                                <div class="grand-total">
-                                    <p><span><strong>Tổng tiền thanh toán:</strong></span> <span>0</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>
-<div class="modal-body">  
 
-<div class="something" style="display:none;">
-       // here you can show your output dynamically 
-</div>
-</div>
-</div>
+
 <div class="colorlib-shop">
     <div class="container">
         <div class="row">
@@ -178,26 +165,27 @@ if(isset($_COOKIE['name_id']))
     </div>
 </div>
 </div>
-<script>
-$(function(){
 
-$('.push').click(function(){
-   var essay_id = $(this).attr('id');
+<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<script>
+$('#exampleModal').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    var modal = $(this);
+    var dataString = 'id=' + recipient;
 
     $.ajax({
-       type : 'post',
-        url : 'danh-sach-don-hang.php', // in here you should put your query 
-       data :  'post_id='+ essay_id, // here you pass your id via ajax .
-                  // in php you should use $_POST['post_id'] to get this value 
-    success : function(r)
-        {
-           // now you can show output in your modal 
-           $('#mymodal').show();  // put your modal id 
-          $('.something').show().html(r);
+        type: "GET",
+        url: "chi-tiet-don-hang.php",
+        data: dataString,
+        cache: false,
+        success: function(data) {
+            console.log(data);
+            modal.find('.dash').html(data);
+        },
+        error: function(err) {
+            console.log(err);
         }
- });
-
-});
-});
+    });
+})
 </script>
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
