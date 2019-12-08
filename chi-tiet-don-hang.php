@@ -9,10 +9,6 @@ require_once __DIR__. "/autoload/autoload.php";
     $DetailsTran = $db->fetchsql($sqlDetails);
     // $path = $_SERVER['SCRIPT_NAME'];
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,11 +67,21 @@ require_once __DIR__. "/autoload/autoload.php";
         background-color: #4CAF50;
         color: white;
     }
+     body {
+    padding-right:0 !important;
+    overflow-x: hidden;
+    }
+
+    .modal-open {
+    overflow:auto;
+    padding-right:0 !important;
+    overflow-x: hidden;
+    }
     </style>
 </head>
 
-<body>
-    <form method="post" action="chi-tiet-don-hang.php" role="form">
+<body style="padding-right: 0px !important;">
+    <form method="post" action="#" role="form">
         <div class="modal-body">
             <table id="customers">
                 <tr>

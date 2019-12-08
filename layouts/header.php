@@ -60,6 +60,7 @@
 	<![endif]-->
 </head>
 <style>
+    
 .colorlib-nav-toggle{
    top: 5px !important;
 }
@@ -148,6 +149,18 @@
         right: -135px;
     }
 }
+body {
+  padding-right:0 !important;
+  overflow-x: hidden;
+}
+
+.modal-open {
+    overflow-x: hidden;
+  overflow:auto;
+  padding-right:0 !important;
+}
+
+
 </style>
 
 <body>

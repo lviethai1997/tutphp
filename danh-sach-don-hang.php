@@ -52,7 +52,6 @@ if(isset($_COOKIE['name_id']))
                 </div>
             </div>
         </div>
-
         <table class="table table-hover">
         <thead>
             <tr>
@@ -69,7 +68,7 @@ if(isset($_COOKIE['name_id']))
             <tr>
             <td scope="row"><span class="price"><?php echo $item["id"] ?></span></td>
             <td scope="row"><span class="price"><?php echo $item["tao"] ?></span></td>
-            <td scope="row"><span class="price"><?php if($item['ship'] ==1){ echo $item['capnhat']; }else{ echo 'Chưa giao'; } ?></span></td>
+            <td scope="row"><span class="price"><?php if($item['ship'] != 0){ echo $item['capnhat']; }else{ echo 'Chưa giao'; } ?></span></td>
             <td scope="row"> <span class="price"><?php echo formatPrice($item['amount']) ?></span></td>
             <td scope="row">
                 <a class=" btn btn-xs btn-info fa fa-info " data-toggle="modal"
@@ -94,14 +93,13 @@ if(isset($_COOKIE['name_id']))
                     </div>
                 </div>
             </td>
-            <td scope="row"><span class="price"><?php if($item['ship'] ==1){echo "Đang ship";}else if($item['ship']==2){echo "Đã hoàn thành";}else{ echo "Chưa xử lý";}  ?>  <span></td>
+            <td scope="row"><span class="price"><?php if($item['ship'] ==1){echo "Đang ship";}else if($item['ship']==2){echo "Đã hoàn thành";}else{ echo "Chưa xử lý";}  ?><span></td>
             </tr>
             <?php endforeach ?>
         </tbody>
         </table>
     </div>
 </div>
-
 
 <div class="colorlib-shop">
     <div class="container">
@@ -168,6 +166,7 @@ if(isset($_COOKIE['name_id']))
 
 <?php require_once __DIR__. "/layouts/footer.php"; ?>
 <script>
+    
 $('#exampleModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
