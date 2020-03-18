@@ -3,7 +3,12 @@
     /**
     * debug
     **/
-   
+    function base_url()
+    {
+        // return $url  = "http://codedoan.com/"; 
+        return $url  = "http://198.1.1.97:8000/tutphp/"; 
+    }
+
 
     function _debug($data) {
 
@@ -100,12 +105,7 @@
 
 
 
-    function base_url()
-    {
-        // return $url  = "http://codedoan.com/"; 
-        return $url  = "http://localhost:8080/tutphp/"; 
-    }
-
+  
 
     function public_admin()
     {

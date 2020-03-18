@@ -132,8 +132,8 @@
                                             </td>
                                             <td class="text-center"><?php echo $item['cate'] ?></td>
                                             <td class="text-center">
-                                                <a href="salestatus.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['salestatus'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                <a id="<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php echo $item['salestatus'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
                                                     <?php echo $item['salestatus'] == 1 ? 'Khuyến mãi' : ' Không ' ?>
                                                 </a>
                                             </td>
@@ -198,4 +198,26 @@ $(".trash").click(function() {
     }
     return false;
 });
+
+$('.changestatus').click(function(){
+    var id = $(this).attr('id');
+    var clss = $(this).attr('class');
+
+    if(clss =='btn btn-xs btn-default changestatus')
+    {
+        $(this).attr('class','btn btn-xs btn-info changestatus');
+        $(this).html(' Khuyến mãi ');
+    }else{
+        $(this).attr('class','btn btn-xs btn-default changestatus');
+        $(this).html(' Không ');
+    }
+    $.ajax({
+        type: "GET",
+        url: "salestatus.php",
+        data:{
+            'id': id
+        },
+    })
+    return false;
+})
 </script>

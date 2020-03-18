@@ -3,6 +3,7 @@
     require_once __DIR__. "/../../autoload/autoload.php";
 
     $id = intval(getInput('id'));
+    
     $sqlGetsale ="SELECT sale FROM products where id = $id limit 1";
     $Getsale = $db->fetchData($sqlGetsale);
     $EditCategory = $db->fetchID("products",$id);

@@ -67,13 +67,13 @@ $path = $_SERVER['SCRIPT_NAME'];
 <div class="colorlib-shop">
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-push-2">
+            <div class="col-md-15 col-md-push-2">
                 <div class="row row-pb-lg">
                     <?php if(empty($keyword) || empty($product)):?>
                     <p>Không tìm thấy sản phẩm nào cả !!</p>
                     <?php else :?>
                     <?php foreach($product as $item ): ?>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-3 text-center">
                         <div class="product-entry">
                             <div class="product-img"
                                 style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
@@ -122,7 +122,6 @@ $path = $_SERVER['SCRIPT_NAME'];
                         </div>
                     </div>
                     <?php endforeach ?>
-
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -140,7 +139,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                 </div>
             </div>
 
-            <div class="col-md-2 col-md-pull-10">
+            <!-- <div class="col-md-2 col-md-pull-10">
                 <div class="sidebar">
 
                     <div class="side">
@@ -206,7 +205,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@
             redirectAdmin("user");
         }
         $num =$db->delete("users",$id);
+        
         if($num >0)
         {
             $_SESSION['success'] = "Xóa người dùng Thành công!!";
