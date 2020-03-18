@@ -101,8 +101,8 @@
                                             <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
-                                                <br><a href="status.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                <br><a href="#" id="<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
                                                     <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a><br>
                                                 <!-- <a class="btn btn-xs btn-danger fa fa-trash" href="delete.php?id=<php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')"> Xóa</a> &emsp; -->
@@ -154,4 +154,29 @@ $(".trash").click(function() {
     }
     return false;
 });
+
+$('.changestatus').click(function(){
+    var id = $(this).attr('id');
+    var clss = $(this).attr('class');
+
+    if(clss =='btn btn-xs btn-default changestatus')
+    {
+        $(this).attr('class','btn btn-xs btn-info changestatus');
+        $(this).html(' Hiển thị ');
+    }else{
+        $(this).attr('class','btn btn-xs btn-default changestatus');
+        $(this).html(' Không ');
+    }
+    $.ajax({
+        type: "GET",
+        url: "status.php",
+        data:{
+            'id': id
+        },
+        success: function(){
+            toastr.success('Change success!')
+        }
+    })
+    return false;
+})
 </script>

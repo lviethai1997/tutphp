@@ -91,8 +91,8 @@
                                             <td><?php echo $item['slug'] ?></td>
                                             <td><?php echo $item['salecat'] ?></td>
                                             <td>
-                                                <a href="home.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                <a href="" id="<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
                                                     <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a>
                                             </td>
@@ -117,8 +117,8 @@
                                             <td><?php echo $child['slug'] ?></td>
                                             <td><?php echo $child['salecat'] ?></td>
                                             <td>
-                                                <a href="home.php?id=<?php echo $child['id'] ?>"
-                                                    class="btn btn-xs <?php echo $child['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                <a href="#" id="<?php echo $child['id'] ?>"
+                                                    class="btn btn-xs <?php echo $child['status'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
                                                     <?php echo $child['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a>
                                             </td>
@@ -164,3 +164,32 @@
     <!-- /.col-lg-12 -->
 </div>
 <?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+
+<script>
+
+$('.changestatus').click(function(){
+    var id = $(this).attr('id');
+    var clss = $(this).attr('class');
+
+    if(clss =='btn btn-xs btn-default changestatus')
+    {
+        $(this).attr('class','btn btn-xs btn-info changestatus');
+        $(this).html(' Hiển thị ');
+    }else{
+        $(this).attr('class','btn btn-xs btn-default changestatus');
+        $(this).html(' Không ');
+    }
+    $.ajax({
+        type: "GET",
+        url: "home.php",
+        data:{
+            'id': id
+        },
+        success: function(){
+            toastr.success('Change success!')
+        }
+    })
+    return false;
+})
+
+</script>
