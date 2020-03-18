@@ -15,6 +15,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>public/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="<?php echo base_url() ?>public/admin/toastjs/toastr.min.css" rel="stylesheet"/>
+
     <!-- MetisMenu CSS -->
     <link href="<?php echo base_url() ?>public/admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -34,7 +36,8 @@
     <script src="<?php echo base_url()?>public/admin/vendor/chart/Chart.min.js"></script>
     <script src="<?php echo base_url()?>public/admin/vendor/chart/utils.js"></script>
     <script src="<?php echo base_url()?>public/ckfinder/ckfinder.js"></script>
-
+    
+    <script src="<?php echo base_url() ?>public/admin/toastjs/toastr.min.js"></script>
     <!-- Custom Fonts -->
     <link href="<?php echo base_url() ?>public/admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet"
         type="text/css">

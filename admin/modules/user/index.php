@@ -157,6 +157,9 @@ $('.changestatus').click(function(){
         data:{
             'id': id
         },
+        success: function(){
+            toastr.success('Change success!')
+        }
     })
     return false;
 })
@@ -172,6 +175,7 @@ $(".trash").click(function() {
                 'id': id
             },
             success: function() {
+                toastr.warning('Delete success!')
                 $ele.fadeOut().remove();
             }
         });
