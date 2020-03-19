@@ -1,30 +1,28 @@
-<?php 
-        $open = "backgrounds";
-        require_once __DIR__. "/../../autoload/autoload.php";
-        $background = $db->fetchAll('background');
-        if(isset($_POST["CheckBoxDelete"]))
-        {
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("background","id= '".$del_id."'");
-            }
-            if($num>0){
-                $_SESSION['success'] = "Xóa Background thành công";
-                redirectAdmin("backgrounds");
-            }else{
-                $_SESSION['error'] = "Xóa Background thất bại!!";
-                redirectAdmin("backgrounds");
-            }
-            
-        }else if(isset($_POST["DeleteAll"]))
-        {
-            $deleteAllRow = $db->DeleteAll("background");
-            $_SESSION['success'] = "Xóa tất cả các Background thành công";
-            redirectAdmin("backgrounds");
-        }
+<?php
+$open = "backgrounds";
+require_once __DIR__ . "/../../autoload/autoload.php";
+$background = $db->fetchAll('background');
+if (isset($_POST["CheckBoxDelete"])) {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("background", "id= '" . $del_id . "'");
+    }
+    if ($num > 0) {
+        $_SESSION['success'] = "Xóa Background thành công";
+        redirectAdmin("backgrounds");
+    } else {
+        $_SESSION['error'] = "Xóa Background thất bại!!";
+        redirectAdmin("backgrounds");
+    }
+
+} else if (isset($_POST["DeleteAll"])) {
+    $deleteAllRow = $db->DeleteAll("background");
+    $_SESSION['success'] = "Xóa tất cả các Background thành công";
+    redirectAdmin("backgrounds");
+}
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Quản Lý Background</h1>
@@ -35,7 +33,7 @@
 
 <div class="clearfix">
 </div>
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 <div>
     <a class="btn btn btn-success" href="add.php">Thêm mới Background</a><br><br>
 </div>
@@ -86,7 +84,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($background as $item) : ?>
+                                        <?php $stt = 1;foreach ($background as $item): ?>
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
@@ -98,14 +96,14 @@
                                             </td>
                                             <td style="text-align:center">
                                                 <a href="status.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                    class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info' : 'btn-default' ?>">
                                                     <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a>
                                             </td>
                                             <td style="text-align:center">
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
-                                                <!-- <br><a href="status.php?id=<php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                <!-- <br><a href="status.php?id=<php echo $item['id'] ?>" class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info' : 'btn-default' ?>">
                                             <php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                             </a><br> -->
                                                 <!-- <a class="btn btn-xs btn-danger fa fa-trash" href="delete.php?id=<php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')"> Xóa</a> &emsp; -->
@@ -113,7 +111,7 @@
                                                     class="btn btn-xs btn-danger fa fa-trash trash">Xóa</a>
                                             </td>
                                         </tr>
-                                        <?php $stt++ ;endforeach  ?>
+                                        <?php $stt++;endforeach?>
                                     </tbody>
                                 </table>
                             </div>
@@ -141,7 +139,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 <script>
 $(".trash").click(function() {
     var id = $(this).attr('id');

@@ -1,120 +1,111 @@
-<?php require_once __DIR__. "/autoload/autoload.php"; 
+<?php require_once __DIR__ . "/autoload/autoload.php";
 error_reporting(0);
 
 $arr = explode("/", getInput("id"), 2);
 $id = intval($arr[0]);
 
 // Khởi tạo tên session là chuỗi gồm tên chức năng và id bài viết, mục đích tránh trùng ID với những chức năng khác, bạn có thể thêm một giá trị nào đó, để chắc chắn chuỗi này không bao giờ trùng với mỗi chuỗi nào khác.
-$session_countview = "CountviewProduct". $id;
+$session_countview = "CountviewProduct" . $id;
 
 // Lấy giá trị session.
 $check_view = $_SESSION[$session_countview];
-if( !isset( $check_view ) )
-{
-	// Gán giá trị session
-	$_SESSION[$session_countview] = 1;
-	// Thực hiện cập nhật lượt xem, cộng dồn thêm 1
+if (!isset($check_view)) {
+    // Gán giá trị session
+    $_SESSION[$session_countview] = 1;
+    // Thực hiện cập nhật lượt xem, cộng dồn thêm 1
     $db->updateview("UPDATE products SET view = view + 1 WHERE id = $id");
 }
 
 //chi tiet san pham
-$product = $db->fetchID("products",$id);
+$product = $db->fetchID("products", $id);
 
 //lay danh muc sp
-$cateid =intval($product['category_id']);
-$catesale = $db->fetchID("categories",$cateid);
+$cateid = intval($product['category_id']);
+$catesale = $db->fetchID("categories", $cateid);
 $sql = "SELECT * FROM products WHERE category_id = $cateid and status = 1 ORDER BY id DESC LIMIT 4";
-$productREC=$db->fetchsql($sql);
+$productREC = $db->fetchsql($sql);
 $Shoe = $db->fetchData("SELECT parent FROM products a,categories b where a.category_id = b.id and a.id = $id");
 
 //phan trang comment
-if(isset($_GET['p']))
-{
-	$p = $_GET['p'];
-}else
-{
-	$p= 1;
+if (isset($_GET['p'])) {
+    $p = $_GET['p'];
+} else {
+    $p = 1;
 }
 
-$sqlcomment ="SELECT  comment.*,count(comment.content) as countcm, comment.content as binhluan, 
+$sqlcomment = "SELECT  comment.*,count(comment.content) as countcm, comment.content as binhluan,
 DATE_FORMAT(comment.updated_at, '%H:%i  %d-%m-%Y')   as ngay  , users.name as nameuser  FROM
- users inner JOIN comment on users.id = comment.user_id inner JOIN products ON products.id = comment.product_id 
+ users inner JOIN comment on users.id = comment.user_id inner JOIN products ON products.id = comment.product_id
  where products.id = $id ORDER BY id";
 $total = count($db->fetchsql($sqlcomment));
-$comment = $db->fetchJones("comment",$sqlcomment,$total,$p,5,true);
+$comment = $db->fetchJones("comment", $sqlcomment, $total, $p, 5, true);
 $sotrang = $comment['page'];
 unset($comment['page']);
 
 $path = $_SERVER['SCRIPT_NAME'];
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_id = $_COOKIE['name_id'];
+    $error = [];
+    $data =
+        [
+        "user_id" => $user_id,
+        "product_id" => $id,
+        "content" => postInput("contentcm"),
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-	$user_id = $_COOKIE['name_id'];
-	$error= [];
-	$data =
-[
-	"user_id" => $user_id,
-	"product_id" => $id,
-	"content" =>postInput("contentcm"),
-	
-];
-	if(!isset($_COOKIE['name_id']))
-	{
-		echo "<script>alert(' Xin đăng nhập để bình luận!!');location.href='dang-nhap.php'</script>"; 
-	}
+    ];
+    if (!isset($_COOKIE['name_id'])) {
+        echo "<script>alert(' Xin đăng nhập để bình luận!!');location.href='dang-nhap.php'</script>";
+    }
 
-	if(postInput('contentcm') == ''){
-		$error['contentcm']= "Bạn chưa viết gì cả!!";
-	}
+    if (postInput('contentcm') == '') {
+        $error['contentcm'] = "Bạn chưa viết gì cả!!";
+    }
 
-	if(strlen(postInput('contentcm')) < 6){
-		$error['contentcm']= "Không được ít hơn 6 kí tự!!";
-		echo "<script>alert(' Không được ít hơn 6 kí tự!!');location = self['location']</script>";
-	}
+    if (strlen(postInput('contentcm')) < 6) {
+        $error['contentcm'] = "Không được ít hơn 6 kí tự!!";
+        echo "<script>alert(' Không được ít hơn 6 kí tự!!');location = self['location']</script>";
+    }
 
-	if(strlen(postInput('contentcm')) > 250){
-		$error['contentcm']= "Không được ít hơn 6 kí tự!!";
-		echo "<script>alert(' Không được lớn hơn 250 kí tự!!');location = self['location']</script>";
-	}
+    if (strlen(postInput('contentcm')) > 250) {
+        $error['contentcm'] = "Không được ít hơn 6 kí tự!!";
+        echo "<script>alert(' Không được lớn hơn 250 kí tự!!');location = self['location']</script>";
+    }
 
-		$captcha = postInput('g-recaptcha-response');
-		 if(!$captcha){
-			$error['g-recaptcha-response']= " Xin xác nhận CAPTCHA!";
-		 }else{
-			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfd3JkUAAAAAPLf5PupRZT4-_3F2r_UyMXYFMRa&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-		 }
+    $captcha = postInput('g-recaptcha-response');
+    if (!$captcha) {
+        $error['g-recaptcha-response'] = " Xin xác nhận CAPTCHA!";
+    } else {
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfd3JkUAAAAAPLf5PupRZT4-_3F2r_UyMXYFMRa&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+    }
 
-	if(empty($error))
-	{
-	   $id_insert =$db->insert("comment",$data);
-	   if($id_insert)
-	   {
-			
-		//    $_SESSION['success'] =" Bình luận thành công!!";
-		   echo "<script>alert(' Đăng bình luận thành công');location = self['location']</script>"; 
-		   
-	   }else
-	   {
-			$_SESSION['error'] =" Bình luận thất bại!!";
-			
-	   }
-	}
+    if (empty($error)) {
+        $id_insert = $db->insert("comment", $data);
+        if ($id_insert) {
+
+            //    $_SESSION['success'] =" Bình luận thành công!!";
+            echo "<script>alert(' Đăng bình luận thành công');location = self['location']</script>";
+
+        } else {
+            $_SESSION['error'] = " Bình luận thất bại!!";
+
+        }
+    }
 }
 ?>
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h1>Chi tiết sản phẩm/<i><u><a style="color:black" href="danh-muc-san-pham.php?id=<?php echo $catesale['id'] ."/". $catesale['slug']  ?>"><?php echo $catesale['name']; ?></a></u></i></h1>
+                                <h1>Chi tiết sản phẩm/<i><u><a style="color:black" href="danh-muc-san-pham.php?id=<?php echo $catesale['id'] . "/" . $catesale['slug'] ?>"><?php echo $catesale['name']; ?></a></u></i></h1>
                             </div>
                         </div>
                     </div>
@@ -139,24 +130,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                         <div class="col-md-7">
                             <div class="desc">
-                            
-                                <h3><?php echo $product['name']; ?></h3>
-                                <h5>Số lượt xem: <i class="fa fa-eye" aria-hidden="true"> <?php echo $product['view']  ?></i></h5>
-                                <?php if($product['sale'] > 0 && $catesale['salecat']==0) :?>
-                                <p class="price"><span
-                                        class="sale"><strike><?php echo formatPrice($product['price']) ?></strike></span>
-                                    <span><?php echo formatpricesale($product['price'],$product['sale']) ?></span> </p>
 
-                                <?php elseif($catesale['salecat']>0) :?>
+                                <h3><?php echo $product['name']; ?></h3>
+                                <h5>Số lượt xem: <i class="fa fa-eye" aria-hidden="true"> <?php echo $product['view'] ?></i></h5>
+                                <?php if ($product['sale'] > 0 && $catesale['salecat'] == 0): ?>
                                 <p class="price"><span
                                         class="sale"><strike><?php echo formatPrice($product['price']) ?></strike></span>
-                                    <span><?php echo formatpricesale($product['price'],($catesale['salecat'])) ?></span>
+                                    <span><?php echo formatpricesale($product['price'], $product['sale']) ?></span> </p>
+
+                                <?php elseif ($catesale['salecat'] > 0): ?>
+                                <p class="price"><span
+                                        class="sale"><strike><?php echo formatPrice($product['price']) ?></strike></span>
+                                    <span><?php echo formatpricesale($product['price'], ($catesale['salecat'])) ?></span>
                                 </p>
 
                                 <?php else: ?>
                                 <p class="price">
-                                    <span><?php echo formatpricesale($product['price'],$product['sale']) ?></span> </p>
-                                <?php endif ?>
+                                    <span><?php echo formatpricesale($product['price'], $product['sale']) ?></span> </p>
+                                <?php endif?>
                                 <span class="rate text-right">
                                     <i class="icon-star-full"></i>
                                     <i class="icon-star-full"></i>
@@ -168,10 +159,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                 </p>
                                 <!-- <p><php echo $product['content'] ?></p> -->
                                 <!-- colorrrr -->
-                                <?php if($Shoe['parent'] == 76): ?>
+                                <?php if ($Shoe['parent'] == 76): ?>
                                     <div class="color-wrap">
                                     <p class="color-desc">
-                                      
+
                                     </p>
                                 </div>
                                 <!-- sizeeeeeeeeeeeee -->
@@ -209,8 +200,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                         <a href="#" class="size size-5">xxl</a>
                                     </p>
                                 </div>
-                                <?php endif ?>    
-                                
+                                <?php endif?>
+
                                 <div class="row row-pb-sm">
                                     <div class="col-md-4">
                                         <div class="input-group">
@@ -266,11 +257,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                             <div id="review" class="tab-pane fade">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <?php foreach($comment as $cm): ?>
+                                        <?php foreach ($comment as $cm): ?>
                                         <h3><?php echo $cm['countcm'] ?> bình luận</h3>
                                         <div class="review">
                                             <div class="user-img"
-                                                style="background-image: url(<?php echo base_url()  ?>public/fontend/images/user.png)">
+                                                style="background-image: url(<?php echo base_url() ?>public/fontend/images/user.png)">
                                             </div>
                                             <div class="desc">
                                                 <h4>
@@ -291,7 +282,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                                 <p><?php echo $cm['binhluan'] ?></p>
                                             </div>
                                         </div>
-                                        <?php endforeach ?>
+                                        <?php endforeach?>
 
                                     </div>
                                     <!-- <div class="col-md-4 col-md-push-1">
@@ -358,13 +349,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                         <div class="col-md-12">
                                             <ul class="pagination">
                                                 <li class="disabled"><a href="#">&laquo;</a></li>
-                                                <?php for($i=1 ; $i <= $sotrang ; $i++): ?>
+                                                <?php for ($i = 1; $i <= $sotrang; $i++): ?>
                                                 <li
                                                     class="<?php echo isset($_GET['p']) && $_GET['p'] == $i ? 'active' : '' ?>">
                                                     <a
                                                         href="<?php echo $path; ?>?id=<?php echo $id ?>&&p=<?php echo $i ?>"><?php echo $i; ?></a>
                                                 </li>
-                                                <?php endfor ?>
+                                                <?php endfor?>
                                                 <li><a href="#">&raquo;</a></li>
                                             </ul>
                                         </div>
@@ -382,16 +373,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                                     placeholder="Hãy cho chúng tôi nhận xét của bạn !! Tối đa 250 ký tự"
                                                     value="<?php echo $data['contentcm'] ?>"></textarea>
                                             </div>
-                                            <?php if(isset($error['contentcm'])): ?>
+                                            <?php if (isset($error['contentcm'])): ?>
                                             <h4 class="text-danger"><br> &emsp;<b> <?php echo $error['contentcm'] ?></b>
                                             </h4>
-                                            <?php endif ?>
+                                            <?php endif?>
                                         </div>
                                         <div class="g-recaptcha"
                                             data-sitekey="6Lfd3JkUAAAAAATFQZSmFoCPMp4T9r9ezVapIJQo"></div>
-                                        <?php if(isset($error['g-recaptcha-response'])): ?>
+                                        <?php if (isset($error['g-recaptcha-response'])): ?>
                                         <h4 class="text-danger"><b><?php echo $error['g-recaptcha-response'] ?></b></h4>
-                                        <?php endif ?>
+                                        <?php endif?>
                                 </div>
 
                                 <input class="btn btn-primary" type="submit" name="submit" value="Gửi bình luận">
@@ -416,27 +407,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             </div>
         </div>
         <div class="row">
-            <?php foreach ($productREC as $item) : ?>
+            <?php foreach ($productREC as $item): ?>
             <div class="col-md-3 text-center">
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $catesale['salecat']>0)
-								{
-									echo 'sale';
-								}else
-								{
-									echo 'new';
-								}
-								 ?>"><?php if($item['sale']>0 && $catesale['salecat']==0)
-								 { echo 'Sale'." ".$item['sale']."%";}
-								 elseif($catesale['salecat']>0){echo 'Sale'." " .($catesale['salecat'])."%";}
-								 else{echo "new";} ?></span></p>
+                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if ($item['sale'] > 0 || $catesale['salecat'] > 0) {
+    echo 'sale';
+} else {
+    echo 'new';
+}
+?>"><?php if ($item['sale'] > 0 && $catesale['salecat'] == 0) {echo 'Sale' . " " . $item['sale'] . "%";} elseif ($catesale['salecat'] > 0) {echo 'Sale' . " " . ($catesale['salecat']) . "%";} else {echo "new";}?></span></p>
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                             <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -444,27 +430,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         </div>
                     </div>
                     <div class="desc">
-                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
-                        <?php if($item['sale'] > 0 && $catesale['salecat']==0) :?>
+                        <?php if ($item['sale'] > 0 && $catesale['salecat'] == 0): ?>
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                            <span>&emsp;<?php  echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
+                            <span>&emsp;<?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
 
-                        <?php elseif($catesale['salecat']>0) :?>
+                        <?php elseif ($catesale['salecat'] > 0): ?>
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                            <span>&emsp;<?php  echo formatpricesale($item['price'],($catesale['salecat'])) ?></span>
+                            <span>&emsp;<?php echo formatpricesale($item['price'], ($catesale['salecat'])) ?></span>
                         </p>
 
                         <?php else: ?>
-                        <p class="price"><span><?php echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
-                        <?php endif ?>
+                        <p class="price"><span><?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
+                        <?php endif?>
                     </div>
                 </div>
             </div>
-            <?php endforeach ?>
+            <?php endforeach?>
         </div>
     </div>
 </div>
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

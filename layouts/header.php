@@ -24,35 +24,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
     <!-- Animate.css -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/animate.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/icomoon.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/bootstrap.css">
     <!-- Magnific Popup -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/magnific-popup.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/magnific-popup.css">
     <!-- Flexslider  -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/flexslider.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/flexslider.css">
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/owl.theme.default.min.css">
     <!-- Date Picker -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/bootstrap-datepicker.css">
     <!-- Flaticons  -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/fonts/flaticon/font/flaticon.css">
     <!-- Theme style  -->
-    <link rel="stylesheet" href="<?php echo base_url()  ?>public/fontend/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/style.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="<?php echo base_url()  ?>public/fontend/js/jquery-ui.css" rel = "stylesheet">
+    <link href="<?php echo base_url() ?>public/fontend/js/jquery-ui.css" rel = "stylesheet">
 
-    
+
 
     <!-- Modernizr JS -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url()  ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
+    <script src="<?php echo base_url() ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
@@ -60,7 +60,7 @@
 	<![endif]-->
 </head>
 <style>
-    
+
 .colorlib-nav-toggle{
    top: 5px !important;
 }
@@ -180,32 +180,30 @@ body {
                             <ul>
                                 <li class="active"><a href="index.php"><b>Trang chủ</b></a></li>
                                 <li class="active"><a href="blog-list.php"><b>Tin Tức</b></a></li>
-                                <?php foreach($category as $item): ?>
+                                <?php foreach ($category as $item): ?>
                                 <?php $parent_id = $item['id'];
-									//lay danh muc con
-									$sql2="SELECT * from categories where parent= '$parent_id' and status = 1";
-									$getchild = $db->fetchsql($sql2);
-									?>
+//lay danh muc con
+$sql2 = "SELECT * from categories where parent= '$parent_id' and status = 1";
+$getchild = $db->fetchsql($sql2);
+?>
                                 <li class="has-dropdown" >
                                     <a href="#"><b><?php echo $item['name'] ?></b></a>
                                     <ul class="dropdown" style="top:20px;margin-bottom: 30px;">
-                                        <?php foreach($getchild as $child): ?>
-                                        <li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] ."/". $child['slug']  ?>"><?php echo $child['name']; ?></a></li>
-                                        <?php endforeach ?>
+                                        <?php foreach ($getchild as $child): ?>
+                                        <li><a href="danh-muc-san-pham.php?id=<?php echo $child['id'] . "/" . $child['slug'] ?>"><?php echo $child['name']; ?></a></li>
+                                        <?php endforeach?>
                                     </ul>
                                 </li>
-                                <?php endforeach; ?>
+                                <?php endforeach;?>
                                 </li>
                                 <!-- <li><a href="about.php"><b>Giới thiệu</b></a></li>
 								<li><a href="lien-he.php"><b>Liên hệ</b></a></li> -->
-                                <li><a href="gio-hang.php"><i class="icon-shopping-cart"></i><b> Giỏ hàng [<?php if(isset($_SESSION['cart'])) 
-								{ 
-									echo count($_SESSION['cart']);
-								}else
-								{
-									echo "0";
-								} ?>]</b></a></li>
-                                <?php if(isset($_COOKIE['name_user'])): ?>
+                                <li><a href="gio-hang.php"><i class="icon-shopping-cart"></i><b> Giỏ hàng [<?php if (isset($_SESSION['cart'])) {
+    echo count($_SESSION['cart']);
+} else {
+    echo "0";
+}?>]</b></a></li>
+                                <?php if (isset($_COOKIE['name_user'])): ?>
                                 <li class="has-dropdown" >
                                     <a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>"><b>Xin chào:
                                             <?php echo getLastName($_COOKIE['name_user']) ?></b></a>
@@ -217,7 +215,7 @@ body {
                                         <li><a href="thoat.php"><b>Thoát</b></a></li>
                                     </ul>
                                 </li>
-                                <?php  else: ?>
+                                <?php else: ?>
                                 <li class="has-dropdown">
                                     <a href="dang-nhap.php"><b>Đăng Nhập</b></a>
                                     <ul class="dropdown" style="top:20px;">
@@ -225,10 +223,10 @@ body {
                                         <li><a href="dang-nhap.php">Đăng Nhập</a></li>
                                     </ul>
                                 </li>
-                                <?php endif ?>
+                                <?php endif?>
                                 <li>
                                     <a href="tim-kiem.php"><img withd="22" height="22"
-                                            src="<?php echo base_url()  ?>public/fontend/logo/search.png" /></i><b> Tìm
+                                            src="<?php echo base_url() ?>public/fontend/logo/search.png" /></i><b> Tìm
                                             Kiếm</b></a>
                                 </li>
                             </ul>

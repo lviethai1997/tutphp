@@ -11,7 +11,7 @@
     <title>Trang Quản trị</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>public/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,13 +30,13 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>public/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <script src="<?php echo base_url()?>public/ckeditor/ckeditor.js"></script>
-   
+    <script src="<?php echo base_url() ?>public/ckeditor/ckeditor.js"></script>
 
-    <script src="<?php echo base_url()?>public/admin/vendor/chart/Chart.min.js"></script>
-    <script src="<?php echo base_url()?>public/admin/vendor/chart/utils.js"></script>
-    <script src="<?php echo base_url()?>public/ckfinder/ckfinder.js"></script>
-    
+
+    <script src="<?php echo base_url() ?>public/admin/vendor/chart/Chart.min.js"></script>
+    <script src="<?php echo base_url() ?>public/admin/vendor/chart/utils.js"></script>
+    <script src="<?php echo base_url() ?>public/ckfinder/ckfinder.js"></script>
+
     <script src="<?php echo base_url() ?>public/admin/toastjs/toastr.min.js"></script>
     <!-- Custom Fonts -->
     <link href="<?php echo base_url() ?>public/admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet"
@@ -363,7 +363,7 @@
                                         <a href="grid.html">Grid</a>
                                     </li>
                                 </ul>
-                                
+
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
@@ -390,10 +390,10 @@
                                                 <a href="#">Third Level Item</a>
                                             </li>
                                         </ul>
-                                        
+
                                     </li>
                                 </ul>
-                                
+
                             </li>
                             <li class="active">
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
@@ -405,7 +405,7 @@
                                         <a href="login.html">Login Page</a>
                                     </li>
                                 </ul>
-                                
+
                             </li> -->
                     </ul>
                 </div>

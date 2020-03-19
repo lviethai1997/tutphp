@@ -1,33 +1,31 @@
-<?php 
-        $open = "contacts";
-        require_once __DIR__. "/../../autoload/autoload.php";
+<?php
+$open = "contacts";
+require_once __DIR__ . "/../../autoload/autoload.php";
 
-        $contact= $db->fetchAll('contact');
+$contact = $db->fetchAll('contact');
 
-        if(isset($_POST["CheckBoxDelete"]))
-        {
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("contact","id= '".$del_id."'");
-            }
-            if($num>0){
-                $_SESSION['success'] = "Xóa đơn hàng thành công";
-                redirectAdmin("contacts");
-            }else{
-                $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
-                redirectAdmin("contacts");
-            }
-            
-        }else if(isset($_POST["DeleteAll"]))
-        {
-            $deleteAllRow = $db->DeleteAll("contact");
-            $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
-            redirectAdmin("contacts");
-        }
-        
+if (isset($_POST["CheckBoxDelete"])) {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("contact", "id= '" . $del_id . "'");
+    }
+    if ($num > 0) {
+        $_SESSION['success'] = "Xóa đơn hàng thành công";
+        redirectAdmin("contacts");
+    } else {
+        $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
+        redirectAdmin("contacts");
+    }
+
+} else if (isset($_POST["DeleteAll"])) {
+    $deleteAllRow = $db->DeleteAll("contact");
+    $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
+    redirectAdmin("contacts");
+}
+
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Xem Các Góp Ý</h1>
@@ -37,7 +35,7 @@
 <!-- /.row -->
 <div class="clearfix">
 </div>
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -91,7 +89,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($contact as $item) : ?>
+                                        <?php $stt = 1;foreach ($contact as $item): ?>
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
@@ -107,7 +105,7 @@
                                                     class="btn btn-xs btn-danger fa fa-trash trash">Xóa</a>
                                             </td>
                                         </tr>
-                                        <?php $stt++ ;endforeach  ?>
+                                        <?php $stt++;endforeach?>
                                     </tbody>
                                 </table>
                             </div>
@@ -134,7 +132,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 <script>
 $(".trash").click(function() {
     var id = $(this).attr('id');

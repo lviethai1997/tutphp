@@ -120,14 +120,14 @@
                                                     <li><?php echo formatPrice($item['amount']) ?></li>
                                                     <li><?php if($item['pt']==1){echo "COD";}else{echo "Chuyển khoản";} ?>
                                                     </li>
-                                                    <li> <a href="shipping.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php  if($item['ship']==0){ echo "btn-default";} elseif($item['ship']==1){echo "btn-warning";}else{echo "btn-success";} ?>"><?php if($item['ship']==0){ echo "Đang chờ";} elseif($item['ship']==1){echo "Đang Ship";}else{echo "Hoàn Thành";} ?></a></li>
+                                                    <li> <a href="#" id="<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php if($item['ship']==0){ echo "btn-default shipping";} elseif($item['ship']==1){echo "btn-warning shipping";}else{echo "btn-success shipping";} ?>"><?php if($item['ship']==0){ echo "Đang chờ";} elseif($item['ship']==1){echo "Đang Ship";}else{echo "Hoàn Thành";} ?></a></li>
                                                 </ul>
                                             </td>
                                             <td><?php echo $item['created_at'] ?></td>
                                             <td style="text-align:center">
-                                                <a href="status.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status']==0 ?"btn-danger" :"btn-info" ?>"><?php echo $item['status'] == 0 ? ' Chưa xử lý' :' Đã xử lý' ?></a>
+                                                <a href="#" id="<?php echo $item['id'] ?>"
+                                                    class="btn btn-xs <?php echo $item['status']==0 ?"btn-danger changestatus" :"btn-info changestatus" ?>"><?php echo $item['status'] == 0 ? ' Chưa xử lý' :' Đã xử lý' ?></a>
                                                 <a class="btn btn-xs btn-info"
                                                     href="printbill.php?id=<?php echo $item['id'] ?>"> In hóa đơn</a>
                                                    
@@ -209,4 +209,31 @@ $(".trash").click(function() {
     }
     return false;
 });
+
+$('.changestatus').click(function(){
+    var id = $(this).attr('id');
+    var clss = $(this).attr('class');
+    
+    if(clss =='btn btn-xs btn-danger changestatus')
+    {
+        $(this).attr('class','btn btn-xs btn-info changestatus');
+        $(this).html(' Đã xử lý');
+        $('.shipping').closest($(this)).attr('class','btn btn-xs btn-warning shipping');
+        $('.shipping').closest($(this)).html(' Đang Ship ');
+    }
+       
+    $.ajax({
+        type: "GET",
+        url: "status.php",
+        data:{
+            'id': id
+        },
+        success: function(){
+            $('shipping').click(function(){
+
+            })
+        }
+    })
+    return false;
+})
 </script>

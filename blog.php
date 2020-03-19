@@ -1,30 +1,29 @@
-<?php require_once __DIR__. "/autoload/autoload.php";
+<?php require_once __DIR__ . "/autoload/autoload.php";
 error_reporting(0);
 
 $arr = explode("/", getInput("id"), 2);
 $id = intval($arr[0]);
 
-$session_countview = "CountviewNews". $id;
+$session_countview = "CountviewNews" . $id;
 
 // Lấy giá trị session.
 $check_view = $_SESSION[$session_countview];
-if( !isset( $check_view ) )
-{
-	// Gán giá trị session
-	$_SESSION[$session_countview] = 1;
-	// Thực hiện cập nhật lượt xem, cộng dồn thêm 1
+if (!isset($check_view)) {
+    // Gán giá trị session
+    $_SESSION[$session_countview] = 1;
+    // Thực hiện cập nhật lượt xem, cộng dồn thêm 1
     $db->updateview(" UPDATE news SET views = views + 1 WHERE id = $id ");
 }
-$sqlnews ="SELECT news.*,views,news.title as title,news.content as content,news.contentmini as contentmini,admin.name as ten,date_format(news.updated_at, '%d-%m-%Y') as ngay from news inner join admin on news.id_admin = admin.id where news.id = $id";
+$sqlnews = "SELECT news.*,views,news.title as title,news.content as content,news.contentmini as contentmini,admin.name as ten,date_format(news.updated_at, '%d-%m-%Y') as ngay from news inner join admin on news.id_admin = admin.id where news.id = $id";
 $news = $db->fetchData($sqlnews);
 ?>
 
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -79,4 +78,4 @@ $news = $db->fetchData($sqlnews);
     </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

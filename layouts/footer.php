@@ -107,28 +107,28 @@
 </div>
 
 <!-- jQuery -->
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery.min.js"></script>
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery-ui.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery-ui.js"></script>
 
 <!-- jQuery Easing -->
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery.easing.1.3.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery.easing.1.3.js"></script>
 <!-- Bootstrap -->
-<script src="<?php echo base_url()  ?>public/fontend/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery.waypoints.min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery.waypoints.min.js"></script>
 <!-- Flexslider -->
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery.flexslider-min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery.flexslider-min.js"></script>
 <!-- Owl carousel -->
-<script src="<?php echo base_url()  ?>public/fontend/js/owl.carousel.min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/owl.carousel.min.js"></script>
 <!-- Magnific Popup -->
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery.magnific-popup.min.js"></script>
-<script src="<?php echo base_url()  ?>public/fontend/js/magnific-popup-options.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery.magnific-popup.min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/magnific-popup-options.js"></script>
 <!-- Date Picker -->
-<script src="<?php echo base_url()  ?>public/fontend/js/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/bootstrap-datepicker.js"></script>
 <!-- Stellar Parallax -->
-<script src="<?php echo base_url()  ?>public/fontend/js/jquery.stellar.min.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/jquery.stellar.min.js"></script>
 <!-- Main -->
-<script src="<?php echo base_url()  ?>public/fontend/js/main.js"></script>
+<script src="<?php echo base_url() ?>public/fontend/js/main.js"></script>
 <script>
 $(document).ready(function() {
 

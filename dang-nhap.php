@@ -1,57 +1,53 @@
-<?php 
-	require_once __DIR__. "/autoload/autoload.php";
-	
-	unset($_SESSION['cart']);
-	unset($_SESSION['total']);
-	$data= 
-	[
-            "email" => postInput("email"),
-            "password" => postInput("password"),
-	];
+<?php
+require_once __DIR__ . "/autoload/autoload.php";
 
-	$error =[];
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		if(postInput('email') == ''){
-			$error['email']= " Vui lòng điền đầy đủ địa chỉ Email!!";
-		}
+unset($_SESSION['cart']);
+unset($_SESSION['total']);
+$data =
+    [
+    "email" => postInput("email"),
+    "password" => postInput("password"),
+];
 
-		if(postInput('password') == ''){
-			$error['password']= " Vui lòng điền đầy đủ mật khẩu!!";
-		}
+$error = [];
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (postInput('email') == '') {
+        $error['email'] = " Vui lòng điền đầy đủ địa chỉ Email!!";
+    }
 
-		$captcha = postInput('g-recaptcha-response');
-		 if(!$captcha){
-			$error['g-recaptcha-response']= " Xin xác nhận CAPTCHA!";
-		 }else{
-			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfd3JkUAAAAAPLf5PupRZT4-_3F2r_UyMXYFMRa&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-		 }
+    if (postInput('password') == '') {
+        $error['password'] = " Vui lòng điền đầy đủ mật khẩu!!";
+    }
 
-		if(empty($error))
-		{
-			$is_check = $db->fetchOne("users","email = '".$data['email']."' AND password = '".MD5($data['password'])."' ");
-            if($is_check != NULL && $is_check['status']=='0')
-            {
-                $_SESSION["error"]="Tài khoản của bạn đã bị khóa, Xin liên hệ Admin để mở !!!";
-            }else if($is_check != NULL && $is_check['status']=='1')
-			{
-                // $_SESSION['name_user'] = $is_check['name'];
-                setcookie("name_user", $is_check['name'], time()+3600);
-                setcookie("name_id", $is_check['id'], time()+3600);
-				// $_SESSION['name_id'] = $is_check['id'];
-				echo "<script>alert(' Đăng nhập thành công !!!');location.href='index.php'</script>"; 
-			}else if($is_check == NULL){
-				$_SESSION["error"]="Tài khoản hoặc mật khẩu không đúng !!!";
-            }
-		}
-	}
+    $captcha = postInput('g-recaptcha-response');
+    if (!$captcha) {
+        $error['g-recaptcha-response'] = " Xin xác nhận CAPTCHA!";
+    } else {
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfd3JkUAAAAAPLf5PupRZT4-_3F2r_UyMXYFMRa&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+    }
+
+    if (empty($error)) {
+        $is_check = $db->fetchOne("users", "email = '" . $data['email'] . "' AND password = '" . MD5($data['password']) . "' ");
+        if ($is_check != null && $is_check['status'] == '0') {
+            $_SESSION["error"] = "Tài khoản của bạn đã bị khóa, Xin liên hệ Admin để mở !!!";
+        } else if ($is_check != null && $is_check['status'] == '1') {
+            // $_SESSION['name_user'] = $is_check['name'];
+            setcookie("name_user", $is_check['name'], time() + 3600);
+            setcookie("name_id", $is_check['id'], time() + 3600);
+            // $_SESSION['name_id'] = $is_check['id'];
+            echo "<script>alert(' Đăng nhập thành công !!!');location.href='index.php'</script>";
+        } else if ($is_check == null) {
+            $_SESSION["error"] = "Tài khoản hoặc mật khẩu không đúng !!!";
+        }
+    }
+}
 ?>
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -90,16 +86,16 @@
                 </div>
             </div>
             <div class="col-md-10 col-md-offset-1">
-                <?php if(isset($_SESSION['success'])): ?>
+                <?php if (isset($_SESSION['success'])): ?>
                 <div class="alert alert-success">
-                    <h3><b><?php echo $_SESSION['success'] ;unset($_SESSION['success'])?></b></h3>
+                    <h3><b><?php echo $_SESSION['success'];unset($_SESSION['success']) ?></b></h3>
                 </div>
-                <?php endif ?>
-                <?php if(isset($_SESSION['error'])): ?>
+                <?php endif?>
+                <?php if (isset($_SESSION['error'])): ?>
                 <div class="alert alert-danger">
-                    <h3><b><?php echo $_SESSION['error'] ;unset($_SESSION['error'])?></b></h3>
+                    <h3><b><?php echo $_SESSION['error'];unset($_SESSION['error']) ?></b></h3>
                 </div>
-                <?php endif ?>
+                <?php endif?>
                 <div class="contact-wrap">
                     <h3>Get In Touch</h3>
                     <form action="" method="post">
@@ -109,9 +105,9 @@
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" class="form-control"
                                     placeholder="Nhập địa chỉ Email">
-                                <?php if(isset($error['email'])): ?>
+                                <?php if (isset($error['email'])): ?>
                                 <p class="text-danger"><?php echo $error['email'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
 
@@ -120,15 +116,15 @@
                                 <label for="fname">Mật Khẩu</label>
                                 <input type="password" id="fname" name="password" class="form-control"
                                     placeholder="Nhập mật khẩu">
-                                <?php if(isset($error['password'])): ?>
+                                <?php if (isset($error['password'])): ?>
                                 <p class="text-danger"><?php echo $error['password'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
                         <div class="g-recaptcha" data-sitekey="6Lfd3JkUAAAAAATFQZSmFoCPMp4T9r9ezVapIJQo"></div>
-                        <?php if(isset($error['g-recaptcha-response'])): ?>
+                        <?php if (isset($error['g-recaptcha-response'])): ?>
                         <p class="text-danger"><?php echo $error['g-recaptcha-response'] ?></p>
-                        <?php endif ?>
+                        <?php endif?>
                         <div class="form-group text-center">
                             <input type="submit" value="Đăng Nhập" class="btn btn-primary">
                         </div>
@@ -138,4 +134,4 @@
         </div>
     </div>
 </div>
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

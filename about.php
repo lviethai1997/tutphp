@@ -1,12 +1,12 @@
-<?php require_once __DIR__. "/autoload/autoload.php";  ?>
+<?php require_once __DIR__ . "/autoload/autoload.php";?>
 
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -56,7 +56,7 @@
                             <div class="row row-pb-sm">
                                 <div class="col-md-6">
                                     <img class="img-responsive"
-                                        src="<?php echo base_url()  ?>public/fontend/images/about.jpg" alt="">
+                                        src="<?php echo base_url() ?>public/fontend/images/about.jpg" alt="">
                                 </div>
                                 <div class="col-md-6">
                                     <p>The Big Oxmox advised her not to do so, because there were thousands of bad
@@ -88,4 +88,4 @@
     </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

@@ -1,21 +1,21 @@
-<?php 
-        $open = "admin";
-        require_once __DIR__. "/../../autoload/autoload.php";
+<?php
+$open = "admin";
+require_once __DIR__ . "/../../autoload/autoload.php";
 
-        $product= $db->fetchAll('admin');
+$product = $db->fetchAll('admin');
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("admin","id= '".$del_id."'");
-            }
-            $_SESSION['success'] = "Xóa Admin thành công";
-            redirectAdmin("admin");
-        }
-        
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("admin", "id= '" . $del_id . "'");
+    }
+    $_SESSION['success'] = "Xóa Admin thành công";
+    redirectAdmin("admin");
+}
+
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Quản Lý Admin</h1>
@@ -28,7 +28,7 @@
 </div>
 
 
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 
 <a class="btn btn btn-success" href="add.php">Thêm mới admin</a><br><br>
 
@@ -86,13 +86,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($product as $item) : ?>
+                                        <?php $stt = 1;foreach ($product as $item): ?>
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
                                             <td><?php echo $stt ?></td>
                                             <td><?php echo $item['name'] ?></td>
-                                            <td><?php if($item['level']==1){echo "QTV";}else{echo "ADMIN";} ?></td>
+                                            <td><?php if ($item['level'] == 1) {echo "QTV";} else {echo "ADMIN";}?></td>
                                             <td><?php echo $item['phone'] ?></td>
                                             <td><?php echo $item['email'] ?></td>
                                             <td><?php echo $item['created_at'] ?></td>
@@ -104,7 +104,7 @@
                                                     class="btn btn-xs btn-danger fa fa-trash trash"> Xóa</a>
                                             </td>
                                         </tr>
-                                        <?php $stt++ ;endforeach  ?>
+                                        <?php $stt++;endforeach?>
                                     </tbody>
                                 </table>
                             </div>
@@ -129,7 +129,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 <script>
 $(".trash").click(function() {
     var id = $(this).attr('id');

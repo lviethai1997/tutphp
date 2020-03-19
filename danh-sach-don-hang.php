@@ -1,22 +1,21 @@
-<?php 
-require_once __DIR__. "/autoload/autoload.php"; 
+<?php
+require_once __DIR__ . "/autoload/autoload.php";
 
-if(isset($_COOKIE['name_id']))
-{
+if (isset($_COOKIE['name_id'])) {
     $user_id = $_COOKIE['name_id'];
     $sqllist = " SELECT a.id as id,a.amount as amount,a.created_at as tao,a.updated_at as capnhat,a.ship as ship FROM transaction a,users b where a.users_id = b.id and b.id = $user_id order by a.id desc";
     $fechsqllist = $db->fetchsql($sqllist);
-    
-}else{
-    echo "<script>alert(' Xin đăng nhập để sử dụng tính năng này !!!');location.href='index.php'</script>";    
+
+} else {
+    echo "<script>alert(' Xin đăng nhập để sử dụng tính năng này !!!');location.href='index.php'</script>";
 }
 
 ?>
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -64,16 +63,16 @@ if(isset($_COOKIE['name_id']))
             </tr>
         </thead>
         <tbody>
-        <?php foreach($fechsqllist as $item):?>
+        <?php foreach ($fechsqllist as $item): ?>
             <tr>
             <td scope="row"><span class="price"><?php echo $item["id"] ?></span></td>
             <td scope="row"><span class="price"><?php echo $item["tao"] ?></span></td>
-            <td scope="row"><span class="price"><?php if($item['ship'] != 0){ echo $item['capnhat']; }else{ echo 'Chưa giao'; } ?></span></td>
+            <td scope="row"><span class="price"><?php if ($item['ship'] != 0) {echo $item['capnhat'];} else {echo 'Chưa giao';}?></span></td>
             <td scope="row"> <span class="price"><?php echo formatPrice($item['amount']) ?></span></td>
             <td scope="row">
                 <a class=" btn btn-xs btn-info fa fa-info " data-toggle="modal"
                     data-target="#exampleModal"
-                    data-whatever=<?php echo '"'.$item['id'].' " '?>> Xem</a>
+                    data-whatever=<?php echo '"' . $item['id'] . ' " ' ?>> Xem</a>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="memberModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -93,9 +92,9 @@ if(isset($_COOKIE['name_id']))
                     </div>
                 </div>
             </td>
-            <td scope="row"><span class="price"><?php if($item['ship'] ==1){echo "Đang ship";}else if($item['ship']==2){echo "Đã hoàn thành";}else{ echo "Chưa xử lý";}  ?><span></td>
+            <td scope="row"><span class="price"><?php if ($item['ship'] == 1) {echo "Đang ship";} else if ($item['ship'] == 2) {echo "Đã hoàn thành";} else {echo "Chưa xử lý";}?><span></td>
             </tr>
-            <?php endforeach ?>
+            <?php endforeach?>
         </tbody>
         </table>
     </div>
@@ -111,27 +110,22 @@ if(isset($_COOKIE['name_id']))
             </div>
         </div>
         <div class="row">
-            <?php foreach($productRecart as $item): ?>
+            <?php foreach ($productRecart as $item): ?>
             <div class="col-md-3 text-center">
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
-								{
-									echo 'sale';
-								}else
-								{
-									echo 'new';
-								}
-								 ?>"><?php if($item['sale']>0 && $item['salecat']==0)
-								 { echo 'Sale'." ".$item['sale']."%";}
-								 elseif($item['salecat']>0){echo 'Sale'." " .($item['salecat'])."%";}
-								 else{echo "new";} ?></span></p>
+                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if ($item['sale'] > 0 || $item['salecat'] > 0) {
+    echo 'sale';
+} else {
+    echo 'new';
+}
+?>"><?php if ($item['sale'] > 0 && $item['salecat'] == 0) {echo 'Sale' . " " . $item['sale'] . "%";} elseif ($item['salecat'] > 0) {echo 'Sale' . " " . ($item['salecat']) . "%";} else {echo "new";}?></span></p>
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                             <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -140,33 +134,33 @@ if(isset($_COOKIE['name_id']))
                     </div>
                     <div class="desc">
                         <h3><a
-                                href="chi-tiet-san-pham.php?id=<<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                                href="chi-tiet-san-pham.php?id=<<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
-                        <?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+                        <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                            <span>&emsp;<?php  echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
+                            <span>&emsp;<?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
 
-                        <?php elseif($item['salecat']>0) :?>
+                        <?php elseif ($item['salecat'] > 0): ?>
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                            <span>&emsp;<?php  echo formatpricesale($item['price'],($item['salecat'])) ?></span> </p>
+                            <span>&emsp;<?php echo formatpricesale($item['price'], ($item['salecat'])) ?></span> </p>
                         <?php else: ?>
-                        <p class="price"><span><?php echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
-                        <?php endif ?>
+                        <p class="price"><span><?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
+                        <?php endif?>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </div>
 
     </div>
 </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>
 <script>
-    
+
 $('#exampleModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes

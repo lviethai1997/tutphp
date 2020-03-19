@@ -19,9 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="col-lg-12">
         <h1 class="page-header">Quản Lý Người dùng</h1>
     </div>
-    <!-- /.col-lg-12 -->
 </div>
-<!-- /.row -->
 
 <div class="clearfix">
 </div>
@@ -104,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <br>
                                                 <a href="#" id="<?php echo $item['id'] ?>" name="changeSts"
-                                                    class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>"> <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
+                                                    class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>"> <?php echo $item['status'] == 1 ? 'Khóa' : 'Không' ?>
                                                 </a>
                                                 <br>
                                                 <a href="#" id="<?php echo $item['id'] ?>"
@@ -146,10 +144,10 @@ $('.changestatus').click(function(){
     if(clss =='btn btn-xs btn-default changestatus')
     {
         $(this).attr('class','btn btn-xs btn-info changestatus');
-        $(this).html(' Hiển thị ');
+        $(this).html('Khoá');
     }else{
         $(this).attr('class','btn btn-xs btn-default changestatus');
-        $(this).html(' Không ');
+        $(this).html('Không');
     }
     $.ajax({
         type: "GET",

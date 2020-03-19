@@ -1,33 +1,31 @@
-<?php require_once __DIR__. "/autoload/autoload.php"; 
+<?php require_once __DIR__ . "/autoload/autoload.php";
 
 // $id = intval(getInput('id'));
 $arr = explode("/", getInput("id"), 2);
 $id = intval($arr[0]);
 
-$CatName = $db->fetchID("categories",$id);
+$CatName = $db->fetchID("categories", $id);
 
-if(isset($_GET['p']))
-{
-	$p = $_GET['p'];
-}else
-{
-	$p= 1;
+if (isset($_GET['p'])) {
+    $p = $_GET['p'];
+} else {
+    $p = 1;
 }
 
 $sql = "SELECT products.*,products.id as id,products.name as name,products.sale as sale,categories.salecat as salecat FROM products inner join categories on categories.id = products.category_id where category_id = $id and products.status =1";
 $total = count($db->fetchsql($sql));
-$product = $db->fetchJones("products",$sql,$total,$p,9,true);
+$product = $db->fetchJones("products", $sql, $total, $p, 9, true);
 $sotrang = $product['page'];
 unset($product['page']);
 $path = $_SERVER['SCRIPT_NAME'];
 
 ?>
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -48,28 +46,23 @@ $path = $_SERVER['SCRIPT_NAME'];
         <div class="row row-pb-lg">
             <div class="col-md-15 col-md-push-2">
                 <div class="row row-pb-lg">
-                    <?php foreach($product as $item ): ?>
+                    <?php foreach ($product as $item): ?>
                     <div class="col-md-3 text-center">
                         <div class="product-entry">
                             <div class="product-img"
                                 style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                                <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
-								{
-									echo 'sale';
-								}else
-								{
-									echo 'new';
-								}
-								 ?>"><?php if($item['sale']>0 && $item['salecat']==0)
-								 { echo 'Sale'." ".$item['sale']."%";}
-								 elseif($item['salecat']>0){echo 'Sale'." " .($item['salecat'])."%";}
-								 else{echo "new";} ?></span></p>
+                                <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if ($item['sale'] > 0 || $item['salecat'] > 0) {
+    echo 'sale';
+} else {
+    echo 'new';
+}
+?>"><?php if ($item['sale'] > 0 && $item['salecat'] == 0) {echo 'Sale' . " " . $item['sale'] . "%";} elseif ($item['salecat'] > 0) {echo 'Sale' . " " . ($item['salecat']) . "%";} else {echo "new";}?></span></p>
                                 <div class="cart">
                                     <p>
                                         <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                                     class="icon-shopping-cart"></i></a></span>
                                         <span><a
-                                                href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                                href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                                     class="icon-eye"></i></a></span>
                                                     <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                         <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -78,38 +71,38 @@ $path = $_SERVER['SCRIPT_NAME'];
                             </div>
                             <div class="desc">
                                 <h3><a
-                                        href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                                        href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                                 </h3>
-                                <?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+                                <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                                 <p class="price"><span
                                         class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                                    <span>&emsp;<?php  echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
+                                    <span>&emsp;<?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
 
-                                <?php elseif($item['salecat']>0) :?>
+                                <?php elseif ($item['salecat'] > 0): ?>
                                 <p class="price"><span
                                         class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                                    <span>&emsp;<?php  echo formatpricesale($item['price'],($item['salecat'])) ?></span>
+                                    <span>&emsp;<?php echo formatpricesale($item['price'], ($item['salecat'])) ?></span>
                                 </p>
 
                                 <?php else: ?>
                                 <p class="price">
-                                    <span><?php echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
-                                <?php endif ?>
+                                    <span><?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
+                                <?php endif?>
                             </div>
                         </div>
                     </div>
-                    <?php endforeach ?>
+                    <?php endforeach?>
 
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="pagination">
                             <li class="disabled"><a href="#">&laquo;</a></li>
-                            <?php for($i=1 ; $i <= $sotrang ; $i++): ?>
+                            <?php for ($i = 1; $i <= $sotrang; $i++): ?>
                             <li class="<?php echo isset($_GET['p']) && $_GET['p'] == $i ? 'active' : '' ?>"><a
                                     href="<?php echo $path; ?>?id=<?php echo $id ?>&&p=<?php echo $i ?>"><?php echo $i; ?></a>
                             </li>
-                            <?php endfor ?>
+                            <?php endfor?>
                             <li><a href="#">&raquo;</a></li>
                         </ul>
                     </div>
@@ -251,4 +244,4 @@ $path = $_SERVER['SCRIPT_NAME'];
 </div>
 
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

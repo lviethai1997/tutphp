@@ -1,19 +1,18 @@
-<?php  
+<?php
 //hide errors php
 error_reporting(0);
-require_once __DIR__. "/autoload/autoload.php"; 
+require_once __DIR__ . "/autoload/autoload.php";
 $sum = 0;
 
-if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
-{
-    echo "<script>location.href='gio-hang-trong.php'</script>"; 
+if (!count($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
+    echo "<script>location.href='gio-hang-trong.php'</script>";
 }
 ?>
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -69,7 +68,7 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                     </div>
                 </div>
 
-                <?php foreach($_SESSION['cart'] as $key => $value):?>
+                <?php foreach ($_SESSION['cart'] as $key => $value): ?>
                 <div class="product-cart">
                     <div class="one-forth">
                         <div class="product-img"
@@ -102,7 +101,8 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                         </div>
                     </div>
                 </div>
-                <?php $sum += $value['price'] * $value['qty']; $_SESSION['tongtien'] = $sum ?>
+                <?php $sum += $value['price'] * $value['qty'];
+$_SESSION['tongtien'] = $sum?>
                 <?php endforeach?>
             </div>
         </div>
@@ -119,11 +119,11 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                                         <a href="index.php" class="btn btn-primary">Tiếp tục mua hàng</a>
                                     </div>
                                     <div class="col-md-3">
-                                        <?php if(!($_COOKIE['name_user'])): ?>
+                                        <?php if (!($_COOKIE['name_user'])): ?>
                                         <a href="thanh-toan1.php" class="btn btn-primary">Thanh Toán Đơn Hàng</a>
-                                        <?php else : ?>
+                                        <?php else: ?>
                                         <a href="thanh-toan.php" class="btn btn-primary">Thanh Toán Đơn Hàng</a>
-                                        <?php endif ?>
+                                        <?php endif?>
                                     </div>
                                 </div>
                             </form>
@@ -139,7 +139,8 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                                 </div>
                                 <div class="grand-total">
                                     <p><span><strong>Tổng tiền thanh toán:</strong></span> <span>
-                                            <span><?php $_SESSION['total'] = ($_SESSION['tongtien'] *110/100)-($_SESSION['tongtien']/100*sale($_SESSION['tongtien'])); echo formatPrice1($_SESSION['total'])?>₫
+                                            <span><?php $_SESSION['total'] = ($_SESSION['tongtien'] * 110 / 100) - ($_SESSION['tongtien'] / 100 * sale($_SESSION['tongtien']));
+echo formatPrice1($_SESSION['total'])?>₫
                                     </p></span></p>
                                 </div>
                             </div>
@@ -161,27 +162,22 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
             </div>
         </div>
         <div class="row">
-            <?php foreach($productRecart as $item): ?>
+            <?php foreach ($productRecart as $item): ?>
             <div class="col-md-3 text-center">
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if($item['sale'] > 0 || $item['salecat']>0)
-								{
-									echo 'sale';
-								}else
-								{
-									echo 'new';
-								}
-								 ?>"><?php if($item['sale']>0 && $item['salecat']==0)
-								 { echo 'Sale'." ".$item['sale']."%";}
-								 elseif($item['salecat']>0){echo 'Sale'." " .($item['salecat'])."%";}
-								 else{echo "new";} ?></span></p>
+                        <p class="tag"><span style="font-weight:bold;font-size:13px;text-transform:uppercase" class=" <?php if ($item['sale'] > 0 || $item['salecat'] > 0) {
+    echo 'sale';
+} else {
+    echo 'new';
+}
+?>"><?php if ($item['sale'] > 0 && $item['salecat'] == 0) {echo 'Sale' . " " . $item['sale'] . "%";} elseif ($item['salecat'] > 0) {echo 'Sale' . " " . ($item['salecat']) . "%";} else {echo "new";}?></span></p>
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                             <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -190,27 +186,27 @@ if( ! count($_SESSION['cart']) || count($_SESSION['cart'])==0)
                     </div>
                     <div class="desc">
                         <h3><a
-                                href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                                href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
-                        <?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+                        <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                            <span>&emsp;<?php  echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
+                            <span>&emsp;<?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
 
-                        <?php elseif($item['salecat']>0) :?>
+                        <?php elseif ($item['salecat'] > 0): ?>
                         <p class="price"><span
                                 class="sale"><strike><?php echo formatPrice($item['price']) ?></strike></span>
-                            <span>&emsp;<?php  echo formatpricesale($item['price'],($item['salecat'])) ?></span> </p>
+                            <span>&emsp;<?php echo formatpricesale($item['price'], ($item['salecat'])) ?></span> </p>
 
                         <?php else: ?>
-                        <p class="price"><span><?php echo formatpricesale($item['price'],$item['sale']) ?></span> </p>
-                        <?php endif ?>
+                        <p class="price"><span><?php echo formatpricesale($item['price'], $item['sale']) ?></span> </p>
+                        <?php endif?>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </div>
     </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

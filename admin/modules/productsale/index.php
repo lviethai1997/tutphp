@@ -1,34 +1,32 @@
-<?php 
-        $open = "product";
-        require_once __DIR__. "/../../autoload/autoload.php";
-        // $product= $db->fetchAll('products');
-        $sqlproduct="SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id and salestatus =1 order by updated_at desc";
-        $product = $db->fetchsql($sqlproduct);
+<?php
+$open = "product";
+require_once __DIR__ . "/../../autoload/autoload.php";
+// $product= $db->fetchAll('products');
+$sqlproduct = "SELECT products.*,products.id as id,products.name as name,products.thunbar as thunbar,products.price as price,products.sale as sale,products.number as number,products.updated_at as updated_at,categories.name as cate FROM products inner join categories on products.category_id = categories.id and salestatus =1 order by updated_at desc";
+$product = $db->fetchsql($sqlproduct);
 
-        if(isset($_POST["CheckBoxDelete"]))
-        {
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("products"," id = $del_id ");
-            $num1 =$db->deletesql("comment"," product_id = $del_id ");
-            }
-            if($num>0){
-                $_SESSION['success'] = "Xóa sản phẩm thành công!";
-                redirectAdmin("product");
-            }else{
-                $_SESSION['error'] = "Xóa sản phẩm thất bại!";
-                redirectAdmin("product");
-            }
-            
-        }else if(isset($_POST["DeleteAll"]))
-        {
-            $deleteAllRow = $db->DeleteAll("products");
-            $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
-            redirectAdmin("product");
-        }
+if (isset($_POST["CheckBoxDelete"])) {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("products", " id = $del_id ");
+        $num1 = $db->deletesql("comment", " product_id = $del_id ");
+    }
+    if ($num > 0) {
+        $_SESSION['success'] = "Xóa sản phẩm thành công!";
+        redirectAdmin("product");
+    } else {
+        $_SESSION['error'] = "Xóa sản phẩm thất bại!";
+        redirectAdmin("product");
+    }
+
+} else if (isset($_POST["DeleteAll"])) {
+    $deleteAllRow = $db->DeleteAll("products");
+    $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
+    redirectAdmin("product");
+}
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Quản Lý Giảm Giá Sản Phẩm</h1>
@@ -40,7 +38,7 @@
 <div class="clearfix">
 </div>
 
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 
 <div class="row">
     <div class="col-lg-12">
@@ -100,7 +98,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($product as $item) : ?>
+                                        <?php $stt = 1;foreach ($product as $item): ?>
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
@@ -113,17 +111,17 @@
 
                                             <td>
                                                 <ul>
-                                                <?php 
-                                                    $idcount = $item['id'];
-                                                    $sqlProductSell = " select count(*) as countsell from orders a,transaction b where a.transaction_id = b.id and b.ship = 2 and a.product_id = $idcount ";
-                                                    $getProductSell = $db->fetchData($sqlProductSell);
-                                                ?>
+                                                <?php
+$idcount = $item['id'];
+$sqlProductSell = " select count(*) as countsell from orders a,transaction b where a.transaction_id = b.id and b.ship = 2 and a.product_id = $idcount ";
+$getProductSell = $db->fetchData($sqlProductSell);
+?>
                                                     <!-- <li>Giá nhập : <php echo formatPrice($item['price_input']) ?></li> -->
                                                     <li>Giá bán: <?php echo formatPrice($item['price']) ?></li>
                                                     <li>khuyến mãi : <?php echo $item['sale'] ?>%</li>
                                                     <li>Đã bán được: <?php echo $getProductSell['countsell'] ?> </li>
                                                     <li>Số lượng :
-                                                        <?php if($item['number']<=0){ echo "<b>Hết hàng</b>"; }else{echo $item['number'];}?>
+                                                        <?php if ($item['number'] <= 0) {echo "<b>Hết hàng</b>";} else {echo $item['number'];}?>
                                                     </li>
                                                     <li>Lượt xem : <?php echo $item['view'] ?></li>
 
@@ -132,7 +130,7 @@
                                             <td class="text-center"><?php echo $item['cate'] ?></td>
                                             <td class="text-center">
                                                 <a href="salestatus.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['salestatus'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                    class="btn btn-xs <?php echo $item['salestatus'] == 1 ? 'btn-info' : 'btn-default' ?>">
                                                     <?php echo $item['salestatus'] == 1 ? 'Khuyến mãi' : ' Không ' ?>
                                                 </a>
                                             </td>
@@ -142,7 +140,7 @@
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <br><a href="status.php?id=<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info' : 'btn-default' ?>">
+                                                    class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info' : 'btn-default' ?>">
                                                     <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a><br>
                                                 <!-- <a class="btn btn-xs btn-danger fa fa-trash" href="delete.php?id=<php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')"> Xóa</a> &emsp; -->
@@ -150,7 +148,7 @@
                                                     class="btn btn-xs btn-danger fa fa-trash trash">Xóa</a>
                                             </td>
                                         </tr>
-                                        <?php $stt++ ;endforeach  ?>
+                                        <?php $stt++;endforeach?>
                                     </tbody>
                                 </table>
                             </div>
@@ -178,7 +176,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 <script>
 $(".trash").click(function() {
     var id = $(this).attr('id');

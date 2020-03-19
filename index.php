@@ -1,20 +1,20 @@
-<?php 
-		require_once __DIR__. "/autoload/autoload.php";
-		$sqlHomecate = "SELECT name,id FROM categories WHERE home = 1 ORDER BY updated_at";
-		$CategoryHome = $db->fetchsql($sqlHomecate);
+<?php
+require_once __DIR__ . "/autoload/autoload.php";
+$sqlHomecate = "SELECT name,id FROM categories WHERE home = 1 ORDER BY updated_at";
+$CategoryHome = $db->fetchsql($sqlHomecate);
 
-		$sqlbackground = "SELECT * from background where status =1";
-		$fetchBackground = $db->fetchsql($sqlbackground);
-		$data=[];
-		foreach($CategoryHome as $item){
-			$cateId = intval($item['id']);
-			$sql= "SELECT * FROM products  where category_id = $cateId and sale > 0 ORDER BY sale DESC LIMIT 8";
-			$ProductHome = $db->fetchsql($sql);
-			$data[$item['name']] = $ProductHome;
-		}
-    ?>
+$sqlbackground = "SELECT * from background where status =1";
+$fetchBackground = $db->fetchsql($sqlbackground);
+$data = [];
+foreach ($CategoryHome as $item) {
+    $cateId = intval($item['id']);
+    $sql = "SELECT * FROM products  where category_id = $cateId and sale > 0 ORDER BY sale DESC LIMIT 8";
+    $ProductHome = $db->fetchsql($sql);
+    $data[$item['name']] = $ProductHome;
+}
+?>
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <div id='fb-root'></div>
 <script>
 (function($) {
@@ -62,7 +62,7 @@
 <aside id="colorlib-hero" style="margin-bottom: 40px;">
     <div class="flexslider">
         <ul class="slides">
-            <?php	foreach($fetchBackground as $item): ?>
+            <?php	foreach ($fetchBackground as $item): ?>
             <li
                 style="background-size: 100% 100% !important;background-image: url(<?php echo uploads() ?>background/<?php echo $item['image'] ?>)">
                 <div class="overlay"></div>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </li>
-            <?php endforeach ?>
+            <?php endforeach?>
             <!-- <li style="background-image: url(<php echo base_url()  ?>public/fontend/images/img_bg_2.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
@@ -95,7 +95,7 @@
 					   					<h2 class="head-2">cực lớn</h2>
 					   					<h2 class="head-3">đến 45%</h2>
 					   					<p class="category"><span><strong> Thoải mái mua sắm<br> &ensp;&ensp;&ensp;&ensp; Không lo giá cả.</strong></span></p>
-					   					
+
 				   					</div>
 				   				</div>
 				   			</div>
@@ -113,7 +113,7 @@
 					   					<h2 class="head-1">Mới về</h2>
 					   					<h2 class="head-3">Cực HOT</h2>
 					   					<p class="category"><span>Nhanh tay vào xem ngay!!!</span></p>
-					   					
+
 				   					</div>
 				   				</div>
 				   			</div>
@@ -128,7 +128,7 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="shop.html" class="f-product-1"
-                    style="background-image: url(<?php echo base_url()  ?>public/fontend/images/item-1.jpg);">
+                    style="background-image: url(<?php echo base_url() ?>public/fontend/images/item-1.jpg);">
                     <div class="desc">
                         <h2>Chỉ dành <br>Cho <br>Quý ông</h2>
                     </div>
@@ -138,7 +138,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <a href="" class="f-product-2"
-                            style="background-image: url(<?php echo base_url()  ?>public/fontend/images/item-2.jpg);">
+                            style="background-image: url(<?php echo base_url() ?>public/fontend/images/item-2.jpg);">
                             <div class="desc">
                                 <h2>Hàng <br>Mới <br>Cho nữ</h2>
                             </div>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-md-6">
                         <a href="" class="f-product-2"
-                            style="background-image: url(<?php echo base_url()  ?>public/fontend/images/item-4.jpg);">
+                            style="background-image: url(<?php echo base_url() ?>public/fontend/images/item-4.jpg);">
                             <div class="desc">
                                 <h2>Ưu đãi <br>Cực <br>Lớn</h2>
                             </div>
@@ -154,7 +154,7 @@
                     </div>
                     <div class="col-md-12">
                         <a href="" class="f-product-2"
-                            style="background-image: url(<?php echo base_url()  ?>public/fontend/images/item-3.jpg);">
+                            style="background-image: url(<?php echo base_url() ?>public/fontend/images/item-3.jpg);">
                             <div class="desc">
                                 <h2>Giày <br>SNEAKER <br>Cực hot</h2>
                             </div>
@@ -169,30 +169,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
-                <?php foreach($fetchstatus1 as $item): ?>
+                <?php foreach ($fetchstatus1 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
-                <?php endforeach ?>
+                <?php endforeach?>
             </div>
         </div>
         <div class="row">
-            <?php foreach($productHot as $item): ?>
+            <?php foreach ($productHot as $item): ?>
             <div class="col-md-3 text-center">
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
                         <p class="tag"><span class="hot"><b>HOT</b></span></p>
-                        <?php if($item['sale']>0 && $item['salecat']==0) : ?>
+                        <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                         <p class="tagsale"><span class="hotsale"><b>SALE <?php echo $item['sale'] ?>%</b></span></p>
-                        <?php elseif($item['salecat']>0): ?>
+                        <?php elseif ($item['salecat'] > 0): ?>
                         <p class="tagsale"><span class="hotsale"><b>SALE <?php echo ($item['salecat']) ?>%</b></span>
                         </p>
-                        <?php endif ?>
+                        <?php endif?>
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                 <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-bar-chart"></i></a></span>
@@ -200,32 +200,32 @@
                         </div>
                     </div>
                     <div class="desc">
-                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
-                        <?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+                        <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                         <p class="price"><span
                                 class="sale"><b><strike><?php echo formatPrice($item['price']) ?></strike></b></span>
-                            <span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['sale']) ?></b></span> </p>
+                            <span>&emsp;<b><?php echo formatpricesale($item['price'], $item['sale']) ?></b></span> </p>
 
-                        <?php elseif($item['salecat']>0) :?>
+                        <?php elseif ($item['salecat'] > 0): ?>
                         <p class="price"><span
                                 class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
-                            <span>&emsp;<b><?php  echo formatpricesale($item['price'],($item['salecat']))?></b></span>
+                            <span>&emsp;<b><?php echo formatpricesale($item['price'], ($item['salecat'])) ?></b></span>
                         </p>
 
                         <?php else: ?>
-                        <p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>
+                        <p class="price"><span><b><?php echo formatpricesale($item['price'], $item['sale']) ?></b></span>
                         </p>
-                        <?php endif ?>
+                        <?php endif?>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </div>
     </div>
 </div>
 <div id="colorlib-intro" class="colorlib-intro"
-    style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);margin-bottom: 30px;"
+    style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);margin-bottom: 30px;"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -260,29 +260,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
-                <?php foreach($fetchstatus2 as $item): ?>
+                <?php foreach ($fetchstatus2 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
-                <?php endforeach ?>
+                <?php endforeach?>
             </div>
         </div>
         <div class="row">
-            <?php foreach($productsale as $item): ?>
+            <?php foreach ($productsale as $item): ?>
             <div class="col-md-3 text-center">
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
-                        <?php if($item['sale']>0 && $item['salecat']==0) : ?>
+                        <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                         <p class="tagsale"><span class="hotsale"><b>SALE <?php echo $item['sale'] ?>%</b></span></p>
-                        <?php elseif($item['salecat']>0): ?>
+                        <?php elseif ($item['salecat'] > 0): ?>
                         <p class="tagsale"><span class="hotsale"><b>SALE <?php echo ($item['salecat']) ?>%</b></span>
                         </p>
-                        <?php endif ?>
+                        <?php endif?>
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                             <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -290,26 +290,26 @@
                         </div>
                     </div>
                     <div class="desc">
-                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
-                        <?php if($item['sale'] > 0 && $item['salecat']==0) :?>
+                        <?php if ($item['sale'] > 0 && $item['salecat'] == 0): ?>
                         <p class="price"><span
                                 class="sale"><b><strike><?php echo formatPrice($item['price']) ?></strike></b></span>
-                            <span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['sale']) ?></b></span> </p>
+                            <span>&emsp;<b><?php echo formatpricesale($item['price'], $item['sale']) ?></b></span> </p>
 
-                        <?php elseif($item['salecat']>0) :?>
+                        <?php elseif ($item['salecat'] > 0): ?>
                         <p class="price"><span
                                 class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
-                            <span>&emsp;<b><?php  echo formatpricesale($item['price'],($item['salecat']))?></b></span>
+                            <span>&emsp;<b><?php echo formatpricesale($item['price'], ($item['salecat'])) ?></b></span>
                         </p>
                         <?php else: ?>
-                        <p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>
+                        <p class="price"><span><b><?php echo formatpricesale($item['price'], $item['sale']) ?></b></span>
                         </p>
-                        <?php endif ?>
+                        <?php endif?>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </div>
     </div>
 </div>
@@ -318,27 +318,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading" style="margin-bottom: 20px;">
-                <?php foreach($fetchstatus3 as $item): ?>
+                <?php foreach ($fetchstatus3 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
-                <?php endforeach ?>
+                <?php endforeach?>
             </div>
         </div>
         <div class="row">
-            <?php foreach($productNew as $item): ?>
+            <?php foreach ($productNew as $item): ?>
             <div class="col-md-3 text-center">
                 <div class="product-entry">
                     <div class="product-img"
                         style="background-image: url(<?php echo uploads() ?>product/<?php echo $item['thunbar'] ?>);">
                         <p class="tag"><span class="new"> NEW</span></p>
-                        <?php if($item['salecat']>0): ?>
+                        <?php if ($item['salecat'] > 0): ?>
                         <p class="tagsale"><span class="hotsale">SALE <?php echo ($item['salecat']) ?>%</span></p>
-                        <?php endif ?>
+                        <?php endif?>
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
-                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><i
+                                <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
                                             <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
@@ -346,27 +346,27 @@
                         </div>
                     </div>
                     <div class="desc">
-                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['name'] ?></a>
+                        <h3><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['name'] ?></a>
                         </h3>
-                        <?php if($item['salecat']>0) :?>
+                        <?php if ($item['salecat'] > 0): ?>
                         <p class="price"><span
                                 class="sale"><b><strike><?php echo formatPrice($item['price']) ?></b></strike></span>
-                            <span>&emsp;<b><?php  echo formatpricesale($item['price'],$item['salecat'])?></b></span>
+                            <span>&emsp;<b><?php echo formatpricesale($item['price'], $item['salecat']) ?></b></span>
                         </p>
                         <?php else: ?>
-                        <p class="price"><span><b><?php echo formatpricesale($item['price'],$item['sale']) ?></b></span>
+                        <p class="price"><span><b><?php echo formatpricesale($item['price'], $item['sale']) ?></b></span>
                         </p>
-                        <?php endif ?>
+                        <?php endif?>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach;?>
         </div>
     </div>
 </div>
 
 <div id="colorlib-testimony" class="colorlib-light-grey"
-    style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cm3.jpg);margin-bottom: 30px; background-repeat: no-repeat; background-size: cover; background-position: center;">
+    style="background-image: url(<?php echo base_url() ?>public/fontend/images/cm3.jpg);margin-bottom: 30px; background-repeat: no-repeat; background-size: cover; background-position: center;">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
@@ -376,7 +376,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="owl-carousel2">
-                    <?php foreach($loadcm as $item): ?>
+                    <?php foreach ($loadcm as $item): ?>
                     <div class="item">
                         <div class="testimony text-center">
                             <!-- <span class="img-user" style="background-image: url(<php echo base_url()  ?>public/fontend/images/item-1.jpg);"></span> -->
@@ -387,7 +387,7 @@
                             </blockquote>
                         </div>
                     </div>
-                    <?php endforeach ?>
+                    <?php endforeach?>
                 </div>
             </div>
         </div>
@@ -398,31 +398,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center colorlib-heading" style="margin-bottom: 20px;">
-                <?php foreach($fetchstatus4 as $item): ?>
+                <?php foreach ($fetchstatus4 as $item): ?>
                 <h2><span><?php echo $item['title'] ?></span></h2>
                 <p><?php echo $item['content'] ?></p>
-                <?php endforeach ?>
+                <?php endforeach?>
             </div>
         </div>
         <div class="row">
-            <?php foreach($newsblog as $item): ?>
+            <?php foreach ($newsblog as $item): ?>
             <div class="col-md-4">
                 <article class="article-entry">
-                    <a href="blog.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>" class="blog-img"
+                    <a href="blog.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>" class="blog-img"
                         style="background-image: url(<?php echo uploads() ?>news/<?php echo $item['image'] ?>);"></a>
                     <div class="desc">
                         <p class="meta"><span class="day"><?php echo $item['day'] ?></span><span
                                 class="month"><?php echo formatmonth($item['month']) ?></span></p>
                         <p class="admin"><span>Đăng bởi:</span> <span><?php echo $item['name'] ?></span></p>
-                        <h2><a href="blog.php?id=<?php echo $item['id'] ."/". $item["slug"] ?>"><?php echo $item['title'] ?></a></h2>
+                        <h2><a href="blog.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><?php echo $item['title'] ?></a></h2>
                         <p><?php echo $item['contentmini'] ?></p>
                     </div>
                 </article>
             </div>
-            <?php endforeach ?>
+            <?php endforeach?>
         </div>
 
     </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

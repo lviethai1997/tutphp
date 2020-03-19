@@ -1,22 +1,20 @@
-<?php 
-        $open = "category";
-        require_once __DIR__. "/../../autoload/autoload.php";
-        $GetCat = "SELECT * from categories where parent=0";
-        $category = $db->fetchsql($GetCat);
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("categories","id= '".$del_id."'");
-            }
-            $_SESSION['success'] = "Xóa danh mục sản phẩm thành công";
-            redirectAdmin("category");
-        }
-       
-   
-        
+<?php
+$open = "category";
+require_once __DIR__ . "/../../autoload/autoload.php";
+$GetCat = "SELECT * from categories where parent=0";
+$category = $db->fetchsql($GetCat);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("categories", "id= '" . $del_id . "'");
+    }
+    $_SESSION['success'] = "Xóa danh mục sản phẩm thành công";
+    redirectAdmin("category");
+}
+
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Quản Lý Danh Mục Sản Phẩm</h1>
@@ -26,7 +24,7 @@
 <!-- /.row -->
 <div class="clearfix">
 </div>
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 <a class="btn btn btn-success" href="add.php">Thêm mới danh mục</a><br><br>
 <div class="row">
     <div class="col-lg-12">
@@ -78,62 +76,62 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($category as $item) :
-                                    $parent_id = (int)$item['id'];
-                                    $sqlGetParent = "SELECT * FROM categories WHERE parent = '$parent_id'";
-                                    $cresult = $db->fetchsql($sqlGetParent);
-                                        ?>
-                                        <tr class="bg-primary" role="row">
-                                            <!-- <td ><php echo $stt ?></td> -->
-                                            <td></td>
-                                            <td><?=$item['name'];?></td>
-                                            <td>Parent</td>
-                                            <td><?php echo $item['slug'] ?></td>
-                                            <td><?php echo $item['salecat'] ?></td>
-                                            <td>
-                                                <a href="" id="<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
-                                                    <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
-                                                </a>
-                                            </td>
+                                        <?php $stt = 1;foreach ($category as $item):
+    $parent_id = (int) $item['id'];
+    $sqlGetParent = "SELECT * FROM categories WHERE parent = '$parent_id'";
+    $cresult = $db->fetchsql($sqlGetParent);
+    ?>
+	                                        <tr class="bg-primary" role="row">
+	                                            <!-- <td ><php echo $stt ?></td> -->
+	                                            <td></td>
+	                                            <td><?=$item['name'];?></td>
+	                                            <td>Parent</td>
+	                                            <td><?php echo $item['slug'] ?></td>
+	                                            <td><?php echo $item['salecat'] ?></td>
+	                                            <td>
+	                                                <a href="" id="<?php echo $item['id'] ?>"
+	                                                    class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
+	                                                    <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
+	                                                </a>
+	                                            </td>
 
-                                            <td><?php echo $item['updated_at'] ?></td>
-                                            <td>
-                                                <a class="btn btn-xs btn-warning fa fa-edit "
-                                                    href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a>
-                                                <a class="btn btn-xs btn-danger fa fa-trash "
-                                                    href="delete.php?id=<?php echo $item['id'] ?>"
-                                                    onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
-                                                
-                                            </td>
-                                        </tr>
-                                        <?php foreach($cresult as $child): ?>
-                                        <tr role="row">
-                                            <!-- <td ><php echo $stt ?></td> -->
-                                            <td><input type="checkbox" id="checkItem" name="check[]"
-                                                    value="<?php echo $child['id']; ?>"></td>
-                                            <td><?=$child['name'];?></td>
-                                            <td><?=$item['name']?></td>
-                                            <td><?php echo $child['slug'] ?></td>
-                                            <td><?php echo $child['salecat'] ?></td>
-                                            <td>
-                                                <a href="#" id="<?php echo $child['id'] ?>"
-                                                    class="btn btn-xs <?php echo $child['status'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
-                                                    <?php echo $child['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
-                                                </a>
-                                            </td>
+	                                            <td><?php echo $item['updated_at'] ?></td>
+	                                            <td>
+	                                                <a class="btn btn-xs btn-warning fa fa-edit "
+	                                                    href="edit.php?id=<?php echo $item['id'] ?>">Sửa</a>
+	                                                <a class="btn btn-xs btn-danger fa fa-trash "
+	                                                    href="delete.php?id=<?php echo $item['id'] ?>"
+	                                                    onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
 
-                                            <td><?php echo $item['updated_at'] ?></td>
-                                            <td>
-                                                <a class="btn btn-xs btn-warning fa fa-edit "
-                                                    href="edit.php?id=<?php echo $child['id'] ?>">Sửa</a>
-                                                <a class="btn btn-xs btn-danger fa fa-trash "
-                                                    href="delete.php?id=<?php echo $child['id'] ?>"
-                                                    onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach ?>
-                                        <?php $stt++ ;endforeach  ?>
+	                                            </td>
+	                                        </tr>
+	                                        <?php foreach ($cresult as $child): ?>
+	                                        <tr role="row">
+	                                            <!-- <td ><php echo $stt ?></td> -->
+	                                            <td><input type="checkbox" id="checkItem" name="check[]"
+	                                                    value="<?php echo $child['id']; ?>"></td>
+	                                            <td><?=$child['name'];?></td>
+	                                            <td><?=$item['name']?></td>
+	                                            <td><?php echo $child['slug'] ?></td>
+	                                            <td><?php echo $child['salecat'] ?></td>
+	                                            <td>
+	                                                <a href="#" id="<?php echo $child['id'] ?>"
+	                                                    class="btn btn-xs <?php echo $child['status'] == 1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
+	                                                    <?php echo $child['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
+	                                                </a>
+	                                            </td>
+
+	                                            <td><?php echo $item['updated_at'] ?></td>
+	                                            <td>
+	                                                <a class="btn btn-xs btn-warning fa fa-edit "
+	                                                    href="edit.php?id=<?php echo $child['id'] ?>">Sửa</a>
+	                                                <a class="btn btn-xs btn-danger fa fa-trash "
+	                                                    href="delete.php?id=<?php echo $child['id'] ?>"
+	                                                    onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
+	                                            </td>
+	                                        </tr>
+	                                        <?php endforeach?>
+                                        <?php $stt++;endforeach?>
 
 
                                     </tbody>
@@ -163,7 +161,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 
 <script>
 

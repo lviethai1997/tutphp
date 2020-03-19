@@ -1,77 +1,72 @@
-<?php 
-	require_once __DIR__. "/autoload/autoload.php"; 
-    
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+<?php
+require_once __DIR__ . "/autoload/autoload.php";
 
-    // Load Composer's autoloader
-    require 'vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
 
-    $user  = $db->fetchID("users",intval($_COOKIE['name_id']));
+// Load Composer's autoloader
+require 'vendor/autoload.php';
 
-    if($_SERVER['REQUEST_METHOD']=="POST")
-    {
-        $data = 
+$user = $db->fetchID("users", intval($_COOKIE['name_id']));
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $data =
         [
-            'amount' => $_SESSION['total'],
-			'users_id' =>  $_COOKIE['name_id'],
-			'pt' => postInput("pt"),
-            'note' => postInput("note")
-        ];
+        'amount' => $_SESSION['total'],
+        'users_id' => $_COOKIE['name_id'],
+        'pt' => postInput("pt"),
+        'note' => postInput("note"),
+    ];
 
-        $idtran =$db->insert("transaction",$data);
-        if($idtran> 0)
-        {
-            foreach($_SESSION['cart'] as $key => $value)
-            {
-                $data2=
+    $idtran = $db->insert("transaction", $data);
+    if ($idtran > 0) {
+        foreach ($_SESSION['cart'] as $key => $value) {
+            $data2 =
                 [
-                    'transaction_id' => $idtran,
-                    'product_id' => $key,
-                    'qty'=> $value['qty'],
-                    'price' => $value['price']
-                ];
+                'transaction_id' => $idtran,
+                'product_id' => $key,
+                'qty' => $value['qty'],
+                'price' => $value['price'],
+            ];
 
-                $id_insert2 = $db->insert("orders",$data2);
-            }
-            
-            $mail = new PHPMailer(true);
-            // try {
-            //Server settings
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-            $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'nhjnzjmanhjn@gmail.com';                     // SMTP username
-            $mail->Password   = 'haivipprokute113';                               // SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            $mail->Port       = 587;                                    // TCP port to connect to
-            //Recipients
-            $mail->CharSet = 'UTF-8';
-            $mail->setFrom('nhjnzjmanhjn@gmail.com', 'haile Webshop');
-            // Add a recipient
-            $mail->addAddress($user['email']);               // Name is optional
-            $mail->addReplyTo('nhjnzjmanhjn@gmail.com', 'haile Webshop');
-            // Content
-            $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Chúc mừng bạn đã đặt đơn hàng trên haile Webshop thành công!';
-            $mail->Body    = 'Chúc mừng bạn đã đặt hàng trên haile webshop thành công, chúng tôi sẽ giao hàng cho bạn trong thời gian sớm nhất có thể, Chúc bạn có những phút giây vui vẻ!.';
-            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-            $mail->send();
-            
-            $_SESSION['success']= "Lưu thông tin đơn hàng thành công!!!";
-            header("location: thong-bao.php");
+            $id_insert2 = $db->insert("orders", $data2);
         }
+
+        $mail = new PHPMailer(true);
+        // try {
+        //Server settings
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+        $mail->isSMTP(); // Send using SMTP
+        $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
+        $mail->SMTPAuth = true; // Enable SMTP authentication
+        $mail->Username = 'nhjnzjmanhjn@gmail.com'; // SMTP username
+        $mail->Password = 'haivipprokute113'; // SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $mail->Port = 587; // TCP port to connect to
+        //Recipients
+        $mail->CharSet = 'UTF-8';
+        $mail->setFrom('nhjnzjmanhjn@gmail.com', 'haile Webshop');
+        // Add a recipient
+        $mail->addAddress($user['email']); // Name is optional
+        $mail->addReplyTo('nhjnzjmanhjn@gmail.com', 'haile Webshop');
+        // Content
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Subject = 'Chúc mừng bạn đã đặt đơn hàng trên haile Webshop thành công!';
+        $mail->Body = 'Chúc mừng bạn đã đặt hàng trên haile webshop thành công, chúng tôi sẽ giao hàng cho bạn trong thời gian sớm nhất có thể, Chúc bạn có những phút giây vui vẻ!.';
+        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->send();
+
+        $_SESSION['success'] = "Lưu thông tin đơn hàng thành công!!!";
+        header("location: thong-bao.php");
     }
-	
+}
+
 ?>
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -158,10 +153,10 @@
                             <label for="asd">Phương thức thanh toán</label><br>
                             <select class="form-control" name="pt">
                                 <option value="1"
-                                    <?php echo isset($data['pt']) && $data['pt']==1 ? "select = 'selected'" : '' ?>>
+                                    <?php echo isset($data['pt']) && $data['pt'] == 1 ? "select = 'selected'" : '' ?>>
                                     Thanh toán khi nhận hàng (COD)</option>
                                 <option value="2"
-                                    <?php echo isset($data['pt']) && $data['pt']==2 ? "select = 'selected'" : '' ?>>
+                                    <?php echo isset($data['pt']) && $data['pt'] == 2 ? "select = 'selected'" : '' ?>>
                                     Thanh toán qua ngân hàng</option>
                             </select>
                         </div>
@@ -184,4 +179,4 @@
 </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

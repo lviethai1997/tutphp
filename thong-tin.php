@@ -1,99 +1,87 @@
-<?php 
-	require_once __DIR__. "/autoload/autoload.php"; 
+<?php
+require_once __DIR__ . "/autoload/autoload.php";
 
-	$id = intval($_COOKIE['name_id']);
-	$user  = $db->fetchID("users",$id);
+$id = intval($_COOKIE['name_id']);
+$user = $db->fetchID("users", $id);
 
-    if($_SERVER['REQUEST_METHOD']=="POST")
-        {
-            $data =
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $data =
         [
-            "name" => postInput('name'),
-            "email" => postInput('email'),
-            "address" =>postInput("address"),
-            "password" =>MD5(postInput("password")),
-            "phone"=> postInput("phone"),
-            
-		];
-		
-		$data1 =
+        "name" => postInput('name'),
+        "email" => postInput('email'),
+        "address" => postInput("address"),
+        "password" => MD5(postInput("password")),
+        "phone" => postInput("phone"),
+
+    ];
+
+    $data1 =
         [
-            "name" => postInput('name'),
-            "email" => postInput('email'),
-            "address" =>postInput("address"),
-            "phone"=> postInput("phone"),
-            
-        ];
-           
-            $error= [];
+        "name" => postInput('name'),
+        "email" => postInput('email'),
+        "address" => postInput("address"),
+        "phone" => postInput("phone"),
 
-            if(postInput('name') == ''){
-                $error['name']= "Không thể bỏ trống tên người dùng!!";
-            }
+    ];
 
-            if(postInput('email') == ''){
-                $error['email']= "Không thể bỏ trống địa chỉ Email!!";
-            }else
-            {
-                if(postInput('email') != $user['email'])
-                {
-                    $is_check = $db->fetchOne("admin"," email = '".$data['email']."' ");
-                    if($is_check != NULL){
-                        $error['email']= "Email đã tồn tại!!";
-                    }
-                }
-               
-            }
+    $error = [];
 
-            if(postInput('phone') == ''){
-                $error['phone']= "Không thể bỏ trống số điện thoại!!";
-            }
-          
-            if(postInput('password')!= NULL && postInput("re_password")!= NULL){
-                if(postInput('password') != postInput('re_password')){
-                    $error['password'] = " Mật khẩu thay đổi không khớp !!";
-                }else{
-                    $data['password'] = MD5(postInput("password"));
-                }
-            }
-            
-            //ko co loi
-            if(empty($error))
-            {
-			  
-				if(postInput('password')=='')
-				{
-					$id_updatenopass =$db->update("users",$data1,array("id"=>$id));
-				if($id_updatenopass >0)
-				{
-					echo "<script>alert(' Cập nhật thông tin thành công!!');location.href='thong-tin.php'</script>"; 
-				}else
-				{
-					 echo "<script>alert(' Cập nhật thông tin thất bại!!');location.href='thong-tin.php'</script>";
-				}
-				}else
-				{
-					$id_update =$db->update("users",$data,array("id"=>$id));
-					if($id_update >0)
-					{
-						echo "<script>alert(' Cập nhật thông tin thành công!!');location.href='thong-tin.php'</script>"; 
-					}else
-					{
-						 echo "<script>alert(' Cập nhật thông tin thất bại!!');location.href='thong-tin.php'</script>";
-					}
-				}
+    if (postInput('name') == '') {
+        $error['name'] = "Không thể bỏ trống tên người dùng!!";
+    }
+
+    if (postInput('email') == '') {
+        $error['email'] = "Không thể bỏ trống địa chỉ Email!!";
+    } else {
+        if (postInput('email') != $user['email']) {
+            $is_check = $db->fetchOne("admin", " email = '" . $data['email'] . "' ");
+            if ($is_check != null) {
+                $error['email'] = "Email đã tồn tại!!";
             }
         }
 
-    
-	
+    }
+
+    if (postInput('phone') == '') {
+        $error['phone'] = "Không thể bỏ trống số điện thoại!!";
+    }
+
+    if (postInput('password') != null && postInput("re_password") != null) {
+        if (postInput('password') != postInput('re_password')) {
+            $error['password'] = " Mật khẩu thay đổi không khớp !!";
+        } else {
+            $data['password'] = MD5(postInput("password"));
+        }
+    }
+
+    //ko co loi
+    if (empty($error)) {
+
+        if (postInput('password') == '') {
+            $id_updatenopass = $db->update("users", $data1, array("id" => $id));
+            if ($id_updatenopass > 0) {
+                echo "<script>alert(' Cập nhật thông tin thành công!!');location.href='thong-tin.php'</script>";
+            } else {
+                echo "<script>alert(' Cập nhật thông tin thất bại!!');location.href='thong-tin.php'</script>";
+            }
+        } else {
+            $id_update = $db->update("users", $data, array("id" => $id));
+            if ($id_update > 0) {
+                echo "<script>alert(' Cập nhật thông tin thành công!!');location.href='thong-tin.php'</script>";
+            } else {
+                echo "<script>alert(' Cập nhật thông tin thất bại!!');location.href='thong-tin.php'</script>";
+            }
+        }
+    }
+}
+
 ?>
 
-<?php require_once __DIR__. "/layouts/header.php"; ?>
+<?php require_once __DIR__ . "/layouts/header.php";?>
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(<?php echo base_url()  ?>public/fontend/images/cover-img-1.jpg);">
+            <li style="background-image: url(<?php echo base_url() ?>public/fontend/images/cover-img-1.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -140,10 +128,10 @@
                                 <label for="fname">Họ và tên</label>
                                 <input type="text" id="fname" name="name" class="form-control"
                                     placeholder="Nhập họ và tên" value="<?php echo $user['name'] ?>">
-                                <?php 
-                                        if(isset($error['name'])): ?>
+                                <?php
+if (isset($error['name'])): ?>
                                 <p class="text-danger"><br><?php echo $error['name'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
 
@@ -152,10 +140,10 @@
                                 <label for="email">Email</label>
                                 <input readonly type="email" id="email" name="email" class="form-control"
                                     placeholder="Nhập địa chỉ Email" value="<?php echo $user['email'] ?>">
-                                <?php 
-                                        if(isset($error['email'])): ?>
+                                <?php
+if (isset($error['email'])): ?>
                                 <p class="text-danger"><br><?php echo $error['email'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
 
@@ -164,10 +152,10 @@
                                 <label for="message">Địa chỉ nhà</label>
                                 <input type="text" id="message" name="address" class="form-control"
                                     placeholder="Nhập địa chỉ" value="<?php echo $user['address'] ?>">
-                                <?php 
-                                        if(isset($error['address'])): ?>
+                                <?php
+if (isset($error['address'])): ?>
                                 <p class="text-danger"><br><?php echo $error['address'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
 
@@ -176,10 +164,10 @@
                                 <label for="email">Đổi Mật Khẩu</label>
                                 <input type="password" id="email" name="password" class="form-control"
                                     placeholder="Nhập Mật Khẩu">
-                                <?php 
-                                        if(isset($error['password'])): ?>
+                                <?php
+if (isset($error['password'])): ?>
                                 <p class="text-danger"><br><?php echo $error['password'] ?> </p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
 
@@ -188,10 +176,10 @@
                                 <label for="email">Nhập lại mật khẩu</label>
                                 <input type="password" id="email" name="re_password" class="form-control"
                                     placeholder="Nhập Lại Mật Khẩu">
-                                <?php 
-                                        if(isset($error['re_password'])): ?>
+                                <?php
+if (isset($error['re_password'])): ?>
                                 <p class="text-danger"><br><?php echo $error['re_password'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
 
@@ -200,10 +188,10 @@
                                 <label for="subject">Số điện thoại</label>
                                 <input type="number" id="subject" name="phone" class="form-control"
                                     placeholder="Nhập số điện thoại" value="<?php echo $user['phone'] ?>">
-                                <?php 
-                                        if(isset($error['phone'])): ?>
+                                <?php
+if (isset($error['phone'])): ?>
                                 <p class="text-danger"><br><?php echo $error['phone'] ?></p>
-                                <?php endif ?>
+                                <?php endif?>
                             </div>
                         </div>
                         <div class="form-group text-center">
@@ -216,4 +204,4 @@
     </div>
 </div>
 
-<?php require_once __DIR__. "/layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/layouts/footer.php";?>

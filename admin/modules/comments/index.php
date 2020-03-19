@@ -1,35 +1,33 @@
-<?php 
-        $open = "comments";
-        require_once __DIR__. "/../../autoload/autoload.php";
+<?php
+$open = "comments";
+require_once __DIR__ . "/../../autoload/autoload.php";
 
-        $sqlcomments ="SELECT  comment.*,comment.id as id, comment.created_at as timecomment,comment.content as binhluan,products.name as sp, products.thunbar as hinh  , users.name as nameuser  
+$sqlcomments = "SELECT  comment.*,comment.id as id, comment.created_at as timecomment,comment.content as binhluan,products.name as sp, products.thunbar as hinh  , users.name as nameuser
         FROM users INNER JOIN comment on users.id = comment.user_id INNER JOIN products ON products.id = comment.product_id where 1 ORDER BY id";
-        $comments = $db->fetchsql($sqlcomments);
+$comments = $db->fetchsql($sqlcomments);
 
-        if(isset($_POST["CheckBoxDelete"]))
-        {
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("comment","id= '".$del_id."'");
-            }
-            if($num>0){
-                $_SESSION['success'] = "Xóa đơn hàng thành công";
-                redirectAdmin("comments");
-            }else{
-                $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
-                redirectAdmin("comments");
-            }
-            
-        }else if(isset($_POST["DeleteAll"]))
-        {
-            $deleteAllRow = $db->DeleteAll("comment");
-            $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
-            redirectAdmin("comments");
-        }
-        
+if (isset($_POST["CheckBoxDelete"])) {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("comment", "id= '" . $del_id . "'");
+    }
+    if ($num > 0) {
+        $_SESSION['success'] = "Xóa đơn hàng thành công";
+        redirectAdmin("comments");
+    } else {
+        $_SESSION['error'] = "Xóa đơn hàng thất bại!!";
+        redirectAdmin("comments");
+    }
+
+} else if (isset($_POST["DeleteAll"])) {
+    $deleteAllRow = $db->DeleteAll("comment");
+    $_SESSION['success'] = "Xóa tất cả các đơn hàng thành công";
+    redirectAdmin("comments");
+}
+
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Xem các bình luận</h1>
@@ -40,7 +38,7 @@
 
 <div class="clearfix">
 </div>
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 
 <div class="row">
     <div class="col-lg-12">
@@ -96,7 +94,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($comments as $item) : ?>
+                                        <?php $stt = 1;foreach ($comments as $item): ?>
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
@@ -120,7 +118,7 @@
                                                     class="btn btn-xs btn-danger fa fa-trash trash"> Xóa</a>
                                             </td>
                                         </tr>
-                                        <?php $stt++ ;endforeach  ?>
+                                        <?php $stt++;endforeach?>
 
 
                                     </tbody>
@@ -150,7 +148,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 <script>
 $(".trash").click(function() {
     var id = $(this).attr('id');

@@ -1,19 +1,19 @@
-<?php 
-        $open = "news";
-        require_once __DIR__. "/../../autoload/autoload.php";
-        $product= $db->fetchAll('news');
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $checkbox = $_POST['check'];
-            for($i=0;$i<count($checkbox);$i++){
-            $del_id = $checkbox[$i]; 
-            $num =$db->deletesql("news","id= '".$del_id."'");
-            }
-            $_SESSION['success'] = "Xóa tin tức thành công";
-            redirectAdmin("news");
-        }
-        
+<?php
+$open = "news";
+require_once __DIR__ . "/../../autoload/autoload.php";
+$product = $db->fetchAll('news');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $checkbox = $_POST['check'];
+    for ($i = 0; $i < count($checkbox); $i++) {
+        $del_id = $checkbox[$i];
+        $num = $db->deletesql("news", "id= '" . $del_id . "'");
+    }
+    $_SESSION['success'] = "Xóa tin tức thành công";
+    redirectAdmin("news");
+}
+
 ?>
-<?php require_once __DIR__. "/../../layouts/header.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/header.php";?>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Quản lý tin tức</h1>
@@ -23,7 +23,7 @@
 <!-- /.row -->
 <div class="clearfix">
 </div>
-<?php require_once __DIR__. "/../../../partials/notification.php"; ?>
+<?php require_once __DIR__ . "/../../../partials/notification.php";?>
 <a class="btn btn btn-success" href="add.php">Thêm mới tin tức</a><br><br>
 <div class="row">
     <div class="col-lg-12">
@@ -83,7 +83,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $stt=1;foreach($product as $item) : ?>
+                                        <?php $stt = 1;foreach ($product as $item): ?>
                                         <tr class="gradeA odd" role="row">
                                             <td><input type="checkbox" id="checkItem" name="check[]"
                                                     value="<?php echo $item['id']; ?>"></td>
@@ -102,7 +102,7 @@
                                                 <a class="btn btn-xs btn-warning fa fa-edit"
                                                     href="edit.php?id=<?php echo $item['id'] ?>"> Sửa</a>
                                                 <br><a href="#" id="<?php echo $item['id'] ?>"
-                                                    class="btn btn-xs <?php echo $item['status'] ==1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
+                                                    class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-info changestatus' : 'btn-default changestatus' ?>">
                                                     <?php echo $item['status'] == 1 ? ' Hiển thị' : ' Không ' ?>
                                                 </a><br>
                                                 <!-- <a class="btn btn-xs btn-danger fa fa-trash" href="delete.php?id=<php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không?')"> Xóa</a> &emsp; -->
@@ -110,7 +110,7 @@
                                                     class="btn btn-xs btn-danger fa fa-trash trash">Xóa</a>
                                             </td>
                                         </tr>
-                                        <?php $stt++ ;endforeach  ?>
+                                        <?php $stt++;endforeach?>
                                     </tbody>
                                 </table>
                             </div>
@@ -135,7 +135,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<?php require_once __DIR__. "/../../layouts/footer.php"; ?>
+<?php require_once __DIR__ . "/../../layouts/footer.php";?>
 <script>
 $(".trash").click(function() {
     var id = $(this).attr('id');
