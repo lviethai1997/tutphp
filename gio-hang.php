@@ -80,24 +80,24 @@ if (!count($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price"><?php echo formatPrice($value['price']) ?></span>
+                            <span id="jsPrice" class="jsprice"><?php echo formatPrice($value['price']) ?></span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <input type="number" id="qty" name="qty" class="form-control input-number text-center qty"
-                                value="<?php echo $value['qty'] ?>" min="1" max="100">
+                            <input type="number" id="jsQty" data-key="<?php echo $key ?>" name="qty" class="form-control input-number text-center jsqty"
+                                value="<?php echo $value['qty'] ?>" min="1" max="999">
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price"><?php echo formatPrice($value['price'] * $value['qty']) ?></span>
+                            <span id="jsSprice" class="jsSprice"><?php echo formatPrice($value['price'] * $value['qty']) ?></span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <a href="#" class="updatecart" data-key="<?php echo $key ?>"><i>Cập nhật</i></a><br><br>
-                            <a href="remove.php?key=<?php echo $key ?>" class="closed"></a>
+                            <!-- <a href="#" class="updatecart" data-key="<php echo $key ?>"><i>Cập nhật</i></a><br><br> -->
+                            <a href="#" id='<?php echo $key ?>'  class="closed closedcart"></a>
                         </div>
                     </div>
                 </div>
@@ -132,14 +132,14 @@ $_SESSION['tongtien'] = $sum?>
                             <div class="total">
                                 <div class="sub">
                                     <p><span>Tổng Tiền:</span>
-                                        <span><?php echo formatPrice1($_SESSION['tongtien']) ?>₫</span></p>
-                                    <p><span>VAT 10%:</span> <span>10%</span></p>
-                                    <p><span>Giảm Giá:</span> <span><?php echo sale($_SESSION['tongtien']) ?>%</span>
+                                        <span class="jsTotal" ><?php echo formatPrice1($_SESSION['tongtien']) ?>₫</span></p>
+                                    <p><span>VAT 10%:</span> <span id="jsVat"><?php echo formatPrice1($_SESSION['tongtien'] * 0.1) . '₫' ?></span></p>
+                                    <!-- <p><span id="jsSale">Giảm Giá:</span> <span><php echo sale($_SESSION['tongtien']) ?>%</span> -->
                                     </p>
                                 </div>
                                 <div class="grand-total">
                                     <p><span><strong>Tổng tiền thanh toán:</strong></span> <span>
-                                            <span><?php $_SESSION['total'] = ($_SESSION['tongtien'] * 110 / 100) - ($_SESSION['tongtien'] / 100 * sale($_SESSION['tongtien']));
+                                            <span class="jsLTotal"><?php $_SESSION['total'] = ($_SESSION['tongtien'] * 1.1);
 echo formatPrice1($_SESSION['total'])?>₫
                                     </p></span></p>
                                 </div>
@@ -210,3 +210,87 @@ echo formatPrice1($_SESSION['total'])?>₫
 </div>
 
 <?php require_once __DIR__ . "/layouts/footer.php";?>
+
+<script>
+$(document).ready(function(){
+    $('.jsqty').keyup(function(){
+        calu(this);
+    });
+    $('.jsqty').change(function(){
+        calu(this);
+    });
+});
+
+
+function calu(val){
+    let row = $(val).closest('.product-cart');
+    let qty = row.find('.jsqty').val();
+    if(qty>999)
+    {
+        qty = 999
+        row.find('.jsqty').val(qty);
+    }
+    let price = row.find('#jsPrice').text();
+    price = price.replace('₫','');
+    price = price.replace(',','');
+
+    $key = row.find('.jsqty').attr("data-key");
+
+    let Sprice = parseFloat(price) * parseFloat(qty);
+    if (isNaN(Sprice)) Sprice = '0';
+    row.find('.jsSprice').text(Sprice.toLocaleString()+'₫');
+
+    let sum = 0;
+    $('.jsSprice').each(function(){
+        let total = $(this).html();
+        total = total.replace('₫','');
+        total = total.replace(',','');
+        total = total.replace(',','');
+        sum += parseFloat(total)
+    })
+    $('#jsVat').html((sum*0.1).toLocaleString()+'₫');
+    $('.jsTotal').html(sum.toLocaleString()+'₫');
+    // let jssale = sale(sum);
+    sum = (sum*1.1) ;
+    $('.jsLTotal').html(sum.toLocaleString()+'₫');
+
+    $.ajax({
+        url: 'cap-nhat-gio-hang.php',
+        type: 'GET',
+        data: {
+            'qty': qty,
+            'key': $key
+        },
+    });
+}
+
+
+$('.closedcart').click(function(){
+    let key = $(this).attr('id');
+    let $ele = $(this).parent().parent().parent();
+    $.ajax({
+        type: "GET",
+        url: "remove.php",
+        data: {
+            'key': key
+        },
+        success: function() {
+            $ele.fadeOut().remove();
+            let sum = 0;
+            $('.jsSprice').each(function(){
+                let total = $(this).html();
+                total = total.replace('₫','');
+                total = total.replace(',','');
+                total = total.replace(',','');
+                sum += parseFloat(total)
+            })
+            $('#jsVat').html((sum*0.1).toLocaleString()+'₫');
+            $('.jsTotal').html(sum.toLocaleString()+'₫');
+            // let jssale = sale(sum);
+            sum = (sum*1.1) ;
+            $('.jsLTotal').html(sum.toLocaleString()+'₫');
+        }
+    });
+    return false;
+})
+</script>

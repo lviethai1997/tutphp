@@ -150,7 +150,7 @@ if (!function_exists('redirect')) {
 function formatPrice($number)
 {
     $number = intval($number);
-    return number_format($number, 0, ',', '.') . "₫";
+    return number_format($number, 0, ',', ',') . "₫";
 }
 
 function formatPrice1($number)

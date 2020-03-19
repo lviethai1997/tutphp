@@ -89,6 +89,10 @@
     border-radius: 2px;
 }
 
+.gototop.active {
+    width:50px;
+}
+
 .product-entry .product-img .tag .hot {
     font-size: 13px;
     background: #ff4800;

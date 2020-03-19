@@ -123,5 +123,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <script src="<?php echo base_url() ?>public/assets/js/main.js"></script>
 
 </body>
-
 </html>

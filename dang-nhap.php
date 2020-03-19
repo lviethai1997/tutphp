@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $error['password'] = " Vui lòng điền đầy đủ mật khẩu!!";
     }
 
-    $captcha = postInput('g-recaptcha-response');
-    if (!$captcha) {
-        $error['g-recaptcha-response'] = " Xin xác nhận CAPTCHA!";
-    } else {
-        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfd3JkUAAAAAPLf5PupRZT4-_3F2r_UyMXYFMRa&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
-    }
+    // $captcha = postInput('g-recaptcha-response');
+    // if (!$captcha) {
+    //     $error['g-recaptcha-response'] = " Xin xác nhận CAPTCHA!";
+    // } else {
+    //     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lfd3JkUAAAAAPLf5PupRZT4-_3F2r_UyMXYFMRa&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+    // }
 
     if (empty($error)) {
         $is_check = $db->fetchOne("users", "email = '" . $data['email'] . "' AND password = '" . MD5($data['password']) . "' ");

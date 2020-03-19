@@ -172,6 +172,32 @@ $(function() {
         });
     })
 })
+
+    // $(document).ready(function () {
+    //     $(document)[0].oncontextmenu = function () { return false; }
+    //         $(document).mousedown(function (e) {
+    //             if (e.button == 2) {
+    //                 return false;
+    //             } else {
+    //                 return true;
+    //             }
+    //         });
+    //     });
+
+    //     $(document).bind("keydown", function (evt) {
+    //         var keycode = (evt.keyCode ? evt.keyCode : evt.charCode);
+    //         //alert(keycode);
+    //         switch (keycode) {
+    //             case 119: //F8 key on Windows and most browsers
+    //             case 123: //F12 key on Windows and most browsers
+    //             case 63243:  //F8 key on Mac Safari
+    //             evt.preventDefault();
+    //             //Remapping event
+    //             evt.originalEvent.keyCode = 0;
+    //             return false;
+    //             break;
+    //         }
+    //     });
 </script>
 </body>
 
