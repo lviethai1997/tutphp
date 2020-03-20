@@ -268,8 +268,10 @@ function calu(val){
 $('.closedcart').click(function(){
     let key = $(this).attr('id');
     let $ele = $(this).parent().parent().parent();
+    let qty = $(this).closest('.product-cart').find('.jsqty').val();
+    
     let countcart = $('.countCart').html();
-    let count = parseInt(countcart) -1;
+    let count = parseInt(countcart) - qty;
     $.ajax({
         type: "GET",
         url: "remove.php",

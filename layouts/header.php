@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/icomoon.css">
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/bootstrap.css">
-   
+
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/magnific-popup.css">
     <!-- Flexslider  -->
@@ -206,7 +206,7 @@ $getchild = $db->fetchsql($sql2);
                                 <!-- <li><a href="about.php"><b>Giới thiệu</b></a></li>
 								<li><a href="lien-he.php"><b>Liên hệ</b></a></li> -->
                                 <li><a href="gio-hang.php"><i class="icon-shopping-cart"></i><b> Giỏ hàng [<span class='countCart'><?php if (isset($_SESSION['cart'])) {
-    echo count($_SESSION['cart']);
+$sum = 0; foreach($_SESSION['cart'] as $item){ $sum+= $item['qty']; } echo $sum;
 } else {
     echo "0";
 }?></span>]</b></a></li>
