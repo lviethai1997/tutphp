@@ -294,6 +294,7 @@ $('.closedcart').click(function(){
             // let jssale = sale(sum);
             sum = (sum*1.1) ;
             $('.jsLTotal').html(sum.toLocaleString()+'₫');
+            toastr.warning('Xóa sản phẩm thành công!');
         }
     });
     return false;
