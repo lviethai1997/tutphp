@@ -23,12 +23,15 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+     <!-- Toast -->
+     <link href="<?php echo base_url() ?>public/assets/toastjs/toastr.min.css" rel="stylesheet"/>
     <!-- Animate.css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/animate.css">
     <!-- Icomoon Icon Fonts-->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/icomoon.css">
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/bootstrap.css">
+   
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/magnific-popup.css">
     <!-- Flexslider  -->
@@ -48,12 +51,12 @@
 
 
     <!-- Modernizr JS -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>public/fontend/js/modernizr-2.6.2.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="<?php echo base_url() ?>public/assets/toastjs/toastr.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -202,11 +205,11 @@ $getchild = $db->fetchsql($sql2);
                                 </li>
                                 <!-- <li><a href="about.php"><b>Giới thiệu</b></a></li>
 								<li><a href="lien-he.php"><b>Liên hệ</b></a></li> -->
-                                <li><a href="gio-hang.php"><i class="icon-shopping-cart"></i><b> Giỏ hàng [<?php if (isset($_SESSION['cart'])) {
+                                <li><a href="gio-hang.php"><i class="icon-shopping-cart"></i><b> Giỏ hàng [<span class='countCart'><?php if (isset($_SESSION['cart'])) {
     echo count($_SESSION['cart']);
 } else {
     echo "0";
-}?>]</b></a></li>
+}?></span>]</b></a></li>
                                 <?php if (isset($_COOKIE['name_user'])): ?>
                                 <li class="has-dropdown" >
                                     <a href="thong-tin.php?id=<?php echo $_COOKIE['name_id'] ?>"><b>Xin chào:

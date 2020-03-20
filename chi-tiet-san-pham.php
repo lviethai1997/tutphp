@@ -222,8 +222,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="addcart.php?id=<?php echo $product['id'] ?>"
-                                        class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to
+                                <p><a id="<?php echo $product['id'] ?>" href="#"
+                                        class="btn btn-primary btn-addtocart itemtocart"><i class="icon-shopping-cart"></i> Add to
                                         Cart</a></p>
                             </div>
                         </div>
@@ -420,7 +420,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>"><?php if ($item['sale'] > 0 && $catesale['salecat'] == 0) {echo 'Sale' . " " . $item['sale'] . "%";} elseif ($catesale['salecat'] > 0) {echo 'Sale' . " " . ($catesale['salecat']) . "%";} else {echo "new";}?></span></p>
                         <div class="cart">
                             <p>
-                                <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
+                                <span class="addtocart"><a href="#" class="itemtocart" id="<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>

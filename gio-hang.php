@@ -175,7 +175,7 @@ echo formatPrice1($_SESSION['total'])?>₫
 ?>"><?php if ($item['sale'] > 0 && $item['salecat'] == 0) {echo 'Sale' . " " . $item['sale'] . "%";} elseif ($item['salecat'] > 0) {echo 'Sale' . " " . ($item['salecat']) . "%";} else {echo "new";}?></span></p>
                         <div class="cart">
                             <p>
-                                <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
+                                <span class="addtocart"><a class="itemtocart" href="#" id="<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
@@ -268,6 +268,8 @@ function calu(val){
 $('.closedcart').click(function(){
     let key = $(this).attr('id');
     let $ele = $(this).parent().parent().parent();
+    let countcart = $('.countCart').html();
+    let count = parseInt(countcart) -1;
     $.ajax({
         type: "GET",
         url: "remove.php",
@@ -276,6 +278,7 @@ $('.closedcart').click(function(){
         },
         success: function() {
             $ele.fadeOut().remove();
+            $('.countCart').html(count);
             let sum = 0;
             $('.jsSprice').each(function(){
                 let total = $(this).html();
@@ -293,4 +296,20 @@ $('.closedcart').click(function(){
     });
     return false;
 })
+
+// $('.itemtocart').click(function(){
+//     let id = $(this).attr('id');
+//     let countcart = $('.countCart').html();
+//     let count = parseInt(countcart) +1;
+//     $.ajax({
+//         type: 'GET',
+//         url: 'addcart.php',
+//         data: { 'id':id },
+//         success: function(){
+//             $('.countCart').html(count);
+//             toastr.success('Thêm vào giỏ thành công!');
+//         }
+//     })
+//     return false;
+// })
 </script>

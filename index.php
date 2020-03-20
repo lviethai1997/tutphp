@@ -190,7 +190,7 @@ foreach ($CategoryHome as $item) {
                         <?php endif?>
                         <div class="cart">
                             <p>
-                                <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
+                                <span class="addtocart"><a href="#" class="itemtocart" id="<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
@@ -280,7 +280,7 @@ foreach ($CategoryHome as $item) {
                         <?php endif?>
                         <div class="cart">
                             <p>
-                                <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
+                                <span class="addtocart"><a href="#" class="itemtocart" id="<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
@@ -336,7 +336,7 @@ foreach ($CategoryHome as $item) {
                         <?php endif?>
                         <div class="cart">
                             <p>
-                                <span class="addtocart"><a href="addcart.php?id=<?php echo $item['id'] ?>"><i
+                                <span class="addtocart"><a href="#" class="itemtocart" id="<?php echo $item['id'] ?>"><i
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>

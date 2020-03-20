@@ -148,56 +148,72 @@ $(document).ready(function() {
     });
 });
 
-
-$(function() {
-    $updatecart = $(".updatecart");
-    $updatecart.click(function(e) {
-        e.preventDefault();
-        $qty = $(this).parents(".product-cart").find(".qty").val();
-
-        $key = $(this).attr("data-key");
-        $.ajax({
-            url: 'cap-nhat-gio-hang.php',
-            type: 'GET',
-            data: {
-                'qty': $qty,
-                'key': $key
-            },
-            success: function(data) {
-                if (data == 1) {
-                    alert(" Cập nhật giỏ hàng thành công !!!");
-                    location.href = "gio-hang.php";
-                }
-            }
-        });
+$('.itemtocart').click(function(){
+    let id = $(this).attr('id');
+    let countcart = $('.countCart').html();
+    let count = parseInt(countcart) +1;
+    $.ajax({
+        type: 'GET',
+        url: 'addcart.php',
+        data: { 'id':id },
+        success: function(){
+            $('.countCart').html(count);
+            toastr.success('Thêm vào giỏ thành công!');
+        }
     })
+    return false;
 })
 
-    // $(document).ready(function () {
-    //     $(document)[0].oncontextmenu = function () { return false; }
-    //         $(document).mousedown(function (e) {
-    //             if (e.button == 2) {
-    //                 return false;
-    //             } else {
-    //                 return true;
-    //             }
-    //         });
-    //     });
 
-    //     $(document).bind("keydown", function (evt) {
-    //         var keycode = (evt.keyCode ? evt.keyCode : evt.charCode);
-    //         //alert(keycode);
-    //         switch (keycode) {
-    //             case 119: //F8 key on Windows and most browsers
-    //             case 123: //F12 key on Windows and most browsers
-    //             case 63243:  //F8 key on Mac Safari
-    //             evt.preventDefault();
-    //             //Remapping event
-    //             evt.originalEvent.keyCode = 0;
-    //             return false;
-    //             break;
-    //         }
-    //     });
+// $(function() {
+//     $updatecart = $(".updatecart");
+//     $updatecart.click(function(e) {
+//         e.preventDefault();
+//         $qty = $(this).parents(".product-cart").find(".qty").val();
+
+//         $key = $(this).attr("data-key");
+//         $.ajax({
+//             url: 'cap-nhat-gio-hang.php',
+//             type: 'GET',
+//             data: {
+//                 'qty': $qty,
+//                 'key': $key
+//             },
+//             success: function(data) {
+//                 if (data == 1) {
+//                     alert(" Cập nhật giỏ hàng thành công !!!");
+//                     location.href = "gio-hang.php";
+//                 }
+//             }
+//         });
+//     })
+// })
+
+// $(document).ready(function () {
+//     $(document)[0].oncontextmenu = function () { return false; }
+//         $(document).mousedown(function (e) {
+//             if (e.button == 2) {
+//                 return false;
+//             } else {
+//                 return true;
+//             }
+//         });
+//     });
+
+//     $(document).bind("keydown", function (evt) {
+//         var keycode = (evt.keyCode ? evt.keyCode : evt.charCode);
+//         //alert(keycode);
+//         switch (keycode) {
+//             case 119: //F8 key on Windows and most browsers
+//             case 123: //F12 key on Windows and most browsers
+//             case 63243:  //F8 key on Mac Safari
+//             evt.preventDefault();
+//             //Remapping event
+//             evt.originalEvent.keyCode = 0;
+//             return false;
+//             break;
+//         }
+//     });
 </script>
 </body>
 
