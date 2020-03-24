@@ -127,7 +127,7 @@ if (isset($_COOKIE['name_id'])) {
                                             class="icon-shopping-cart"></i></a></span>
                                 <span><a href="chi-tiet-san-pham.php?id=<?php echo $item['id'] . "/" . $item["slug"] ?>"><i
                                             class="icon-eye"></i></a></span>
-                                            <span><a href="addwishlist.php?id=<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
+                                            <span><a href="#" class="itemtowishlist" id="<?php echo $item['id'] ?>"><i class="icon-heart3"></i></a></span>
                                 <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
                             </p>
                         </div>

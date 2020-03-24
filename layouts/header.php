@@ -23,8 +23,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-     <!-- Toast -->
-     <link href="<?php echo base_url() ?>public/assets/toastjs/toastr.min.css" rel="stylesheet"/>
+    <!-- Toast -->
+    <link href="<?php echo base_url() ?>public/assets/toastjs/toastr.min.css" rel="stylesheet"/>
     <!-- Animate.css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -47,8 +47,6 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>public/fontend/css/style.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="<?php echo base_url() ?>public/fontend/js/jquery-ui.css" rel = "stylesheet">
-
-
 
     <!-- Modernizr JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -206,7 +204,8 @@ $getchild = $db->fetchsql($sql2);
                                 <!-- <li><a href="about.php"><b>Giới thiệu</b></a></li>
 								<li><a href="lien-he.php"><b>Liên hệ</b></a></li> -->
                                 <li><a href="gio-hang.php"><i class="icon-shopping-cart"></i><b> Giỏ hàng [<span class='countCart'><?php if (isset($_SESSION['cart'])) {
-$sum = 0; foreach($_SESSION['cart'] as $item){ $sum+= $item['qty']; } echo $sum;
+    $sum = 0;foreach ($_SESSION['cart'] as $item) {$sum += $item['qty'];}
+    echo $sum;
 } else {
     echo "0";
 }?></span>]</b></a></li>

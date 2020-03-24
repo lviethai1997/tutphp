@@ -7,7 +7,7 @@ if (isset($_COOKIE['name_id'])) {
     $is_check = $db->fetchOne("wishlist", " product_id = $product_id and user_id = $user_id ");
     if ($is_check == null) {
         $data =
-            [
+        [
             "user_id" => $user_id,
             "product_id" => $product_id,
         ];

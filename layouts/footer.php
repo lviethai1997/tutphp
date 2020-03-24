@@ -164,6 +164,19 @@ $('.itemtocart').click(function(){
     return false;
 })
 
+$('.itemtowishlist').click(function(){
+    let id = $(this).attr('id');
+
+    $.ajax({
+        type: 'GET',
+        url: 'addwishlist.php',
+        data: { 'id':id },
+        success: function(){
+            toastr.success('Thêm vào danh sách yêu thích thành công!');
+        }
+    })
+})
+
 toastr.options = {
   "closeButton": true,
   "debug": false,
